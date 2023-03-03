@@ -6,7 +6,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 font-roboto">
       <HashRouter>
         <Routes>
           <Route path="/" element={<Login />} />
