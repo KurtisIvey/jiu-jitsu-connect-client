@@ -10,7 +10,7 @@ function Post({}: Props) {
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
-        <div className="border border-blue-300 flex flex-row space-x-2">
+        <div className="flex flex-row space-x-2">
           <img
             className="rounded-full  h-8 w-8 border-white border-2"
             src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
@@ -51,7 +51,7 @@ function Post({}: Props) {
             type="text"
             aria-label="write a comment"
           />
-          <TbPencilPlus className="h-5 w-5  cursor-pointer " />
+          <TbPencilPlus className="h-5 w-5  cursor-pointer hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
         </form>
         <Comments />
       </div>

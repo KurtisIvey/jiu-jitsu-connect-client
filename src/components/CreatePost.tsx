@@ -1,10 +1,9 @@
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 
 type Props = {};
 
 const CreatePost = (props: Props) => {
-  const postInput = useRef(null);
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
 
@@ -43,7 +42,6 @@ const CreatePost = (props: Props) => {
         } `}
       >
         <textarea
-          ref={postInput}
           onChange={(e) => handlePostContent(e)}
           className="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none"
           placeholder="Describe everything about this post here"
