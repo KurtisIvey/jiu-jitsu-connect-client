@@ -13,9 +13,11 @@ const CreatePost = (props: Props) => {
 
   return (
     <div className="relative mx-auto ">
+      <div>Create Post</div>
       <BsPlusCircle
         className="h-8 w-8 text-gray-600/90 cursor-pointer"
         onClick={() => setOpen(!open)}
+        aria-label="open create post"
       />
       <form
         className={`flex flex-col text-gray-800 border border-gray-300 rounded p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-10 ${
@@ -45,6 +47,7 @@ const CreatePost = (props: Props) => {
           <button
             type="submit"
             className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500"
+            aria-label="create post"
           >
             Post
           </button>

@@ -47,7 +47,7 @@ const Profile = (props: Props) => {
   return (
     <div className=" h-screen">
       <Navbar />
-      <main className="flex flex-col space-y-4">
+      <main className="container flex flex-col space-y-4 mx-auto">
         <div
           id="profilePhotoCol"
           className="flex flex-col items-center mx-auto mt-10 space-y-2"
@@ -64,7 +64,7 @@ const Profile = (props: Props) => {
             <h3 className="text-gray-600/80">124 Friends</h3>
           </div>
         </div>
-        <div className="mx-5 mt-4 border-b-2 border-gray-300" />
+        <div className="mt-4 border-b-2 border-gray-300" />
         <div className="flex flex-col">
           <CreatePost />
         </div>

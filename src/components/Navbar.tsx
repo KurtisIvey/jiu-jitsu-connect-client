@@ -10,7 +10,7 @@ const Navbar = (props: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  ">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link to="/" className="flex items-center">
           <h1 className=" text-3xl lg:text-4xl font-semibold text-blue-500 tracking-wider">
