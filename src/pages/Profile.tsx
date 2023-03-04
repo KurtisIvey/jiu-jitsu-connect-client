@@ -1,6 +1,8 @@
 import React from "react";
 import CreatePost from "../components/CreatePost";
 import Navbar from "../components/Navbar";
+import { AiOutlineLike } from "react-icons/ai";
+import Post from "../components/Post";
 
 type Props = {};
 
@@ -45,7 +47,7 @@ const Profile = (props: Props) => {
   ];
 
   return (
-    <div className=" h-screen">
+    <div className=" ">
       <Navbar />
       <main className="container flex flex-col space-y-4 mx-auto">
         <div
@@ -64,10 +66,11 @@ const Profile = (props: Props) => {
             <h3 className="text-gray-600/80">124 Friends</h3>
           </div>
         </div>
-        <div className="mt-4 border-b-2 border-gray-300" />
+        <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
         <div className="flex flex-col">
           <CreatePost />
         </div>
+        <Post /> <Post />
       </main>
     </div>
   );

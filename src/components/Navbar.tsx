@@ -26,7 +26,7 @@ const Navbar = (props: Props) => {
           >
             <span className="sr-only">Open user menu</span>
             <img
-              className="w-9 h-9 rounded-full hover:border hover:border-grey-500 hover:scale-125"
+              className="w-9 h-9 rounded-full hover:border hover:border-grey-500 hover:scale-125 transition-all duration-100 ease-in-out"
               src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
               alt="user photo"
             />
@@ -34,7 +34,7 @@ const Navbar = (props: Props) => {
             <div
               className={`z-50 ${
                 !open && "hidden"
-              } my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md absolute top-[23px] right-[0px] w-[180px] cursor-default`}
+              } my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md absolute top-[23px] right-[0px] w-[180px] cursor-default `}
               id="user-dropdown"
             >
               <div className="px-4 py-3 flex flex-col space-y-1 items-start">
@@ -46,7 +46,7 @@ const Navbar = (props: Props) => {
                 <li>
                   <Link
                     to=""
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUser className="inline mb-[.3px] mr-2" />
                     View User Profile
@@ -55,7 +55,7 @@ const Navbar = (props: Props) => {
                 <li className="">
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <BsFillGearFill className="inline mb-[.3px] mr-2" />
                     Settings
@@ -64,7 +64,7 @@ const Navbar = (props: Props) => {
                 <li>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUsers className="inline mb-[.3px] mr-2" />
                     Friends
@@ -73,7 +73,7 @@ const Navbar = (props: Props) => {
                 <li>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUserPlus className="inline mb-[.3px] mr-2" />
                     Friend Requests

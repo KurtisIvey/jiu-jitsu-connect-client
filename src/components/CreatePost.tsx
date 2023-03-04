@@ -13,14 +13,18 @@ const CreatePost = (props: Props) => {
 
   return (
     <div className="relative mx-auto ">
-      <div>Create Post</div>
-      <BsPlusCircle
-        className="h-8 w-8 text-gray-600/90 cursor-pointer"
-        onClick={() => setOpen(!open)}
-        aria-label="open create post"
-      />
+      <div className="grid grid-cols-3 items-center">
+        <h3 className="text-lg text-gray-600 ">Create</h3>
+        <BsPlusCircle
+          className="h-8 w-8 text-blue-400 cursor-pointer mx-auto hover:scale-110 transition-all duration-100 ease-in-out"
+          onClick={() => setOpen(!open)}
+          aria-label="open create post"
+        />
+        <h3 className="text-lg text-gray-600 ">Post</h3>
+      </div>
+
       <form
-        className={`flex flex-col text-gray-800 border border-gray-300 rounded p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-10 ${
+        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-[-120px] z-10 ${
           !open && "hidden"
         } `}
       >
