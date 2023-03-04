@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { TbPencilPlus } from "react-icons/tb";
 import Comments from "./Comments";
@@ -6,6 +6,19 @@ import Comments from "./Comments";
 type Props = {};
 
 function Post({}: Props) {
+  const [commentContent, setCommentContent] = useState("");
+
+  const handleCommentContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCommentContent(e.target.value);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(commentContent);
+    // send post req to api
+    setCommentContent("");
+  };
+
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
@@ -39,19 +52,23 @@ function Post({}: Props) {
         </div>
         <div className="border-b" />
         {/* write comment section */}
-        <form className="flex space-x-2 mx-4">
+        <form className="flex space-x-2 mx-4" onSubmit={(e) => handleSubmit(e)}>
           <img
             className="rounded-full  h-6 w-6 border-white border-2"
             src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
             alt="user photo"
           />
           <input
+            onChange={(e) => handleCommentContent(e)}
             className="rounded-full bg-gray-100 w-full pl-3 text-xs outline-blue-200"
             placeholder="Write a comment..."
             type="text"
             aria-label="write a comment"
+            value={commentContent}
           />
-          <TbPencilPlus className="h-5 w-5  cursor-pointer hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
+          <button type="submit">
+            <TbPencilPlus className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
+          </button>
         </form>
         <Comments />
       </div>
