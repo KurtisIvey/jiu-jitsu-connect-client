@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 
 type Props = {};
 
 const CreatePost = (props: Props) => {
+  const postInput = useRef(null);
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostContent(e.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setPostContent("");
   };
 
   return (
@@ -24,14 +30,17 @@ const CreatePost = (props: Props) => {
       </div>
 
       <form
-        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-[-120px] z-10 ${
+        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-[-120px] z-10 ${
           !open && "hidden"
         } `}
       >
         <textarea
+          ref={postInput}
           onChange={(e) => handlePostContent(e)}
           className="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none"
           placeholder="Describe everything about this post here"
+          maxLength={600}
+          value={postContent}
         ></textarea>
         {/* <!-- icons --> */}
         <div className="icons flex text-gray-500 m-2">
@@ -44,7 +53,7 @@ const CreatePost = (props: Props) => {
         <div className="buttons flex">
           <div
             className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
-            onClick={() => setOpen(!open)}
+            onClick={() => handleClose()}
           >
             Cancel
           </div>
