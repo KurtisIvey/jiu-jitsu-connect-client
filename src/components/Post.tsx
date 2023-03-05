@@ -30,9 +30,9 @@ function Post({}: Props) {
             alt="user photo"
           />
           {/* name and date */}
-          <div className="text-xs tracking-wider">
+          <div className="text-xs tracking-wider font-semibold">
             <p>Kurtis Ivey</p>
-            <p>01 14 2023</p>
+            <p>01/14/2023 at 3:23 AM</p>
           </div>
         </div>
         {/* post content */}
