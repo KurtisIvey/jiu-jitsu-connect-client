@@ -24,7 +24,7 @@ const CreatePost = (props: Props) => {
   };
 
   return (
-    <div className="relative mx-auto ">
+    <div className="relative mx-auto mt-1">
       <div className="grid grid-cols-3 items-center">
         <h3 className="text-lg text-gray-600 ">Create</h3>
         <BsPlusCircle
@@ -47,6 +47,7 @@ const CreatePost = (props: Props) => {
           placeholder="Describe everything about this post here"
           maxLength={600}
           value={postContent}
+          aria-label="write a post"
         ></textarea>
         {/* <!-- icons --> */}
         <div className="icons flex text-gray-500 m-2">
