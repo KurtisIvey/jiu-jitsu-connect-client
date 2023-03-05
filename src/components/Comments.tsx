@@ -4,7 +4,7 @@ type Props = {};
 
 const Comments = (props: Props) => {
   return (
-    <section className="flex space-x-2 mx-4 border">
+    <section className="flex space-x-2 mx-4">
       <img
         className="rounded-full  h-6 w-6 border-white border-2 mt-1"
         src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"

@@ -11,8 +11,21 @@ const Home = (props: Props) => {
   return (
     <div>
       <Navbar />
-      <section className="container flex flex-col space-y-4 mx-auto mt-4">
+      <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10">
         <CreatePostHome />
+        <Post /> <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
         <Post />
       </section>
     </div>

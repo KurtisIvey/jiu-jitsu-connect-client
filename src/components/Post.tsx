@@ -8,7 +8,7 @@ type Props = {};
 function Post({}: Props) {
   const [commentContent, setCommentContent] = useState("");
 
-  const handleCommentContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCommentContent(e.target.value);
   };
 
