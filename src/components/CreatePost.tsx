@@ -24,7 +24,7 @@ const CreatePost = (props: Props) => {
   };
 
   return (
-    <div className="relative mx-auto mt-1">
+    <section className="relative mx-auto mt-1">
       <div className="grid grid-cols-3 items-center">
         <h3 className="text-lg text-gray-600 ">Create</h3>
         <BsPlusCircle
@@ -73,7 +73,7 @@ const CreatePost = (props: Props) => {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 
