@@ -5,7 +5,7 @@ type Props = {};
 
 function Register({}: Props) {
   return (
-    <section className=" h-screen flex items-center lg:flex-none ">
+    <main className=" h-screen flex items-center lg:flex-none ">
       <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 mx-auto  lg:h-screen lg:py-0 gap-6 lg:gap-24">
         <div className="flex flex-col max-w-md w-full gap-3 p-6">
           <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
@@ -91,7 +91,7 @@ function Register({}: Props) {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 

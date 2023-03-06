@@ -47,9 +47,9 @@ const Profile = (props: Props) => {
   ];
 
   return (
-    <div className=" ">
+    <main className=" ">
       <Navbar />
-      <main className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">
+      <div className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">
         <div
           id="profilePhotoCol"
           className="flex flex-col items-center mx-auto mt-10 space-y-2"
@@ -71,8 +71,8 @@ const Profile = (props: Props) => {
           <CreatePost />
         </div>
         <Post /> <Post />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 
