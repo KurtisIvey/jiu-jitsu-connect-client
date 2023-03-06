@@ -49,7 +49,7 @@ const Profile = (props: Props) => {
   return (
     <div className=" ">
       <Navbar />
-      <main className="container flex flex-col space-y-4 mx-auto">
+      <main className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">
         <div
           id="profilePhotoCol"
           className="flex flex-col items-center mx-auto mt-10 space-y-2"
