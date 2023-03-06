@@ -25,7 +25,7 @@ const Settings = (props: Props) => {
               className="w-[300px] "
             />
           </div>
-          <SubmitButton text="Update Profile" />
+          <SubmitButton text="Update Profile" width="fit" />
         </form>
       </section>
     </main>

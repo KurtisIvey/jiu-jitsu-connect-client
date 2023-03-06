@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Input from "../components/Input";
+import SubmitButton from "../components/SubmitButton";
 
 type Props = {};
 
@@ -19,42 +21,18 @@ function Register({}: Props) {
               Create and account
             </h1>
             <form className="space-y-4 lg:space-y-7" action="#">
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 
-                      focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Email Address"
-                  required
-                  aria-label="email"
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Enter password"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 
-                      focus:border-primary-600 block w-full p-2.5"
-                  required
-                  aria-label="password"
-                />
-              </div>
-              <div>
-                <input
-                  type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
-                  placeholder="Confirm Password"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 
-                      focus:border-primary-600 block w-full p-2.5"
-                  required
-                  aria-label="confirm password"
-                />
-              </div>
+              <Input type="email" name="email" placeholder="Email Address" />
+              <Input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+              />
+              <Input
+                type="confirm-password"
+                name="confirm-password"
+                placeholder="Confirm Password"
+              />
+              {/*Check box terms of service*/}{" "}
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
@@ -71,13 +49,7 @@ function Register({}: Props) {
                   </label>
                 </div>
               </div>
-              <button
-                type="submit"
-                className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 
-                  font-semibold rounded-lg text-sm px-5 py-2.5 text-center "
-              >
-                Create Account
-              </button>
+              <SubmitButton width="full" text="Create Account" />
               <p className="text-sm font-light text-gray-500">
                 Already have an account?{" "}
                 <Link
