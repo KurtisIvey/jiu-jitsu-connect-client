@@ -1,10 +1,11 @@
-import React from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 
 type Props = {
   type: string;
   name: string;
   placeholder: string;
   error?: string;
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = (props: Props) => {
@@ -20,6 +21,7 @@ const Input = (props: Props) => {
       placeholder={props.placeholder}
       required
       aria-label={props.name}
+      onChange={props.handleChange}
     />
   );
 };
