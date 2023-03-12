@@ -22,7 +22,8 @@ const Settings = (props: Props) => {
             <input
               id="profileName"
               placeholder="Kurtis Ivey"
-              className="w-[300px] "
+              className="w-[300px] text-gray-900 text-md rounded-lg focus:ring-primary-600 
+              focus:border-primary-600 block  p-2.5 "
             />
           </div>
           <SubmitButton text="Update Profile" width="fit" />
