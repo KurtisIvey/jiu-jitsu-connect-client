@@ -6,7 +6,10 @@ import SubmitButton from "../components/SubmitButton";
 type Props = {};
 
 function Login({}: Props) {
-  const [loginInfo, setLoginInfo] = useState({});
+  const [loginInfo, setLoginInfo] = useState({
+    password: "",
+    email: "",
+  });
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     console.log(loginInfo);
@@ -14,7 +17,8 @@ function Login({}: Props) {
   };
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log();
+    console.log(loginInfo);
+    setLoginInfo({ password: "", email: "" });
     // send post req to api
   };
 
@@ -35,16 +39,22 @@ function Login({}: Props) {
             <h2 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 lg:text-2xl dark:text-white ml-2">
               Sign in to your account
             </h2>
-            <form className="space-y-4 lg:space-y-7" action="#">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 lg:space-y-7"
+              action="#"
+            >
               <Input
                 type="email"
                 name="email"
+                value={loginInfo.email}
                 placeholder="Email Address"
                 handleChange={handleChange}
               />
               <Input
                 type="password"
                 name="password"
+                value={loginInfo.password}
                 placeholder="Enter password"
                 handleChange={handleChange}
               />

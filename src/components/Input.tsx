@@ -3,6 +3,7 @@ import React, { ChangeEvent, FormEvent } from "react";
 type Props = {
   type: string;
   name: string;
+  value: string;
   placeholder: string;
   error?: string;
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -19,6 +20,7 @@ const Input = (props: Props) => {
       } border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 
       focus:border-primary-600 block w-full p-2.5`}
       placeholder={props.placeholder}
+      value={props.value}
       required
       aria-label={props.name}
       onChange={props.handleChange}
