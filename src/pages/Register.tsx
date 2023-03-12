@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
@@ -6,6 +6,41 @@ import SubmitButton from "../components/SubmitButton";
 type Props = {};
 
 function Register({}: Props) {
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [confirmPasswordMessage, setConfirmPasswordMessage] = useState("");
+
+  const [loginInfo, setLoginInfo] = useState({
+    password: "",
+    confirmPassword: "",
+    email: "",
+  });
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    console.log(loginInfo);
+    setLoginInfo({ ...loginInfo, [name]: value });
+  };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(loginInfo);
+    setLoginInfo({ password: "", email: "", confirmPassword: "" });
+    // send post req to api
+  };
+
+  useEffect(() => {
+    if (loginInfo.confirmPassword !== loginInfo.password) {
+      setConfirmPasswordError(true);
+      setConfirmPasswordMessage("Passwords Do Not Match");
+    }
+    if (loginInfo.confirmPassword === loginInfo.password) {
+      setConfirmPasswordError(false);
+      setConfirmPasswordMessage("Passwords Match");
+    }
+    if (loginInfo.confirmPassword === "" && loginInfo.password === "") {
+      setConfirmPasswordError(false);
+      setConfirmPasswordMessage("");
+    }
+  }, [loginInfo]);
+
   return (
     <main className=" h-screen flex items-center lg:flex-none ">
       <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 mx-auto  lg:h-screen lg:py-0 gap-6 lg:gap-24">
@@ -20,19 +55,34 @@ function Register({}: Props) {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 lg:text-2xl">
               Create and account
             </h1>
-            <form className="space-y-4 lg:space-y-7" action="#">
-              <Input type="email" name="email" placeholder="Email Address" />
+            <form className="space-y-6 lg:space-y-8" action="#">
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={loginInfo.email}
+                handleChange={handleChange}
+              />
               <Input
                 type="password"
                 name="password"
                 placeholder="Enter password"
+                value={loginInfo.password}
+                handleChange={handleChange}
+                confirmPasswordError={confirmPasswordError}
+                confirmPasswordMessage={confirmPasswordMessage}
               />
               <Input
-                type="confirm-password"
-                name="confirm-password"
+                type="password"
+                name="confirmPassword"
                 placeholder="Confirm Password"
+                value={loginInfo.confirmPassword}
+                handleChange={handleChange}
+                confirmPasswordError={confirmPasswordError}
+                confirmPasswordMessage={confirmPasswordMessage}
               />
-              {/*Check box terms of service*/}{" "}
+
+              {/*Check box terms of service*/}
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
