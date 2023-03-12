@@ -14,16 +14,20 @@ function Register({}: Props) {
     confirmPassword: "",
     email: "",
   });
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     console.log(loginInfo);
     setLoginInfo({ ...loginInfo, [name]: value });
   };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(loginInfo);
     setLoginInfo({ password: "", email: "", confirmPassword: "" });
     // send post req to api
+    // if successful , useNav to go to login page
+    // else, display error
   };
 
   useEffect(() => {
@@ -55,7 +59,11 @@ function Register({}: Props) {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 lg:text-2xl">
               Create and account
             </h1>
-            <form className="space-y-6 lg:space-y-8" action="#">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 lg:space-y-8"
+              action="#"
+            >
               <Input
                 type="email"
                 name="email"
