@@ -7,7 +7,6 @@ const FriendRequests = (props: Props) => {
   return (
     <div>
       <Navbar />
-      friend requests
     </div>
   );
 };
