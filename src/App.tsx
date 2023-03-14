@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import FriendRequests from "./pages/FriendRequests";
+import Friends from "./pages/Friends";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/friend-requests" element={<FriendRequests />} />
+          <Route path="/friends" element={<Friends />} />
         </Routes>
       </HashRouter>
     </div>

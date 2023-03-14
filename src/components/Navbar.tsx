@@ -62,13 +62,13 @@ const Navbar = (props: Props) => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/friends"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUsers className="inline mb-[.3px] mr-2" />
                     Friends
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
