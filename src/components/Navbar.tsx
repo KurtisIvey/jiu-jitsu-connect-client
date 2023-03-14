@@ -12,7 +12,7 @@ const Navbar = (props: Props) => {
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  ">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <Link to="/" className="flex items-center">
+        <Link to="/home" className="flex items-center">
           <h1 className=" text-3xl lg:text-4xl font-semibold text-blue-500 tracking-wider">
             Odin-book
           </h1>
@@ -45,7 +45,7 @@ const Navbar = (props: Props) => {
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
                   <Link
-                    to=""
+                    to="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUser className="inline mb-[.3px] mr-2" />
@@ -53,13 +53,13 @@ const Navbar = (props: Props) => {
                   </Link>
                 </li>
                 <li className="">
-                  <a
-                    href="#"
+                  <Link
+                    to="/settings"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <BsFillGearFill className="inline mb-[.3px] mr-2" />
                     Settings
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -71,13 +71,13 @@ const Navbar = (props: Props) => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/friend-requests"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUserPlus className="inline mb-[.3px] mr-2" />
                     Friend Requests
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
