@@ -1,15 +1,19 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
 type Props = {};
 
 function Register({}: Props) {
+  const navigate = useNavigate();
+
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [confirmPasswordMessage, setConfirmPasswordMessage] = useState("");
+  const [creationError, setCreationError] = useState<boolean | null>(true);
 
   const [loginInfo, setLoginInfo] = useState({
+    username: "",
     password: "",
     confirmPassword: "",
     email: "",
@@ -21,10 +25,51 @@ function Register({}: Props) {
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log(loginInfo);
-    setLoginInfo({ password: "", email: "", confirmPassword: "" });
+  const handleSubmit = async (e: FormEvent) => {
+    if (
+      loginInfo.confirmPassword === loginInfo.password &&
+      loginInfo.password !== ""
+    ) {
+      e.preventDefault();
+      console.log(loginInfo);
+      setLoginInfo({
+        password: "",
+        email: "",
+        confirmPassword: "",
+        username: "",
+      });
+
+      try {
+        const email = loginInfo.email;
+        const password = loginInfo.password;
+        const response = await fetch(
+          "https://odinbook-backend.herokuapp.com/api/auth/register",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              email,
+              password,
+            }),
+          }
+        );
+        //
+        const data = await response.json();
+        if (response.status !== 201) {
+          console.log(data.errors);
+          setCreationError(true);
+        } else {
+          navigate("/");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
     // send post req to api
     // if successful , useNav to go to login page
     // else, display error
@@ -46,7 +91,7 @@ function Register({}: Props) {
   }, [loginInfo]);
 
   return (
-    <main className=" h-screen flex items-center lg:flex-none ">
+    <main className="  flex items-center lg:flex-none ">
       <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 mx-auto  lg:h-screen lg:py-0 gap-6 lg:gap-24">
         <div className="flex flex-col max-w-md w-full gap-3 p-6">
           <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
@@ -59,11 +104,25 @@ function Register({}: Props) {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 lg:text-2xl">
               Create and account
             </h1>
+            <p
+              className={`${
+                !creationError && "hidden"
+              } text-center text-red-400`}
+            >
+              fsdfsdfsd
+            </p>
             <form
               onSubmit={handleSubmit}
               className="space-y-6 lg:space-y-8"
               action="#"
             >
+              <Input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={loginInfo.username}
+                handleChange={handleChange}
+              />
               <Input
                 type="email"
                 name="email"
