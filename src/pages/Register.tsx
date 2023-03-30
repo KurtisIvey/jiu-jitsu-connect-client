@@ -10,7 +10,7 @@ function Register({}: Props) {
 
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [confirmPasswordMessage, setConfirmPasswordMessage] = useState("");
-  const [creationError, setCreationError] = useState<boolean | null>(true);
+  const [creationError, setCreationError] = useState<boolean | null>(null);
 
   const [loginInfo, setLoginInfo] = useState({
     username: "",
@@ -25,7 +25,7 @@ function Register({}: Props) {
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  async function handleSubmit(e: FormEvent) {
     if (
       loginInfo.confirmPassword === loginInfo.password &&
       loginInfo.password !== ""
@@ -40,10 +40,11 @@ function Register({}: Props) {
       });
 
       try {
+        const username = loginInfo.username;
         const email = loginInfo.email;
         const password = loginInfo.password;
         const response = await fetch(
-          "https://odinbook-backend.herokuapp.com/api/auth/register",
+          "http://localhost:3001/api/auth/register",
           {
             method: "POST",
 
@@ -52,6 +53,7 @@ function Register({}: Props) {
             },
 
             body: JSON.stringify({
+              username,
               email,
               password,
             }),
@@ -73,7 +75,7 @@ function Register({}: Props) {
     // send post req to api
     // if successful , useNav to go to login page
     // else, display error
-  };
+  }
 
   useEffect(() => {
     if (loginInfo.confirmPassword !== loginInfo.password) {
@@ -112,7 +114,7 @@ function Register({}: Props) {
               fsdfsdfsd
             </p>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={(e) => handleSubmit(e)}
               className="space-y-6 lg:space-y-8"
               action="#"
             >
