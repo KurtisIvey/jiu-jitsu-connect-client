@@ -1,25 +1,70 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
 type Props = {};
 
 function Login({}: Props) {
+  const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({
     password: "",
     email: "",
   });
+  const [errMessage, setErrMessage] = useState({ email: "", password: "" });
+  const [passwordErr, setPasswordErr] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(loginInfo);
+    //console.log(loginInfo);
     setLoginInfo({ ...loginInfo, [name]: value });
   };
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(loginInfo);
-    setLoginInfo({ password: "", email: "" });
+    //console.log(loginInfo);
     // send post req to api
+    setErrMessage({ email: "", password: "" });
+    setEmailErr(false);
+    setPasswordErr(false);
+    try {
+      const email = loginInfo.email;
+      const password = loginInfo.password;
+      const response = await fetch(
+        "https://odinbook-backend.herokuapp.com/api/auth/login",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+      //
+      const data = await response.json();
+      if (data.user) {
+        localStorage.setItem("token", data.token);
+        alert("Login successful");
+        navigate("/home");
+      } else {
+        setErrMessage(data.errors);
+        if (data.errors.password) {
+          setLoginInfo({ ...loginInfo, password: "" });
+          setPasswordErr(true);
+        } else if (data.errors.email) {
+          setLoginInfo({ email: "", password: "" });
+          setEmailErr(true);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    //navigate("/home");
   };
 
   return (
@@ -30,7 +75,7 @@ function Login({}: Props) {
       >
         <div className="flex flex-col max-w-md w-auto gap-3 p-6 ">
           <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
-          <p className="text-md ">
+          <p className="text-md " onClick={() => console.log(errMessage)}>
             Connect with friends and the world around you on Odin-book
           </p>
         </div>
@@ -41,7 +86,7 @@ function Login({}: Props) {
             </h2>
             <form
               onSubmit={handleSubmit}
-              className="space-y-4 lg:space-y-7"
+              className="space-y-6 lg:space-y-8"
               action="#"
             >
               <Input
@@ -50,6 +95,8 @@ function Login({}: Props) {
                 value={loginInfo.email}
                 placeholder="Email Address"
                 handleChange={handleChange}
+                error={emailErr}
+                errorMessage={errMessage.email}
               />
               <Input
                 type="password"
@@ -57,7 +104,10 @@ function Login({}: Props) {
                 value={loginInfo.password}
                 placeholder="Enter password"
                 handleChange={handleChange}
+                error={passwordErr}
+                errorMessage={errMessage.password}
               />
+
               <SubmitButton text="Log in" width="full" />
               <p className="text-sm font-light  text-gray-500">
                 Don’t have an account yet?{" "}

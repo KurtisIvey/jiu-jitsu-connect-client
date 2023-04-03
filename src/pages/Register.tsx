@@ -32,19 +32,13 @@ function Register({}: Props) {
     ) {
       e.preventDefault();
       console.log(loginInfo);
-      setLoginInfo({
-        password: "",
-        email: "",
-        confirmPassword: "",
-        username: "",
-      });
 
       try {
         const username = loginInfo.username;
         const email = loginInfo.email;
         const password = loginInfo.password;
         const response = await fetch(
-          "http://localhost:3001/api/auth/register",
+          "https://odinbook-backend.herokuapp.com/api/auth/register",
           {
             method: "POST",
 
@@ -70,6 +64,12 @@ function Register({}: Props) {
       } catch (err) {
         console.log(err);
       }
+      setLoginInfo({
+        password: "",
+        email: "",
+        confirmPassword: "",
+        username: "",
+      });
     }
 
     // send post req to api
@@ -138,8 +138,8 @@ function Register({}: Props) {
                 placeholder="Enter password"
                 value={loginInfo.password}
                 handleChange={handleChange}
-                confirmPasswordError={confirmPasswordError}
-                confirmPasswordMessage={confirmPasswordMessage}
+                error={confirmPasswordError}
+                errorMessage={confirmPasswordMessage}
               />
               <Input
                 type="password"
@@ -147,8 +147,8 @@ function Register({}: Props) {
                 placeholder="Confirm Password"
                 value={loginInfo.confirmPassword}
                 handleChange={handleChange}
-                confirmPasswordError={confirmPasswordError}
-                confirmPasswordMessage={confirmPasswordMessage}
+                error={confirmPasswordError}
+                errorMessage={confirmPasswordMessage}
               />
 
               {/*Check box terms of service*/}

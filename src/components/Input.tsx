@@ -6,8 +6,8 @@ type Props = {
   value: string;
   placeholder: string;
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  confirmPasswordError?: boolean;
-  confirmPasswordMessage?: string;
+  error?: boolean;
+  errorMessage?: string;
 };
 
 const Input = (props: Props) => {
@@ -19,16 +19,16 @@ const Input = (props: Props) => {
         id={props.name}
         className={`bg-gray-50 border 
         ${
-          props.confirmPasswordError
+          props.error
             ? "outline-red-400"
-            : props.confirmPasswordMessage
+            : props.errorMessage
             ? "outline-green-500"
             : "outline-blue-400"
         }
       ${
-        props.confirmPasswordError
+        props.error
           ? "border-red-300 border-2"
-          : props.confirmPasswordMessage
+          : props.errorMessage
           ? "border-green-500"
           : "border-gray-300"
       }
@@ -40,13 +40,13 @@ const Input = (props: Props) => {
         aria-label={props.name}
         onChange={props.handleChange}
       />
-      {props.confirmPasswordMessage && (
+      {props.errorMessage && (
         <p
           className={`${
-            props.confirmPasswordError ? "text-red-400" : "text-green-600"
+            props.error ? "text-red-400" : "text-green-600"
           } text-xs absolute bottom-[-18px] left-1`}
         >
-          {props.confirmPasswordMessage}
+          {props.errorMessage}
         </p>
       )}
     </div>
