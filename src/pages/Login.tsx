@@ -17,13 +17,10 @@ function Login({}: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    //console.log(loginInfo);
     setLoginInfo({ ...loginInfo, [name]: value });
   };
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    //console.log(loginInfo);
-    // send post req to api
     setErrMessage({ email: "", password: "" });
     setEmailErr(false);
     setPasswordErr(false);
@@ -64,7 +61,6 @@ function Login({}: Props) {
     } catch (err) {
       console.log(err);
     }
-    //navigate("/home");
   };
 
   return (
@@ -75,7 +71,7 @@ function Login({}: Props) {
       >
         <div className="flex flex-col max-w-md w-auto gap-3 p-6 ">
           <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
-          <p className="text-md " onClick={() => console.log(errMessage)}>
+          <p className="text-md ">
             Connect with friends and the world around you on Odin-book
           </p>
         </div>
