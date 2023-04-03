@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
@@ -7,7 +7,14 @@ import { FiLogOut } from "react-icons/fi";
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    alert("Sign out Successful");
+    navigate("/");
+  };
 
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  ">
@@ -80,13 +87,13 @@ const Navbar = (props: Props) => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  <button
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                    onClick={handleSignOut}
                   >
                     <FiLogOut className="inline mb-[.3px] mr-2" />
                     Sign out
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
