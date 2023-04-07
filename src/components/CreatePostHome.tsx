@@ -10,9 +10,23 @@ const CreatePostHome = (props: Props) => {
     setPostContent(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(postContent);
+
+    const response = await fetch(`http://localhost:3001/api/posts/`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: window.localStorage.token,
+      },
+
+      body: JSON.stringify({
+        postContent,
+      }),
+    });
+
     setPostContent("");
     // send post req to api
   };

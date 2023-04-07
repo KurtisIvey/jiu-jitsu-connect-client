@@ -3,9 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
+//redux
+import { useDispatch } from "react-redux";
+import { setUser } from "../reduxStore/slices/userSlice";
+
 type Props = {};
 
 function Login({}: Props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({
     password: "",
@@ -42,12 +47,14 @@ function Login({}: Props) {
           }),
         }
       );
-      //
+
       const data = await response.json();
       if (data.user) {
         localStorage.setItem("token", data.token);
         alert("Login successful");
+        dispatch(setUser(data.user));
         navigate("/home");
+        console.log(data);
       } else {
         setErrMessage(data.errors);
         if (data.errors.password) {
