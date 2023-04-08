@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, useParams } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -9,6 +9,7 @@ import FriendRequests from "./pages/FriendRequests";
 import Friends from "./pages/Friends";
 
 function App() {
+  //let { id } = useParams();
   return (
     <div className="bg-[#f5f3f3] font-roboto min-h-screen ">
       <HashRouter>
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           {/* <Route path="/profile/:profileId" element={<Profile />} /> */}
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/home" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/friend-requests" element={<FriendRequests />} />

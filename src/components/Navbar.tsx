@@ -1,12 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector } from "react-redux";
+
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const username = useSelector((state: RootState) => state.user.username);
+  const id = useSelector((state: RootState) => state.user.id);
+
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -45,14 +52,12 @@ const Navbar = (props: Props) => {
               id="user-dropdown"
             >
               <div className="px-4 py-3 flex flex-col space-y-1 items-start">
-                <span className="block text-sm text-gray-900 ">
-                  Bonnie Green
-                </span>
+                <span className="block text-sm text-gray-900 ">{username}</span>
               </div>
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
                   <Link
-                    to="/profile"
+                    to={`/profile/${id}`}
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 ease-in-out"
                   >
                     <FaUser className="inline mb-[.3px] mr-2" />

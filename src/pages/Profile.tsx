@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import CreatePost from "../components/CreatePost";
 import Navbar from "../components/Navbar";
 import { AiOutlineLike } from "react-icons/ai";
 import Post from "../components/Post";
 
-type Props = {};
+type Props = {
+  //id: string;
+};
 
 const Profile = (props: Props) => {
+  // need useEffect to draw info from db on pertaining user
+  // id in url acquired via use params, will then be used to fetch user info and posts by them
+  const { id } = useParams();
+  useEffect(() => {
+    console.log(id);
+  });
   const posts = [
     {
       date: "january 1, 2023",
@@ -45,6 +55,11 @@ const Profile = (props: Props) => {
       ],
     },
   ];
+
+  useEffect(() => {
+    // fetch posts via the user id passed through
+    // fetch user info via the user id
+  });
 
   return (
     <main className=" ">
