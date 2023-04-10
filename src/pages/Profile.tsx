@@ -47,6 +47,10 @@ const Profile = (props: Props) => {
   useEffect(() => {
     fetchUser();
   }, []);
+
+  async function fetchPostsByUser() {
+    //const response
+  }
   const posts = [
     {
       date: "january 1, 2023",
