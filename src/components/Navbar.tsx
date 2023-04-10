@@ -18,7 +18,7 @@ const Navbar = (props: Props) => {
   const [open, setOpen] = useState(false);
 
   const handleSignOut = () => {
-    //localStorage.removeItem("token");
+    // clears both jwt token and redux persist on logout
     localStorage.clear();
     alert("Sign out Successful");
     navigate("/");
