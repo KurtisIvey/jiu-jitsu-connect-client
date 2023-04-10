@@ -18,7 +18,8 @@ const Navbar = (props: Props) => {
   const [open, setOpen] = useState(false);
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
+    //localStorage.removeItem("token");
+    localStorage.clear();
     alert("Sign out Successful");
     navigate("/");
   };
