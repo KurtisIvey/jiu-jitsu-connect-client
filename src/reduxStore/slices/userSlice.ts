@@ -4,7 +4,6 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
   username: string;
   id: string;
-  email: string;
   profilePicUrl: string;
   friends: string[];
   friendRequests: string[];
@@ -13,7 +12,6 @@ export interface UserState {
 const initialState: UserState = {
   username: "",
   id: "",
-  email: "",
   profilePicUrl: "",
   friends: [],
   friendRequests: [],
@@ -44,7 +42,6 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.username = action.payload.username;
       state.id = action.payload._id;
-      state.email = action.payload.email;
       state.profilePicUrl = action.payload.profilePicUrl;
       state.friends.push(action.payload.friends);
       state.friendRequests.push(action.payload.friendRequests);
