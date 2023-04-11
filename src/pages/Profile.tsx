@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import CreatePost from "../components/CreatePost";
 import Navbar from "../components/Navbar";
-import { AiOutlineLike } from "react-icons/ai";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
+
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector } from "react-redux";
 
 type Props = {
   //id: string;
@@ -31,6 +33,8 @@ interface UserPostsState {
 }
 
 const Profile = (props: Props) => {
+  const loggedInid = useSelector((state: RootState) => state.user.id);
+
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
   const [userPosts, setUserPosts] = useState<null | UserPostsState>(null);
@@ -113,7 +117,7 @@ const Profile = (props: Props) => {
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
           <div className="flex flex-col">
-            <CreatePost />
+            {loggedInid === id ? <CreatePost /> : ""}
           </div>
 
           {userPosts &&
