@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { TbPencilPlus } from "react-icons/tb";
 import Comments from "./Comments";
+import { Link } from "react-router-dom";
 
 type Props = {
   key: string;
@@ -13,6 +14,16 @@ type Props = {
 
 function Post(props: Props) {
   const [commentContent, setCommentContent] = useState("");
+
+  const convertDateandTime = () => {
+    //2023-04-11T15:28:44.981Z
+    const formatted = new Date(props.timestamp).toString();
+    const timeFormat = formatted.slice(16, 21);
+
+    //Tue Apr 11 2023 10:28:44 GMT-0500 (Central Daylight Time)
+    return `${formatted.slice(0, 16)} at ${timeFormat}`;
+    //21
+  };
 
   const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCommentContent(e.target.value);
@@ -38,15 +49,32 @@ function Post(props: Props) {
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
         <div className="flex flex-row space-x-2">
-          <img
-            className="rounded-full  h-8 w-8 border-white border-2"
-            src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
-            alt="user photo"
-          />
+          <Link
+            aria-label={`picture link to user ${props.author.username} profile`}
+            to={`/profile/${props.id}`}
+          >
+            <img
+              className="rounded-full  h-8 w-8 border-white border-2"
+              src={
+                props.author?.profilePicUrl
+                  ? props.author.profilePicUrl
+                  : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
+              }
+              alt="user photo"
+            />
+          </Link>
+
           {/* name and date */}
           <div className="text-xs tracking-wider font-semibold">
-            <p>{props.author.username}</p>
-            <p>{props.timestamp}</p>
+            <Link
+              to={`/profile/${props.id}`}
+              className="hover:text-blue-600"
+              aria-label={`link to user ${props.author.username} profile`}
+            >
+              {props.author.username}
+            </Link>
+
+            <p>{convertDateandTime()}</p>
           </div>
         </div>
         {/* post content */}

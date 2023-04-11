@@ -8,7 +8,6 @@ import Post from "../components/Post";
 import type { RootState } from "../reduxStore/store";
 
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../features/counter/counterSlice";
 
 type Props = {};
 

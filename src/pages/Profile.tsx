@@ -85,7 +85,9 @@ const Profile = (props: Props) => {
     fetchUser();
     fetchPostsByUser();
     // set to true so spinner display stops and displays proper profile view
-    setLoaded(true);
+    setTimeout(() => {
+      setLoaded(true);
+    }, 500);
   }, []);
 
   return (
