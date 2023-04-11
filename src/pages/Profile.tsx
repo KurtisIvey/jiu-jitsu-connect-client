@@ -72,6 +72,7 @@ const Profile = (props: Props) => {
   useEffect(() => {
     fetchUser();
     fetchPostsByUser();
+    // set to true so spinner display stops and displays proper profile view
     setLoaded(true);
   }, []);
   const posts = [

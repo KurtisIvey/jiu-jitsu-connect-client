@@ -3,9 +3,14 @@ import { AiOutlineLike } from "react-icons/ai";
 import { TbPencilPlus } from "react-icons/tb";
 import Comments from "./Comments";
 
-type Props = {};
+type Props = {
+  id: string;
+  author: string;
+  postContent: string;
+  timestamp: string;
+};
 
-function Post({}: Props) {
+function Post(props: Props) {
   const [commentContent, setCommentContent] = useState("");
 
   const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,18 +41,12 @@ function Post({}: Props) {
           />
           {/* name and date */}
           <div className="text-xs tracking-wider font-semibold">
-            <p>Kurtis Ivey</p>
-            <p>01/14/2023 at 3:23 AM</p>
+            <p>{props.author}</p>
+            <p>{props.timestamp}</p>
           </div>
         </div>
         {/* post content */}
-        <p className="text-sm">
-          Apple pie soufflé dragée liquorice caramels tootsie roll toffee
-          jelly-o gummi bears. Gummies toffee muffin marshmallow dessert.
-          Pudding halvah jelly cupcake apple pie tootsie roll wafer. Tootsie
-          roll cotton candy apple pie cake jelly beans tiramisu marzipan cotton
-          candy.
-        </p>
+        <p className="text-sm">{props.postContent}</p>
         {/* number of likes and comments */}
 
         {/* like button */}
