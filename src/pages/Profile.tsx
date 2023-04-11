@@ -125,13 +125,14 @@ const Profile = (props: Props) => {
           {userPosts &&
             userPosts.map((post) => {
               return (
-                <Post
-                  key={post._id}
-                  id={post._id}
-                  postContent={post.postContent}
-                  timestamp={post.timestamp}
-                  author={post.author}
-                />
+                <div key={post._id}>
+                  <Post
+                    id={post._id}
+                    postContent={post.postContent}
+                    timestamp={post.timestamp}
+                    author={post.author}
+                  />
+                </div>
               );
             })}
         </div>

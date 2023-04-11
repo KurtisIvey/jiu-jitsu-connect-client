@@ -5,7 +5,6 @@ import Comments from "./Comments";
 import { Link } from "react-router-dom";
 
 type Props = {
-  key: string;
   id: string;
   author: any;
   postContent: string;
@@ -42,10 +41,7 @@ function Post(props: Props) {
   };
 
   return (
-    <section
-      className="container  p-3 lg:p-0 lg:mx-0 flex flex-col"
-      key={props.key}
-    >
+    <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
         <div className="flex flex-row space-x-2">
