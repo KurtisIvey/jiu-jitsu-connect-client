@@ -32,6 +32,7 @@ const Home = (props: Props) => {
       <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10">
         <CreatePostHome />
         <div>{user}</div>
+        {/* <Post />
         <Post />
         <Post />
         <Post />
@@ -45,8 +46,7 @@ const Home = (props: Props) => {
         <Post />
         <Post />
         <Post />
-        <Post />
-        <Post />
+        <Post /> */}
       </section>
     </div>
   );

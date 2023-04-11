@@ -4,8 +4,9 @@ import { TbPencilPlus } from "react-icons/tb";
 import Comments from "./Comments";
 
 type Props = {
+  key: string;
   id: string;
-  author: string;
+  author: any;
   postContent: string;
   timestamp: string;
 };
@@ -30,7 +31,10 @@ function Post(props: Props) {
   };
 
   return (
-    <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
+    <section
+      className="container  p-3 lg:p-0 lg:mx-0 flex flex-col"
+      key={props.key}
+    >
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
         <div className="flex flex-row space-x-2">
@@ -41,7 +45,7 @@ function Post(props: Props) {
           />
           {/* name and date */}
           <div className="text-xs tracking-wider font-semibold">
-            <p>{props.author}</p>
+            <p>{props.author.username}</p>
             <p>{props.timestamp}</p>
           </div>
         </div>

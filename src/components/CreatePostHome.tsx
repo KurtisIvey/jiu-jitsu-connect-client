@@ -1,9 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import { TbPencilPlus } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const CreatePostHome = (props: Props) => {
+  const navigate = useNavigate();
   const [postContent, setPostContent] = useState("");
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -28,6 +30,8 @@ const CreatePostHome = (props: Props) => {
     });
 
     setPostContent("");
+    // refreshes page via useNavigate
+    navigate(0);
     // send post req to api
   };
   return (

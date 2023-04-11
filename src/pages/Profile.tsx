@@ -16,10 +16,18 @@ interface UserState {
   friendRequests: [];
   username: string;
   _id: string;
+  profilePicUrl: string;
 }
 
 interface UserPostsState {
-  posts: [];
+  map(arg0: (post: any) => JSX.Element): React.ReactNode;
+  posts: {
+    key: string;
+    id: string;
+    postContent: string;
+    timestamp: string;
+    author: string;
+  }[];
 }
 
 const Profile = (props: Props) => {
@@ -75,44 +83,6 @@ const Profile = (props: Props) => {
     // set to true so spinner display stops and displays proper profile view
     setLoaded(true);
   }, []);
-  const posts = [
-    {
-      date: "january 1, 2023",
-      postContent:
-        "Apple pie soufflé dragée liquorice caramels tootsie roll toffee jelly-o gummi bears. Gummies toffee muffin marshmallow dessert. Pudding halvah jelly cupcake apple pie tootsie roll wafer. Tootsie roll cotton candy apple pie cake jelly beans tiramisu marzipan cotton candy.",
-      likes: [{ user: "jeff" }, { user: "zoe" }],
-      comments: [
-        {
-          user: "jeff",
-          commentContent:
-            " gummi bears. Gummies toffee muffin marshmallow dessert. Pudding halvah jelly cupcake apple pie tootsie ro",
-        },
-        {
-          user: "zoe",
-          commentContent:
-            "essert. Pudding halvah jelly cupcake apple pie tootsie ro",
-        },
-      ],
-    },
-    {
-      date: "january 2, 2023",
-      postContent:
-        "The Apple pie soufflé dragée liq jelly-o gummi bears. Gummies toffee muffin marshmallow dessert. Pudding halvah jelly cupcake apple pie tootsie roll wafer. Tootsie roll cotton candy apple pie cake jelly beans tiramisu marzipan cotton candy.",
-      likes: [{ user: "jeff" }, { user: "zoe" }],
-      comments: [
-        {
-          user: "jeff",
-          commentContent:
-            " gummi bears. Gummies toffee muffin marshmallow dessert. Pudding halvah jelly cupcake apple pie tootsie ro",
-        },
-        {
-          user: "zoe",
-          commentContent:
-            "essert. Pudding halvah jelly cupcake apple pie tootsie ro",
-        },
-      ],
-    },
-  ];
 
   return (
     <main className=" ">
@@ -125,24 +95,39 @@ const Profile = (props: Props) => {
           >
             <img
               className="rounded-full  w-auto max-h-[200px] border-white border-2"
-              src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
+              src={
+                user?.profilePicUrl
+                  ? user.profilePicUrl
+                  : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
+              }
               alt="user photo"
             />
             <div className="flex flex-col items-center space-y-2">
-              <h2
-                onClick={() => console.log(user)}
-                className="text-3xl font-semibold tracking-wide"
-              >
+              <h2 className="text-3xl font-semibold tracking-wide">
                 {user && user.username}
               </h2>
-              <h3 className="text-gray-600/80">124 Friends</h3>
+              <h3 className="text-gray-600/80">
+                {user && user.friends.length} Friends
+              </h3>
             </div>
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
           <div className="flex flex-col">
             <CreatePost />
           </div>
-          <Post /> <Post />
+
+          {userPosts &&
+            userPosts.map((post) => {
+              return (
+                <Post
+                  key={post._id}
+                  id={post._id}
+                  postContent={post.postContent}
+                  timestamp={post.timestamp}
+                  author={post.author}
+                />
+              );
+            })}
         </div>
       ) : (
         <Loading />

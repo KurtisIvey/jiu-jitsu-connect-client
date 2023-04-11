@@ -1,9 +1,12 @@
 import React, { useState, FormEvent } from "react";
 import { BsPlusCircle } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const CreatePost = (props: Props) => {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
 
@@ -16,11 +19,27 @@ const CreatePost = (props: Props) => {
     setPostContent("");
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(postContent);
+
+    const response = await fetch(`http://localhost:3001/api/posts/`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: window.localStorage.token,
+      },
+
+      body: JSON.stringify({
+        postContent,
+      }),
+    });
+
+    setPostContent("");
+    // refreshes page via useNavigate
+    navigate(0);
     // send post req to api
-    handleClose();
   };
 
   return (
