@@ -18,9 +18,14 @@ interface UserState {
   _id: string;
 }
 
+interface UserPostsState {
+  posts: [];
+}
+
 const Profile = (props: Props) => {
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
+  const [userPosts, setUserPosts] = useState<null | UserPostsState>(null);
   const [loaded, setLoaded] = useState(false);
 
   // need useEffect to draw info from db on pertaining user
@@ -40,17 +45,35 @@ const Profile = (props: Props) => {
     );
 
     const userRes = await response.json();
-    setLoaded(true);
     setUser(userRes.user);
     console.log(user);
   }
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   async function fetchPostsByUser() {
     //const response
+    const response = await fetch(
+      `https://odinbook-backend.herokuapp.com/api/posts/byUserId/${id}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: window.localStorage.token,
+        },
+      }
+    );
+
+    const postRes = await response.json();
+    console.log(postRes.posts);
+    //setLoaded(true);
+    setUserPosts(postRes.posts);
+    //console.log(user);
   }
+  useEffect(() => {
+    fetchUser();
+    fetchPostsByUser();
+    setLoaded(true);
+  }, []);
   const posts = [
     {
       date: "january 1, 2023",
