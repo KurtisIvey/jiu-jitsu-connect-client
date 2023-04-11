@@ -47,7 +47,7 @@ function Post(props: Props) {
         <div className="flex flex-row space-x-2">
           <Link
             aria-label={`picture link to user ${props.author.username} profile`}
-            to={`/profile/${props.id}`}
+            to={`/profile/${props.author._id}`}
           >
             <img
               className="rounded-full  h-8 w-8 border-white border-2"
@@ -63,7 +63,7 @@ function Post(props: Props) {
           {/* name and date */}
           <div className="text-xs tracking-wider font-semibold">
             <Link
-              to={`/profile/${props.id}`}
+              to={`/profile/${props.author._id}`}
               className="hover:text-blue-600"
               aria-label={`link to user ${props.author.username} profile`}
             >

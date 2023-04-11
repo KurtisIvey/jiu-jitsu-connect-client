@@ -38,7 +38,7 @@ const Profile = (props: Props) => {
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
   const [userPosts, setUserPosts] = useState<null | UserPostsState>(null);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   // need useEffect to draw info from db on pertaining user
   // id in url acquired via use params, will then be used to fetch user info and posts by them

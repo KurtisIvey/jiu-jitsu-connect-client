@@ -13,6 +13,9 @@ type Props = {};
 const Navbar = (props: Props) => {
   const username = useSelector((state: RootState) => state.user.username);
   const id = useSelector((state: RootState) => state.user.id);
+  const profilePicUrl = useSelector(
+    (state: RootState) => state.user.profilePicUrl
+  );
 
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -41,8 +44,12 @@ const Navbar = (props: Props) => {
           >
             <span className="sr-only">Open user menu</span>
             <img
-              className="w-9 h-9 rounded-full hover:border hover:border-grey-500 hover:scale-125 transition-all duration-100 ease-in-out"
-              src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
+              className="w-9 h-9 rounded-full border border-grey-500 hover:scale-125 transition-all duration-100 ease-in-out"
+              src={
+                profilePicUrl
+                  ? profilePicUrl
+                  : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
+              }
               alt="user photo"
             />
             {/*<!-- Dropdown menu -->*/}

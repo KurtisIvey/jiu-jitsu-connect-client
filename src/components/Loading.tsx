@@ -4,10 +4,7 @@ type Props = {};
 
 const Loading = (props: Props) => {
   return (
-    <div
-      role="status"
-      className="flex justify-center border h-screen items-center"
-    >
+    <div role="status" className="flex justify-center  h-screen items-center">
       <svg
         aria-hidden="true"
         className="w-[80px] h-[80px] mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 "

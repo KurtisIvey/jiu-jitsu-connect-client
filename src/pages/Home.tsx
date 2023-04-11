@@ -5,9 +5,6 @@ import CreatePostHome from "../components/CreatePostHome";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 //redux refresh
-import type { RootState } from "../reduxStore/store";
-
-import { useSelector, useDispatch } from "react-redux";
 import Loading from "../components/Loading";
 
 type Props = {};
@@ -26,7 +23,6 @@ interface PostsState {
 const Home = (props: Props) => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [posts, setPosts] = useState<null | PostsState>(null);
-  const user = useSelector((state: RootState) => state.user.username);
 
   async function fetchPosts() {
     const response = await fetch(
@@ -42,6 +38,7 @@ const Home = (props: Props) => {
     );
     const postRes = await response.json();
     setPosts(postRes.posts);
+    console.log(postRes.posts);
   }
 
   useEffect(() => {
