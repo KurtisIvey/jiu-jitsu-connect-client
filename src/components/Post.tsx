@@ -4,6 +4,7 @@ import { TbPencilPlus } from "react-icons/tb";
 import { BiCommentAdd } from "react-icons/bi";
 import Comments from "./Comments";
 import { Link } from "react-router-dom";
+import Like from "./Like";
 
 type Props = {
   id: string;
@@ -29,16 +30,19 @@ function Post(props: Props) {
     setCommentContent(e.target.value);
   };
 
-  const handleSubmitComment = (e: FormEvent) => {
+  const handleSubmitComment = async (e: FormEvent) => {
     e.preventDefault();
     console.log(commentContent);
-    // send post req to api
-    setCommentContent("");
-  };
 
-  const handleLike = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("trying to like");
+    /* const response = await fetch(`http://localhost:3001/api/posts/${id}/like`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: window.localStorage.token,
+      },
+    }); */
+    setCommentContent("");
   };
 
   return (
@@ -78,12 +82,7 @@ function Post(props: Props) {
         {/* number of likes and comments */}
 
         {/* like button */}
-        <form onClick={(e) => handleLike(e)} className="">
-          <button className="flex items-center justify-start hover:text-blue-500 hover:scale-110 w-fit transition-all duration-150 ease-in-out">
-            <AiOutlineLike className="h-5 w-5" />
-            <p className="text-sm ml-2 mt-[.5px]">Like</p>
-          </button>
-        </form>
+        <Like id={props.id} />
         <div className="border-b" />
         {/* write comment section */}
         <form
