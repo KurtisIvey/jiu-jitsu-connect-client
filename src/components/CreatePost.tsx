@@ -23,18 +23,21 @@ const CreatePost = (props: Props) => {
     e.preventDefault();
     console.log(postContent);
 
-    const response = await fetch(`http://localhost:3001/api/posts/`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.token,
-      },
+    const response = await fetch(
+      `https://odinbook-backend.herokuapp.com/api/posts/`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: window.localStorage.token,
+        },
 
-      body: JSON.stringify({
-        postContent,
-      }),
-    });
+        body: JSON.stringify({
+          postContent,
+        }),
+      }
+    );
 
     setPostContent("");
     // refreshes page via useNavigate
