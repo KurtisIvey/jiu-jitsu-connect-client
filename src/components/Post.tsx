@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { TbPencilPlus } from "react-icons/tb";
+import { BiCommentAdd } from "react-icons/bi";
 import Comments from "./Comments";
 import { Link } from "react-router-dom";
 
@@ -28,7 +29,7 @@ function Post(props: Props) {
     setCommentContent(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmitComment = (e: FormEvent) => {
     e.preventDefault();
     console.log(commentContent);
     // send post req to api
@@ -85,7 +86,10 @@ function Post(props: Props) {
         </form>
         <div className="border-b" />
         {/* write comment section */}
-        <form className="flex space-x-2 mx-4" onSubmit={(e) => handleSubmit(e)}>
+        <form
+          className="flex space-x-2 mx-4"
+          onSubmit={(e) => handleSubmitComment(e)}
+        >
           <img
             className="rounded-full  h-6 w-6 border-white border-2"
             src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
@@ -100,7 +104,7 @@ function Post(props: Props) {
             value={commentContent}
           />
           <button type="submit">
-            <TbPencilPlus className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
+            <BiCommentAdd className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
           </button>
         </form>
         <Comments />
