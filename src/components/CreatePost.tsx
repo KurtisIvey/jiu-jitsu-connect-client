@@ -19,7 +19,7 @@ const CreatePost = (props: Props) => {
     setPostContent("");
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmitPost = async (e: FormEvent) => {
     e.preventDefault();
     console.log(postContent);
 
@@ -58,7 +58,7 @@ const CreatePost = (props: Props) => {
       </div>
 
       <form
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={(e) => handleSubmitPost(e)}
         className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-[-120px] z-10 ${
           !open && "hidden"
         } `}
