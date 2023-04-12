@@ -1,12 +1,19 @@
 import React, { useState, FormEvent } from "react";
 import { TbPencilPlus } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
 const CreatePostHome = (props: Props) => {
   const navigate = useNavigate();
   const [postContent, setPostContent] = useState("");
+  //redux state
+  const profilePicUrl = useSelector(
+    (state: RootState) => state.user.profilePicUrl
+  );
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostContent(e.target.value);
@@ -43,7 +50,11 @@ const CreatePostHome = (props: Props) => {
         <form className="flex space-x-2 " onSubmit={(e) => handleSubmit(e)}>
           <img
             className="rounded-full  h-8 w-8 border-white border-2"
-            src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
+            src={
+              profilePicUrl
+                ? profilePicUrl
+                : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
+            }
             alt="user photo"
           />
           <textarea
@@ -53,6 +64,7 @@ const CreatePostHome = (props: Props) => {
             placeholder="Whats on your mind, Kurtis?"
             aria-label="write a post"
             maxLength={600}
+            required
           ></textarea>
           <div className="flex flex-col items-center justify-between">
             <button type="submit">

@@ -70,6 +70,7 @@ const CreatePost = (props: Props) => {
           maxLength={600}
           value={postContent}
           aria-label="write a post"
+          required
         ></textarea>
         {/* <!-- icons --> */}
         <div className="icons flex text-gray-500 m-2">
