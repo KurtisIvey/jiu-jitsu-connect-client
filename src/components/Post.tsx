@@ -69,7 +69,6 @@ function Post(props: Props) {
             >
               {props.author.username}
             </Link>
-
             <p>{convertDateandTime()}</p>
           </div>
         </div>

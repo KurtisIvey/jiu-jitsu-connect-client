@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-
+import { FcCollapse } from "react-icons/fc";
 //redux
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
@@ -52,6 +52,14 @@ const Navbar = (props: Props) => {
               }
               alt="user photo"
             />
+            {/* arrow to indicate drop down exists and state of it */}
+            <div className="absolute rounded-full bg-gray-200 bottom-[-2px] right-[-1px] border border-white">
+              <FcCollapse
+                className={`${
+                  open ? "rotate-180 " : "rotate-0"
+                } transition-all duration-200 ease-in-out`}
+              />
+            </div>
             {/*<!-- Dropdown menu -->*/}
             <div
               className={`z-50 ${

@@ -76,10 +76,7 @@ const Profile = (props: Props) => {
     );
 
     const postRes = await response.json();
-    console.log(postRes.posts);
-    //setLoaded(true);
     setUserPosts(postRes.posts);
-    //console.log(user);
   }
   useEffect(() => {
     fetchUser();
