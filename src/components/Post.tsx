@@ -1,10 +1,8 @@
 import React, { FormEvent, useState } from "react";
-import { AiOutlineLike } from "react-icons/ai";
-import { TbPencilPlus } from "react-icons/tb";
-import { BiCommentAdd } from "react-icons/bi";
-import Comments from "./Comments";
 import { Link } from "react-router-dom";
 import Like from "./Like";
+import { convertDateTime } from "../helpers/ConvertDateTime";
+import CommentContainer from "./CommentContainer";
 
 type Props = {
   id: string;
@@ -15,37 +13,6 @@ type Props = {
 };
 
 function Post(props: Props) {
-  const [commentContent, setCommentContent] = useState("");
-
-  const convertDateandTime = () => {
-    //2023-04-11T15:28:44.981Z
-    const formatted = new Date(props.timestamp).toString();
-    const timeFormat = formatted.slice(16, 21);
-
-    //Tue Apr 11 2023 10:28:44 GMT-0500 (Central Daylight Time)
-    return `${formatted.slice(0, 16)} at ${timeFormat}`;
-    //21
-  };
-
-  const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCommentContent(e.target.value);
-  };
-
-  const handleSubmitComment = async (e: FormEvent) => {
-    e.preventDefault();
-    console.log(commentContent);
-
-    /* const response = await fetch(`http://localhost:3001/api/posts/${id}/like`, {
-      method: "PUT",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.token,
-      },
-    }); */
-    setCommentContent("");
-  };
-
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
@@ -75,40 +42,17 @@ function Post(props: Props) {
             >
               {props.author.username}
             </Link>
-            <p>{convertDateandTime()}</p>
+            <p>{convertDateTime(props.timestamp)}</p>
           </div>
         </div>
         {/* post content */}
         <p className="text-sm">{props.postContent}</p>
-        {/* number of likes and comments */}
 
-        {/* like button */}
+        {/* like button number of likes */}
         <Like id={props.id} likes={props.likes} />
         <div className="border-b" />
-        {/* write comment section */}
-        <form
-          className="flex space-x-2 mx-4"
-          onSubmit={(e) => handleSubmitComment(e)}
-        >
-          <img
-            className="rounded-full  h-6 w-6 border-white border-2"
-            src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
-            alt="user photo"
-          />
-          <input
-            onChange={(e) => handleCommentContent(e)}
-            className="rounded-full bg-gray-100 w-full pl-3 text-xs outline-blue-200"
-            placeholder="Write a comment..."
-            type="text"
-            aria-label="write a comment"
-            value={commentContent}
-            name="commentContent"
-          />
-          <button type="submit">
-            <BiCommentAdd className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
-          </button>
-        </form>
-        <Comments />
+        {/* write comment section and comments*/}
+        <CommentContainer id={props.id} />
       </div>
     </section>
   );

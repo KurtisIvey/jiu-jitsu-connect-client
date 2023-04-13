@@ -54,7 +54,7 @@ function Login({}: Props) {
         alert("Login successful");
         dispatch(setUser(data.user));
         navigate("/home");
-        console.log(data);
+        //console.log(data);
       } else {
         setErrMessage(data.errors);
         if (data.errors.password) {

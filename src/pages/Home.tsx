@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Comments from "../components/Comments";
+import Comments from "../components/Comment";
 import CreatePost from "../components/CreatePost";
 import CreatePostHome from "../components/CreatePostHome";
 import Navbar from "../components/Navbar";
@@ -12,7 +12,6 @@ type Props = {};
 interface PostsState {
   map(arg0: (post: any) => JSX.Element): React.ReactNode;
   posts: {
-    key: string;
     id: string;
     postContent: string;
     timestamp: string;

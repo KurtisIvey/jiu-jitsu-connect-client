@@ -59,7 +59,6 @@ const Profile = (props: Props) => {
 
     const userRes = await response.json();
     setUser(userRes.user);
-    console.log(user);
   }
 
   async function fetchPostsByUser() {
