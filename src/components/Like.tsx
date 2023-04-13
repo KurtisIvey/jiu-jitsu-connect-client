@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect } from "react";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike, AiTwotoneLike } from "react-icons/ai";
 //redux
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
@@ -60,8 +60,13 @@ function Like(props: Props) {
   };
   return (
     <form onClick={(e) => handleLike(e)} className="">
-      <div className="border-b">
-        {postLikes.length > 0 ? postLikes.length : ""}
+      <div className="border-b mb-2">
+        {postLikes.length > 0 && (
+          <div className="flex gap-2 text-blue-500 ">
+            <AiOutlineLike className="h-5 w-5" />
+            {postLikes.length}
+          </div>
+        )}
       </div>
       <button
         className={`flex items-center justify-start ${
