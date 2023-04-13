@@ -102,6 +102,7 @@ function Post(props: Props) {
             type="text"
             aria-label="write a comment"
             value={commentContent}
+            name="commentContent"
           />
           <button type="submit">
             <BiCommentAdd className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />

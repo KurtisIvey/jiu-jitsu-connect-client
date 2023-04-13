@@ -24,7 +24,7 @@ function Like(props: Props) {
 
   const getPostInfo = async () => {
     const response = await fetch(
-      `http://localhost:3001/api/posts/${props.id}`,
+      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}`,
       {
         method: "GET",
         credentials: "include",
@@ -46,7 +46,7 @@ function Like(props: Props) {
   const handleLike = async (e: FormEvent) => {
     e.preventDefault();
     const response = await fetch(
-      `http://localhost:3001/api/posts/${props.id}/like`,
+      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}/like`,
       {
         method: "PUT",
         credentials: "include",
@@ -60,7 +60,7 @@ function Like(props: Props) {
   };
   return (
     <form onClick={(e) => handleLike(e)} className="">
-      <div className="border-b mb-2">
+      <div className="border-b mb-2 pb-1">
         {postLikes.length > 0 && (
           <div className="flex gap-2 text-blue-500 ">
             <AiOutlineLike className="h-5 w-5" />
