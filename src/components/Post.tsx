@@ -11,6 +11,7 @@ type Props = {
   author: any;
   postContent: string;
   timestamp: string;
+  likes: string[];
 };
 
 function Post(props: Props) {
@@ -82,7 +83,7 @@ function Post(props: Props) {
         {/* number of likes and comments */}
 
         {/* like button */}
-        <Like id={props.id} />
+        <Like id={props.id} likes={props.likes} />
         <div className="border-b" />
         {/* write comment section */}
         <form

@@ -29,11 +29,12 @@ interface UserPostsState {
     postContent: string;
     timestamp: string;
     author: string;
+    likes: string[];
   }[];
 }
 
 const Profile = (props: Props) => {
-  const loggedInid = useSelector((state: RootState) => state.user.id);
+  const loggedInId = useSelector((state: RootState) => state.user.id);
 
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
@@ -116,7 +117,7 @@ const Profile = (props: Props) => {
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
           <div className="flex flex-col">
-            {loggedInid === id ? <CreatePost /> : ""}
+            {loggedInId === id ? <CreatePost /> : ""}
           </div>
 
           {userPosts &&
@@ -127,6 +128,7 @@ const Profile = (props: Props) => {
                     id={post._id}
                     postContent={post.postContent}
                     timestamp={post.timestamp}
+                    likes={post.likes}
                     author={post.author}
                   />
                 </div>

@@ -17,6 +17,7 @@ interface PostsState {
     postContent: string;
     timestamp: string;
     author: string;
+    likes: string[];
   }[];
 }
 
@@ -38,6 +39,7 @@ const Home = (props: Props) => {
     );
     const postRes = await response.json();
     setPosts(postRes.posts);
+    console.log(postRes);
   }
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const Home = (props: Props) => {
                       id={post._id}
                       postContent={post.postContent}
                       timestamp={post.timestamp}
+                      likes={post.likes}
                       author={post.author}
                     />
                   </div>
