@@ -32,7 +32,7 @@ const CommentContainer = (props: Props) => {
 
   const getComments = async () => {
     const response = await fetch(
-      `http://localhost:3001/api/posts/${props.id}`,
+      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}`,
       {
         method: "GET",
         credentials: "include",
