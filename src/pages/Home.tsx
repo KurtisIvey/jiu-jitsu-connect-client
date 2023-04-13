@@ -38,7 +38,6 @@ const Home = (props: Props) => {
     );
     const postRes = await response.json();
     setPosts(postRes.posts);
-    console.log(postRes);
   }
 
   useEffect(() => {
