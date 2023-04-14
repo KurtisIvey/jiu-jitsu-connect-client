@@ -1,16 +1,14 @@
 import React, { useState, FormEvent } from "react";
 import { TbPencilPlus } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
 //redux
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
 
 type Props = {
-  // fetchPosts(): unknown;
+  fetchPosts(): unknown;
 };
 
 const CreatePostHome = (props: Props) => {
-  const navigate = useNavigate();
   const [postContent, setPostContent] = useState("");
   //redux state
   const profilePicUrl = useSelector(
@@ -40,11 +38,8 @@ const CreatePostHome = (props: Props) => {
         }),
       }
     );
-    //props.fetchPosts();
+    props.fetchPosts();
     setPostContent("");
-    // refreshes page via useNavigate
-    //navigate(0);
-    // send post req to api
   };
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">

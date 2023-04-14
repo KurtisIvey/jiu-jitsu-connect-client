@@ -54,7 +54,7 @@ const Home = (props: Props) => {
       <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto  mt-4 md:mt-10 lg:px-[5vw]">
         {loaded ? (
           <>
-            <CreatePostHome />
+            <CreatePostHome fetchPosts={fetchPosts} />
             {posts &&
               posts.map((post) => {
                 return (
