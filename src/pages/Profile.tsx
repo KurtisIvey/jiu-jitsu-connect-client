@@ -74,7 +74,9 @@ const Profile = (props: Props) => {
         },
       }
     );
-
+    setTimeout(() => {
+      setLoaded(true);
+    }, 500);
     const postRes = await response.json();
     setUserPosts(postRes.posts);
   }
@@ -82,13 +84,10 @@ const Profile = (props: Props) => {
     fetchUser();
     fetchPostsByUser();
     // set to true so spinner display stops and displays proper profile view
-    setTimeout(() => {
-      setLoaded(true);
-    }, 500);
   }, []);
 
   return (
-    <main className=" ">
+    <main className="pb-10 ">
       <Navbar />
       {loaded ? (
         <div className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">

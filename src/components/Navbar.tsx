@@ -64,7 +64,8 @@ const Navbar = (props: Props) => {
             <div
               className={`z-50 ${
                 !open && "hidden"
-              } my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md absolute top-[23px] right-[0px] w-[180px] cursor-default `}
+              } my-4 text-base list-none bg-[rgb(255,255,255)] border border-[rgb(238,238,238)] divide-y
+               divide-gray-100 rounded-lg shadow-md absolute top-[23px] right-[0px] w-[180px] cursor-default `}
               id="user-dropdown"
             >
               <div className="px-4 py-3 flex flex-col space-y-1 items-start">
