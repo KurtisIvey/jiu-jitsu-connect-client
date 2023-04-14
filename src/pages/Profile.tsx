@@ -116,7 +116,11 @@ const Profile = (props: Props) => {
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
           <div className="flex flex-col">
-            {loggedInId === id ? <CreatePost /> : ""}
+            {loggedInId === id ? (
+              <CreatePost fetchPosts={fetchPostsByUser} />
+            ) : (
+              ""
+            )}
           </div>
 
           {userPosts &&

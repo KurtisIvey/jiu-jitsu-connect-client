@@ -1,12 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import { BsPlusCircle } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 
-type Props = {};
+type Props = {
+  fetchPosts(): unknown;
+};
 
 const CreatePost = (props: Props) => {
-  const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
 
@@ -38,10 +37,10 @@ const CreatePost = (props: Props) => {
         }),
       }
     );
-
-    setPostContent("");
+    props.fetchPosts();
+    handleClose();
     // refreshes page via useNavigate
-    navigate(0);
+    //navigate(0);
     // send post req to api
   };
 

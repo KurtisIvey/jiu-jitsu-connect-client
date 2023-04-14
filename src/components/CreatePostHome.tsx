@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
 
-type Props = {};
+type Props = {
+  // fetchPosts(): unknown;
+};
 
 const CreatePostHome = (props: Props) => {
   const navigate = useNavigate();
@@ -38,10 +40,10 @@ const CreatePostHome = (props: Props) => {
         }),
       }
     );
-
+    //props.fetchPosts();
     setPostContent("");
     // refreshes page via useNavigate
-    navigate(0);
+    //navigate(0);
     // send post req to api
   };
   return (
