@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Like from "./Like";
 import { convertDateTime } from "../helpers/ConvertDateTime";
 import CommentContainer from "./CommentContainer";
+import ProfileImageLink from "./ProfileImageLink";
 
 type Props = {
   id: string;
@@ -18,20 +19,12 @@ function Post(props: Props) {
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
         <div className="flex flex-row space-x-2">
-          <Link
-            aria-label={`picture link to user ${props.author.username} profile`}
-            to={`/profile/${props.author._id}`}
-          >
-            <img
-              className="rounded-full  h-8 w-8 border-white border-2"
-              src={
-                props.author?.profilePicUrl
-                  ? props.author.profilePicUrl
-                  : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
-              }
-              alt="user photo"
-            />
-          </Link>
+          <ProfileImageLink
+            widthHeight="8"
+            profilePicUrl={props.author.profilePicUrl}
+            profileId={props.author._id}
+            profileUsername={props.author.username}
+          />
 
           {/* name and date */}
           <div className="text-xs tracking-wider font-semibold">

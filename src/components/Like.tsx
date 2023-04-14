@@ -10,17 +10,9 @@ type Props = {
 };
 
 function Like(props: Props) {
-  const [likedByCurrentUser, setLikedByCurrentUser] = useState<boolean>(false);
   const loggedInId = useSelector((state: RootState) => state.user.id);
 
   const [postLikes, setPostLikes] = useState<string[]>([]);
-
-  const hasItBeenLiked = () => {
-    if (postLikes.includes(loggedInId)) {
-      console.log("isliked");
-      setLikedByCurrentUser(true);
-    }
-  };
 
   const getPostInfo = async () => {
     const response = await fetch(
@@ -59,7 +51,7 @@ function Like(props: Props) {
     getPostInfo();
   };
   return (
-    <form onClick={(e) => handleLike(e)} className="">
+    <form onSubmit={(e) => handleLike(e)} className="">
       <div className="border-b mb-2 pb-1">
         {postLikes.length > 0 && (
           <div className="flex gap-2 text-blue-500 ">
