@@ -8,7 +8,7 @@ type Props = {
   author: {
     _id: string;
     username: string;
-    profilePicUrl: null | string;
+    profilePicUrl?: null | string;
   };
   commentContent: string;
   timestamp: string;

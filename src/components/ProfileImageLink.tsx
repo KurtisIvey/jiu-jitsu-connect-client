@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/*
+Reusable element that exists in individual comments, posts
+functions via a Link element when profile id is provided
+
+*/
+
 type Props = {
   widthHeight: string;
   profilePicUrl?: string | null;

@@ -28,7 +28,7 @@ const Navbar = (props: Props) => {
   };
 
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  ">
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 lg:px-[15vw] ">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link to="/home" className="flex items-center">
           <h1 className=" text-3xl lg:text-4xl font-semibold text-blue-500 tracking-wider">
