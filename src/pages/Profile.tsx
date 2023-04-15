@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import CreatePost from "../components/CreatePost";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
@@ -8,6 +8,7 @@ import Loading from "../components/Loading";
 //redux
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
+import SubmitButton from "../components/SubmitButton";
 
 type Props = {
   //id: string;
@@ -35,6 +36,7 @@ interface UserPostsState {
 
 const Profile = (props: Props) => {
   const loggedInId = useSelector((state: RootState) => state.user.id);
+  const location = useLocation();
 
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
@@ -43,6 +45,23 @@ const Profile = (props: Props) => {
 
   // need useEffect to draw info from db on pertaining user
   // id in url acquired via use params, will then be used to fetch user info and posts by them
+
+  async function addFriend(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const response = await fetch(
+      `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request`,
+      {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: window.localStorage.token,
+        },
+      }
+    );
+    const friendRes = await response.json();
+    console.log(friendRes);
+  }
 
   async function fetchUser() {
     const response = await fetch(
@@ -76,7 +95,7 @@ const Profile = (props: Props) => {
     );
     setTimeout(() => {
       setLoaded(true);
-    }, 500);
+    }, 700);
     const postRes = await response.json();
     setUserPosts(postRes.posts);
   }
@@ -84,7 +103,7 @@ const Profile = (props: Props) => {
     fetchUser();
     fetchPostsByUser();
     // set to true so spinner display stops and displays proper profile view
-  }, []);
+  }, [location]);
 
   return (
     <main className="pb-10 ">
@@ -108,9 +127,15 @@ const Profile = (props: Props) => {
               <h2 className="text-3xl font-semibold tracking-wide">
                 {user && user.username}
               </h2>
-              <h3 className="text-gray-600/80">
+              <div
+                aria-label={`${user?.username} has ${user?.friends} friends`}
+                className="text-gray-600/80"
+              >
                 {user && user.friends.length} Friends
-              </h3>
+              </div>
+              <form onSubmit={(e) => addFriend(e)}>
+                <SubmitButton width="fit" text="Add Friend" />
+              </form>
             </div>
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />

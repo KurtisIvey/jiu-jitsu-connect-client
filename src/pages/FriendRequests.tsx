@@ -1,10 +1,38 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import PendingFriendRequest from "../components/PendingFriendRequest";
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../reduxStore/slices/userSlice";
 
 type Props = {};
 
 const FriendRequests = (props: Props) => {
+  const dispatch = useDispatch();
+  const id = useSelector((state: RootState) => state.user.id);
+
+  async function updateCurrentUser() {
+    /*
+    updates current redux info stored in redux store due to modification of 
+    friend requests
+    */
+    const response = await fetch(
+      `https://odinbook-backend.herokuapp.com/api/users/${id}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: window.localStorage.token,
+        },
+      }
+    );
+
+    const userRes = await response.json();
+    dispatch(setUser(userRes.user));
+  }
+
   const friendList = [
     {
       name: "Kurtis Ivey",
