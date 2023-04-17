@@ -40,7 +40,6 @@ const Home = (props: Props) => {
   }
 
   useEffect(() => {
-    //fetch posts and populate Post components via map function
     fetchPosts();
   }, []);
 
