@@ -5,16 +5,12 @@ export interface UserState {
   username: string;
   id: string;
   profilePicUrl: string;
-  friends: string[];
-  friendRequests: string[];
 }
 
 const initialState: UserState = {
   username: "",
   id: "",
   profilePicUrl: "",
-  friends: [],
-  friendRequests: [],
 };
 
 export const userSlice = createSlice({
@@ -43,15 +39,11 @@ export const userSlice = createSlice({
       state.username = action.payload.username;
       state.id = action.payload._id;
       state.profilePicUrl = action.payload.profilePicUrl;
-      state.friends.push(action.payload.friends);
-      state.friendRequests.push(action.payload.friendRequests);
     },
     resetUser: (state) => {
       state.username = "";
       state.id = "";
       state.profilePicUrl = "";
-      state.friends = [];
-      state.friendRequests = [];
     },
   },
 });

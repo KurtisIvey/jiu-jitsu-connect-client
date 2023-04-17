@@ -12,7 +12,7 @@ type Props = {};
 interface PostsState {
   map(arg0: (post: any) => JSX.Element): React.ReactNode;
   posts: {
-    id: string;
+    _id: string;
     postContent: string;
     timestamp: string;
     author: string;

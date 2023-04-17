@@ -1,9 +1,12 @@
 import React, { useState, FormEvent } from "react";
 import { BsCheck, BsTrash3 } from "react-icons/bs";
+import ProfileImageLink from "./ProfileImageLink";
+import { Link } from "react-router-dom";
 
 type Props = {
-  name: string;
-  imgSrc: string;
+  profileId: string;
+  username: string;
+  profilePicUrl?: string;
 };
 
 const PendingFriendRequest = (props: Props) => {
@@ -22,16 +25,18 @@ const PendingFriendRequest = (props: Props) => {
     <>
       <div className="flex flex-row justify-between items-center  w-full">
         <div className="flex flex-row items-center">
-          <a href="">
-            <img
-              className=" rounded-md h-10 w-10 sm:h-14 sm:w-14 border-white border-2 "
-              alt={props.name}
-              src={props.imgSrc}
-            />
-          </a>
-          <a className="ml-2 text-sm sm:text-base hover:underline cursor-pointer ">
-            Link to {props.name}
-          </a>
+          <ProfileImageLink
+            widthHeight="10"
+            profileUsername={props.username}
+            profilePicUrl={props.profilePicUrl}
+          />
+
+          <Link
+            to={`/profile/${props.profileId}`}
+            className="ml-2 text-sm sm:text-base hover:underline cursor-pointer hover:text-blue-500 "
+          >
+            {props.username}
+          </Link>
         </div>
         <div className="flex flex-row space-x-9 mr-5 items-center justify-center">
           <form onSubmit={handleApproveFriendship}>
