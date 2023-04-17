@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Comments from "../components/Comment";
-import CreatePost from "../components/CreatePost";
 import CreatePostHome from "../components/CreatePostHome";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
@@ -9,7 +7,7 @@ import Loading from "../components/Loading";
 
 type Props = {};
 
-interface PostsState {
+interface PostsType {
   map(arg0: (post: any) => JSX.Element): React.ReactNode;
   posts: {
     _id: string;
@@ -22,7 +20,7 @@ interface PostsState {
 
 const Home = (props: Props) => {
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [posts, setPosts] = useState<null | PostsState>(null);
+  const [posts, setPosts] = useState<null | PostsType>(null);
 
   async function fetchPosts() {
     const response = await fetch(
@@ -38,14 +36,12 @@ const Home = (props: Props) => {
     );
     const postRes = await response.json();
     setPosts(postRes.posts);
+    setLoaded(true);
   }
 
   useEffect(() => {
     //fetch posts and populate Post components via map function
     fetchPosts();
-    setTimeout(() => {
-      setLoaded(true);
-    }, 500);
   }, []);
 
   return (

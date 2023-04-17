@@ -17,24 +17,6 @@ export const userSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    /* setUsername: (state, action: PayloadAction<string>) => {
-      state.username = action.payload;
-    },
-    setId: (state, action: PayloadAction<string>) => {
-      state.id = action.payload;
-    },
-    setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
-    },
-    setProfilePicUrl: (state, action: PayloadAction<string>) => {
-      state.profilePicUrl = action.payload;
-    },
-    setFriends: (state, action) => {
-      state.friends.push(action.payload);
-    },
-    setFriendRequests: (state, action) => {
-      state.friendRequests.push(action.payload);
-    }, */
     setUser: (state, action) => {
       state.username = action.payload.username;
       state.id = action.payload._id;
