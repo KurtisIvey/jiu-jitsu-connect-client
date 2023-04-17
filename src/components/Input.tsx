@@ -14,6 +14,7 @@ const Input = (props: Props) => {
   return (
     <div className="relative">
       <input
+        autoComplete="off"
         type={props.type}
         name={props.name}
         id={props.name}

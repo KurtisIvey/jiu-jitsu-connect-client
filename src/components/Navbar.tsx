@@ -6,11 +6,14 @@ import { FiLogOut } from "react-icons/fi";
 import { FcCollapse } from "react-icons/fc";
 //redux
 import type { RootState } from "../reduxStore/store";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { resetUser } from "../reduxStore/slices/userSlice";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const dispatch = useDispatch();
+
   const username = useSelector((state: RootState) => state.user.username);
   const id = useSelector((state: RootState) => state.user.id);
   const profilePicUrl = useSelector(
@@ -22,6 +25,7 @@ const Navbar = (props: Props) => {
 
   const handleSignOut = () => {
     // clears both jwt token and redux persist on logout
+    dispatch(resetUser());
     localStorage.clear();
     alert("Sign out Successful");
     navigate("/");

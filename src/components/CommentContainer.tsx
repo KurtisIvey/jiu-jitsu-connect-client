@@ -44,7 +44,7 @@ const CommentContainer = (props: Props) => {
     );
     const postRes = await response.json();
     setComments(postRes.post.comments);
-    console.log(postRes.post.comments);
+    //console.log(postRes.post.comments);
   };
 
   const handleSubmitComment = async (e: FormEvent) => {

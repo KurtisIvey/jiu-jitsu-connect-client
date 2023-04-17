@@ -49,7 +49,7 @@ const Profile = (props: Props) => {
   async function addFriend(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request`,
+      `http://localhost:3001/api/users/${id}/friend-request`,
       {
         method: "PUT",
         credentials: "include",
@@ -64,17 +64,14 @@ const Profile = (props: Props) => {
   }
 
   async function fetchUser() {
-    const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/users/${id}`,
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: window.localStorage.token,
-        },
-      }
-    );
+    const response = await fetch(`http://localhost:3001/api/users/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: window.localStorage.token,
+      },
+    });
 
     const userRes = await response.json();
     setUser(userRes.user);

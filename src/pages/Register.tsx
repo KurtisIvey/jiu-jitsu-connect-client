@@ -21,7 +21,7 @@ function Register({}: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(loginInfo);
+    //console.log(loginInfo);
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
@@ -38,7 +38,7 @@ function Register({}: Props) {
         const email = loginInfo.email;
         const password = loginInfo.password;
         const response = await fetch(
-          "https://odinbook-backend.herokuapp.com/api/auth/register",
+          "http://localhost:3001/api/auth/register",
           {
             method: "POST",
 

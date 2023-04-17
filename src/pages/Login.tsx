@@ -32,23 +32,21 @@ function Login({}: Props) {
     try {
       const email = loginInfo.email;
       const password = loginInfo.password;
-      const response = await fetch(
-        "https://odinbook-backend.herokuapp.com/api/auth/login",
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await fetch("http://localhost:3001/api/auth/login", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
       const data = await response.json();
+      console.log(data);
       if (data.user) {
         localStorage.setItem("token", data.token);
         alert("Login successful");
@@ -87,6 +85,7 @@ function Login({}: Props) {
             <h2 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 lg:text-2xl dark:text-white ml-2">
               Sign in to your account
             </h2>
+
             <form
               onSubmit={handleSubmit}
               className="space-y-6 lg:space-y-8"

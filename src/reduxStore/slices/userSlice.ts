@@ -46,10 +46,17 @@ export const userSlice = createSlice({
       state.friends.push(action.payload.friends);
       state.friendRequests.push(action.payload.friendRequests);
     },
+    resetUser: (state) => {
+      state.username = "";
+      state.id = "";
+      state.profilePicUrl = "";
+      state.friends = [];
+      state.friendRequests = [];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 
 export default userSlice.reducer;
