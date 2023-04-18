@@ -10,7 +10,7 @@ function Register({}: Props) {
 
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [confirmPasswordMessage, setConfirmPasswordMessage] = useState("");
-  const [creationError, setCreationError] = useState<boolean | null>(null);
+  const [creationError, setCreationError] = useState<string>("");
 
   const [loginInfo, setLoginInfo] = useState({
     username: "",
@@ -57,7 +57,7 @@ function Register({}: Props) {
         const data = await response.json();
         if (response.status !== 201) {
           console.log(data.errors);
-          setCreationError(true);
+          setCreationError(data.errors.email);
         } else {
           navigate("/");
         }
@@ -111,7 +111,7 @@ function Register({}: Props) {
                 !creationError && "hidden"
               } text-center text-red-400`}
             >
-              fsdfsdfsd
+              {creationError}
             </p>
             <form
               onSubmit={(e) => handleSubmit(e)}
