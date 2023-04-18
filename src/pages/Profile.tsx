@@ -45,20 +45,19 @@ const Profile = (props: Props) => {
   const [user, setUser] = useState<null | UserState>(null);
   const [userPosts, setUserPosts] = useState<null | PostState[]>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [currentlyFriends, setCurrentlyFriends] = useState<boolean | null>(
-    null
-  );
+  const [currentlyFriends, setCurrentlyFriends] = useState<boolean>(false);
 
   const isFriendRequested = () => {
-    if (user) {
-      for (let i = 0; i < user.friendRequests.length; i++)
-        if (user.friendRequests[i]._id === loggedInId) {
-          setCurrentlyFriends(true);
-          return;
-        }
-      setCurrentlyFriends(false);
+    if (!user) {
+      return;
     }
-    return;
+    for (let i = 0; i < user.friendRequests.length; i++) {
+      if (user.friendRequests[i]._id === loggedInId) {
+        setCurrentlyFriends(true);
+        return;
+      }
+    }
+    setCurrentlyFriends(false);
   };
 
   /*
@@ -74,52 +73,64 @@ const Profile = (props: Props) => {
 
   async function addFriend(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const response = await fetch(
-      `http://localhost:3001/api/users/${id}/friend-request`,
-      {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: window.localStorage.token,
-        },
-      }
-    );
-    const friendRes = await response.json();
-    fetchUser();
+    try {
+      const response = await fetch(
+        `http://localhost:3001/api/users/${id}/friend-request`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: window.localStorage.token,
+          },
+        }
+      );
+      // friendRes = await response.json();
+      fetchUser();
+    } catch (error) {
+      console.error("Failed to add friend: ", error);
+    }
   }
 
   async function fetchUser() {
-    const response = await fetch(`http://localhost:3001/api/users/${id}`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.token,
-      },
-    });
-
-    const userRes = await response.json();
-    setUser(userRes.user);
-  }
-
-  async function fetchPostsByUser() {
-    //const response
-    const response = await fetch(
-      `http://localhost:3001/api/posts/byUserId/${id}`,
-      {
+    try {
+      const response = await fetch(`http://localhost:3001/api/users/${id}`, {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: window.localStorage.token,
         },
-      }
-    );
+      });
 
-    const postRes = await response.json();
-    setUserPosts(postRes.posts);
-    setLoaded(true);
+      const userRes = await response.json();
+      setUser(userRes.user);
+    } catch (error) {
+      console.error("Failed to fetch user: ", error);
+    }
+  }
+
+  async function fetchPostsByUser() {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/api/posts/byUserId/${id}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: window.localStorage.token,
+          },
+        }
+      );
+
+      const postRes = await response.json();
+      setUserPosts(postRes.posts);
+      setLoaded(true);
+    } catch (error) {
+      console.error("Failed to fetch posts: ", error);
+    }
+    //const response
   }
   useEffect(() => {
     fetchUser();
@@ -147,6 +158,7 @@ const Profile = (props: Props) => {
               alt="user photo"
             />
             <div className="flex flex-col items-center space-y-2">
+              {/* username of profile */}
               <h2 className="text-3xl font-semibold tracking-wide">
                 {user && user.username}
               </h2>
@@ -156,18 +168,23 @@ const Profile = (props: Props) => {
               >
                 {user && user.friends.length} Friends
               </div>
-              {currentlyFriends ? (
-                <form onSubmit={(e) => addFriend(e)}>
-                  <SubmitButton
-                    width="fit"
-                    text="Retract Friend Request"
-                    retract={true}
-                  />
-                </form>
+              {/* add friend button */}
+              {loggedInId !== id ? (
+                currentlyFriends ? (
+                  <form onSubmit={(e) => addFriend(e)}>
+                    <SubmitButton
+                      width="fit"
+                      text="Retract Friend Request"
+                      retract={true}
+                    />
+                  </form>
+                ) : (
+                  <form onSubmit={(e) => addFriend(e)}>
+                    <SubmitButton width="fit" text="Add Friend" />
+                  </form>
+                )
               ) : (
-                <form onSubmit={(e) => addFriend(e)}>
-                  <SubmitButton width="fit" text="Add Friend" />
-                </form>
+                ""
               )}
             </div>
           </div>
@@ -179,7 +196,6 @@ const Profile = (props: Props) => {
               ""
             )}
           </div>
-
           {userPosts &&
             userPosts.map((post) => {
               return (
