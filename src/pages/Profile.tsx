@@ -15,23 +15,26 @@ type Props = {
 };
 
 interface UserState {
-  friends: [];
-  friendRequests: [];
+  friends: string[];
+  friendRequests: {
+    friends: string[];
+    friendRequests: {};
+    username: string;
+    _id: string;
+    profilePicUrl: string;
+  }[];
   username: string;
   _id: string;
   profilePicUrl: string;
 }
 
-interface UserPostsState {
-  map(arg0: (post: any) => JSX.Element): React.ReactNode;
-  posts: {
-    key: string;
-    id: string;
-    postContent: string;
-    timestamp: string;
-    author: string;
-    likes: string[];
-  }[];
+interface PostState {
+  key: string;
+  _id: string;
+  postContent: string;
+  timestamp: string;
+  author: string;
+  likes: string[];
 }
 
 const Profile = (props: Props) => {
@@ -40,8 +43,31 @@ const Profile = (props: Props) => {
 
   const { id } = useParams();
   const [user, setUser] = useState<null | UserState>(null);
-  const [userPosts, setUserPosts] = useState<null | UserPostsState>(null);
+  const [userPosts, setUserPosts] = useState<null | PostState[]>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [currentlyFriends, setCurrentlyFriends] = useState<boolean | null>(
+    null
+  );
+
+  const isFriendRequested = () => {
+    if (user) {
+      for (let i = 0; i < user.friendRequests.length; i++)
+        if (user.friendRequests[i]._id === loggedInId) {
+          setCurrentlyFriends(true);
+          return;
+        }
+      setCurrentlyFriends(false);
+    }
+    return;
+  };
+
+  /*
+  only workable solution to getting isFriendRequest to call initially upon render
+  
+  */
+  useEffect(() => {
+    isFriendRequested();
+  }, [user]);
 
   // need useEffect to draw info from db on pertaining user
   // id in url acquired via use params, will then be used to fetch user info and posts by them
@@ -60,7 +86,7 @@ const Profile = (props: Props) => {
       }
     );
     const friendRes = await response.json();
-    console.log(friendRes);
+    fetchUser();
   }
 
   async function fetchUser() {
@@ -80,7 +106,7 @@ const Profile = (props: Props) => {
   async function fetchPostsByUser() {
     //const response
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/byUserId/${id}`,
+      `http://localhost:3001/api/posts/byUserId/${id}`,
       {
         method: "GET",
         credentials: "include",
@@ -90,15 +116,15 @@ const Profile = (props: Props) => {
         },
       }
     );
-    setTimeout(() => {
-      setLoaded(true);
-    }, 700);
+
     const postRes = await response.json();
     setUserPosts(postRes.posts);
+    setLoaded(true);
   }
   useEffect(() => {
     fetchUser();
     fetchPostsByUser();
+
     // set to true so spinner display stops and displays proper profile view
   }, [location]);
 
@@ -130,9 +156,19 @@ const Profile = (props: Props) => {
               >
                 {user && user.friends.length} Friends
               </div>
-              <form onSubmit={(e) => addFriend(e)}>
-                <SubmitButton width="fit" text="Add Friend" />
-              </form>
+              {currentlyFriends ? (
+                <form onSubmit={(e) => addFriend(e)}>
+                  <SubmitButton
+                    width="fit"
+                    text="Retract Friend Request"
+                    retract={true}
+                  />
+                </form>
+              ) : (
+                <form onSubmit={(e) => addFriend(e)}>
+                  <SubmitButton width="fit" text="Add Friend" />
+                </form>
+              )}
             </div>
           </div>
           <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
