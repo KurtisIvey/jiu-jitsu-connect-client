@@ -22,7 +22,7 @@ function Like(props: Props) {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          Authorization: window.localStorage.token,
+          Authorization: `Bearer ${window.localStorage.token}`,
         },
       }
     );
@@ -44,7 +44,7 @@ function Like(props: Props) {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          Authorization: window.localStorage.token,
+          Authorization: `Bearer ${window.localStorage.token}`,
         },
       }
     );

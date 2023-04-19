@@ -29,7 +29,7 @@ const CreatePost = (props: Props) => {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          Authorization: window.localStorage.token,
+          Authorization: `Bearer ${window.localStorage.token}`,
         },
 
         body: JSON.stringify({

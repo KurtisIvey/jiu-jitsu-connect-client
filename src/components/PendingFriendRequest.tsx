@@ -12,7 +12,7 @@ type Props = {
 const PendingFriendRequest = (props: Props) => {
   const handleDenyFriendship = (e: FormEvent) => {
     e.preventDefault();
-    console.log("deny friendship");
+    console.log("deny friendship ", props.profileId);
     /* refresh page via useNavigate */
   };
   const handleApproveFriendship = (e: FormEvent) => {

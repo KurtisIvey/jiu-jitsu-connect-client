@@ -23,7 +23,7 @@ const FriendRequests = () => {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        Authorization: window.localStorage.token,
+        Authorization: `Bearer ${window.localStorage.token}`,
       },
     });
 
@@ -31,6 +31,10 @@ const FriendRequests = () => {
     setFriendRequests(friendRequestRes.user.friendRequests);
     setLoaded(true);
   }
+
+  // create function to pass down as prop to each friend request
+  // that way it can run fetchFriendRequests and approving or denying friend request
+  // friend requester's ._id will be passed along in body of message
 
   useEffect(() => {
     fetchFriendRequests();
