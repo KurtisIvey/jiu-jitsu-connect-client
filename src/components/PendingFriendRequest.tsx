@@ -2,6 +2,9 @@ import React, { useState, FormEvent } from "react";
 import { BsCheck, BsTrash3 } from "react-icons/bs";
 import ProfileImageLink from "./ProfileImageLink";
 import { Link } from "react-router-dom";
+//redux
+import { useSelector } from "react-redux";
+import type { RootState } from "../reduxStore/store";
 
 type Props = {
   profileId: string;
@@ -19,6 +22,31 @@ const PendingFriendRequest = (props: Props) => {
     e.preventDefault();
     console.log("approve friendship");
     /* refresh page */
+  };
+
+  const handleFriendshipRequestResponse = async (e: FormEvent, val: string) => {
+    e.preventDefault();
+    console.log(val);
+    /* const response = await fetch(
+      `http://localhost:3001/:id/friend-request-handler`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.token}`,
+        },
+
+        body: JSON.stringify({
+          requestId: props.profileId,
+
+        }),
+      }
+    ); */
+
+    // refreshes page via useNavigate
+    //navigate(0);
+    // send post req to api
   };
 
   return (
@@ -39,21 +67,13 @@ const PendingFriendRequest = (props: Props) => {
           </Link>
         </div>
         <div className="flex flex-row space-x-9 mr-5 items-center justify-center">
-          <form onSubmit={handleApproveFriendship}>
-            <button
-              type="submit"
-              aria-label="approve friend request button"
-              value="approve"
-            >
+          <form onSubmit={(e) => handleFriendshipRequestResponse(e, "approve")}>
+            <button type="submit" aria-label="approve friend request button">
               <BsCheck className="scale-[177%] sm:scale-[250%] hover:text-green-500 cursor-pointer" />
             </button>
           </form>
-          <form onSubmit={handleDenyFriendship}>
-            <button
-              type="submit"
-              ria-label="deny friend request button"
-              value="deny"
-            >
+          <form onSubmit={(e) => handleFriendshipRequestResponse(e, "deny")}>
+            <button type="submit" ria-label="deny friend request button">
               <BsTrash3 className="scale-[100%] sm:scale-[140%] hover:text-red-500 cursor-pointer" />
             </button>
           </form>
