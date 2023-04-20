@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import PendingFriendRequest from "../components/PendingFriendRequest";
+import Loading from "../components/Loading";
 //redux
 import { useSelector } from "react-redux";
 import type { RootState } from "../reduxStore/store";
-import Loading from "../components/Loading";
 
 interface FriendRequest {
   _id: string;
@@ -28,7 +28,7 @@ const FriendRequests = () => {
     });
 
     const friendRequestRes = await response.json();
-    console.log(friendRequestRes);
+    //console.log(friendRequestRes);
     setFriendRequests(friendRequestRes.user.friendRequests);
     setLoaded(true);
   }

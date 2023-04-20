@@ -2,9 +2,20 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { HiDotsHorizontal } from "react-icons/hi";
 import Friend from "../components/Friend";
+//redux
+import { useSelector } from "react-redux";
+import type { RootState } from "../reduxStore/store";
+
+interface Friends {
+  _id: string;
+  username: string;
+  profilePicUrl: string;
+}
 
 type Props = {};
 function Friends(props: Props) {
+  const id = useSelector((state: RootState) => state.user.id);
+
   const friendList = [
     {
       name: "Kurtis Ivey",
