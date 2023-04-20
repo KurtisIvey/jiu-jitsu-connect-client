@@ -120,6 +120,7 @@ function Friends(props: Props) {
                   >
                     {/* encase img and a tag in same Link */}
                     <Friend
+                      profileId={friend._id}
                       username={friend.username}
                       profilePicUrl={friend.profilePicUrl}
                     />

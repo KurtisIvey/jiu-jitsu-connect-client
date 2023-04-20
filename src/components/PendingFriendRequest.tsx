@@ -60,11 +60,12 @@ const PendingFriendRequest = (props: Props) => {
           <ProfileImageLink
             widthHeight="10"
             profileUsername={props.username}
+            profileId={props.profileId}
             profilePicUrl={props.profilePicUrl}
           />
           <Link
             to={`/profile/${props.profileId}`}
-            className="ml-2 text-sm sm:text-base hover:underline cursor-pointer hover:text-blue-500 "
+            className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500 "
           >
             {props.username}
           </Link>

@@ -2,8 +2,10 @@ import React, { useState, FormEvent } from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FiUserX } from "react-icons/fi";
 import ProfileImageLink from "./ProfileImageLink";
+import { Link } from "react-router-dom";
 
 type Props = {
+  profileId: string;
   username: string;
   profilePicUrl?: string;
 };
@@ -28,13 +30,17 @@ const Friend = (props: Props) => {
         <a href="">
           <ProfileImageLink
             widthHeight="10"
+            profileId={props.profileId}
             profileUsername={props.username}
             profilePicUrl={props.profilePicUrl}
           />{" "}
         </a>
-        <a className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500">
+        <Link
+          to={`/profile/${props.profileId}`}
+          className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500"
+        >
           {props.username}
-        </a>
+        </Link>
       </div>
       <div
         className={`mr-2 relative
