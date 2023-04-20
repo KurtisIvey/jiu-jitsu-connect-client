@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { HiDotsHorizontal } from "react-icons/hi";
 import Friend from "../components/Friend";
@@ -15,6 +15,7 @@ interface Friends {
 type Props = {};
 function Friends(props: Props) {
   const id = useSelector((state: RootState) => state.user.id);
+  const [loaded, setLoaded] = useState(false);
 
   const friendList = [
     {
