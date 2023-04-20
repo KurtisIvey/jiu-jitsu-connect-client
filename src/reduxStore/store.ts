@@ -12,7 +12,9 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({ reducer: persistedReducer });
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, null, () => {
+  console.log("persistor loaded");
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

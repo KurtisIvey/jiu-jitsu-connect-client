@@ -20,7 +20,6 @@ const CreatePost = (props: Props) => {
 
   const handleSubmitPost = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(postContent);
 
     const response = await fetch(
       `https://odinbook-backend.herokuapp.com/api/posts/`,

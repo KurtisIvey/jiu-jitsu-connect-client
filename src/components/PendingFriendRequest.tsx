@@ -40,12 +40,20 @@ const PendingFriendRequest = (props: Props) => {
         </div>
         <div className="flex flex-row space-x-9 mr-5 items-center justify-center">
           <form onSubmit={handleApproveFriendship}>
-            <button type="submit">
+            <button
+              type="submit"
+              aria-label="approve friend request button"
+              value="approve"
+            >
               <BsCheck className="scale-[177%] sm:scale-[250%] hover:text-green-500 cursor-pointer" />
             </button>
           </form>
           <form onSubmit={handleDenyFriendship}>
-            <button type="submit">
+            <button
+              type="submit"
+              ria-label="deny friend request button"
+              value="deny"
+            >
               <BsTrash3 className="scale-[100%] sm:scale-[140%] hover:text-red-500 cursor-pointer" />
             </button>
           </form>
