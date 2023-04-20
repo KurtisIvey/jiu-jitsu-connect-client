@@ -28,6 +28,7 @@ const FriendRequests = () => {
     });
 
     const friendRequestRes = await response.json();
+    console.log(friendRequestRes);
     setFriendRequests(friendRequestRes.user.friendRequests);
     setLoaded(true);
   }
@@ -45,8 +46,8 @@ const FriendRequests = () => {
       <Navbar />
       {loaded ? (
         <main className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 max-w-3xl">
-          <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
-            <h2 className="text-center font-semibold text-lg sm:text-2xl">
+          <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2 ">
+            <h2 className="text-center font-semibold text-lg sm:text-2xl ">
               Friend Requests{" "}
               <span className="text-blue-500">{friendRequests.length}</span>
             </h2>

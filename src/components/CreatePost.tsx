@@ -38,9 +38,6 @@ const CreatePost = (props: Props) => {
     );
     props.fetchPosts();
     handleClose();
-    // refreshes page via useNavigate
-    //navigate(0);
-    // send post req to api
   };
 
   return (

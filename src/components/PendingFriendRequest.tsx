@@ -38,8 +38,8 @@ const PendingFriendRequest = (props: Props) => {
           }),
         }
       );
-      const res = await apiResponse.json();
-      console.log(res);
+      // left in case I need to diagnose error code from frontEnd
+      //const res = await apiResponse.json();
 
       if (!apiResponse.ok) {
         throw new Error("Failed to update friendship request");
@@ -62,7 +62,6 @@ const PendingFriendRequest = (props: Props) => {
             profileUsername={props.username}
             profilePicUrl={props.profilePicUrl}
           />
-
           <Link
             to={`/profile/${props.profileId}`}
             className="ml-2 text-sm sm:text-base hover:underline cursor-pointer hover:text-blue-500 "
