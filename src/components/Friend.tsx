@@ -1,10 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FiUserX } from "react-icons/fi";
+import ProfileImageLink from "./ProfileImageLink";
 
 type Props = {
-  name: string;
-  imgSrc: string;
+  username: string;
+  profilePicUrl?: string;
 };
 
 const Friend = (props: Props) => {
@@ -25,14 +26,14 @@ const Friend = (props: Props) => {
     <>
       <div className="flex flex-row items-center ">
         <a href="">
-          <img
-            className=" rounded-md h-10 w-10 sm:h-14 sm:w-14 border-white border-2 "
-            alt={props.name}
-            src={props.imgSrc}
-          />
+          <ProfileImageLink
+            widthHeight="10"
+            profileUsername={props.username}
+            profilePicUrl={props.profilePicUrl}
+          />{" "}
         </a>
         <a className="ml-2 text-sm sm:text-base hover:underline cursor-pointer ">
-          Link to {props.name}
+          {props.username}
         </a>
       </div>
       <div
