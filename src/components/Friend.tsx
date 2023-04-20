@@ -32,7 +32,7 @@ const Friend = (props: Props) => {
             profilePicUrl={props.profilePicUrl}
           />{" "}
         </a>
-        <a className="ml-2 text-sm sm:text-base hover:underline cursor-pointer ">
+        <a className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500">
           {props.username}
         </a>
       </div>

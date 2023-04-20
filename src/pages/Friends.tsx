@@ -109,17 +109,20 @@ function Friends(props: Props) {
         <main className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 max-w-4xl">
           <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
             <h2 className="text-center font-semibold text-lg sm:text-2xl">
-              Friends <span className="">({friendList.length})</span>
+              Friends <span className="text-blue-500">({friends.length})</span>
             </h2>
             <section className="grid sm:grid-cols-2 gap-[10px]">
-              {friendList.map((friend, index) => {
+              {friends.map((friend) => {
                 return (
                   <div
-                    key={index}
+                    key={friend._id}
                     className=" rounded-md border border-grey-400 flex flex-row justify-between items-center p-1 "
                   >
                     {/* encase img and a tag in same Link */}
-                    <Friend name={friend.name} imgSrc={friend.imgSrc} />
+                    <Friend
+                      username={friend.username}
+                      profilePicUrl={friend.profilePicUrl}
+                    />
                   </div>
                 );
               })}
