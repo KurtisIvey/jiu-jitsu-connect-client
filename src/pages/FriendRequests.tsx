@@ -58,6 +58,7 @@ const FriendRequests = () => {
                     className=" rounded-md border border-grey-400 flex flex-row justify-between items-center p-1 "
                   >
                     <PendingFriendRequest
+                      fetchFriendRequests={fetchFriendRequests}
                       profileId={friendRequest._id}
                       username={friendRequest.username}
                       profilePicUrl={friendRequest.profilePicUrl}

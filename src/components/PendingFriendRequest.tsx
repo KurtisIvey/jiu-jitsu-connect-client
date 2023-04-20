@@ -7,46 +7,50 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../reduxStore/store";
 
 type Props = {
+  fetchFriendRequests: () => Promise<void>;
   profileId: string;
   username: string;
   profilePicUrl?: string;
 };
 
 const PendingFriendRequest = (props: Props) => {
-  const handleDenyFriendship = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("deny friendship ", props.profileId);
-    /* refresh page via useNavigate */
-  };
-  const handleApproveFriendship = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("approve friendship");
-    /* refresh page */
-  };
+  const id = useSelector((state: RootState) => state.user.id);
 
-  const handleFriendshipRequestResponse = async (e: FormEvent, val: string) => {
+  const handleFriendshipRequestResponse = async (
+    e: FormEvent,
+    response: string
+  ) => {
     e.preventDefault();
-    console.log(val);
-    /* const response = await fetch(
-      `http://localhost:3001/:id/friend-request-handler`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.token}`,
-        },
 
-        body: JSON.stringify({
-          requestId: props.profileId,
+    try {
+      const apiResponse = await fetch(
+        `http://localhost:3001/api/users/${id}/friend-request-handler`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.token}`,
+          },
+          body: JSON.stringify({
+            requesterId: props.profileId,
+            response,
+          }),
+        }
+      );
+      const res = await apiResponse.json();
+      console.log(res);
 
-        }),
+      if (!apiResponse.ok) {
+        throw new Error("Failed to update friendship request");
       }
-    ); */
 
-    // refreshes page via useNavigate
-    //navigate(0);
-    // send post req to api
+      // friendRequests refreshed via calling fetchFriendRequests
+      props.fetchFriendRequests();
+    } catch (error) {
+      console.error(error);
+      // display an error message to the user
+    }
   };
 
   return (
@@ -67,13 +71,13 @@ const PendingFriendRequest = (props: Props) => {
           </Link>
         </div>
         <div className="flex flex-row space-x-9 mr-5 items-center justify-center">
-          <form onSubmit={(e) => handleFriendshipRequestResponse(e, "approve")}>
+          <form onSubmit={(e) => handleFriendshipRequestResponse(e, "accept")}>
             <button type="submit" aria-label="approve friend request button">
               <BsCheck className="scale-[177%] sm:scale-[250%] hover:text-green-500 cursor-pointer" />
             </button>
           </form>
           <form onSubmit={(e) => handleFriendshipRequestResponse(e, "deny")}>
-            <button type="submit" ria-label="deny friend request button">
+            <button type="submit" aria-label="deny friend request button">
               <BsTrash3 className="scale-[100%] sm:scale-[140%] hover:text-red-500 cursor-pointer" />
             </button>
           </form>
