@@ -19,7 +19,7 @@ function Friends(props: Props) {
   const [loaded, setLoaded] = useState(false);
   const [friends, setFriends] = useState<Friends[]>([]);
 
-  async function fetchFriendRequests() {
+  async function fetchFriends() {
     const response = await fetch(`http://localhost:3001/api/users/${id}`, {
       method: "GET",
       credentials: "include",
@@ -29,11 +29,15 @@ function Friends(props: Props) {
       },
     });
 
-    const friendRequestRes = await response.json();
+    const friendsRes = await response.json();
     //console.log(friendRequestRes);
-    setFriends(friendRequestRes.user.friends);
+    setFriends(friendsRes.user.friends);
     setLoaded(true);
   }
+
+  useEffect(() => {
+    fetchFriends();
+  }, []);
 
   const friendList = [
     {
