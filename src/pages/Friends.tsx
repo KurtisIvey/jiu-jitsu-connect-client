@@ -5,6 +5,7 @@ import Friend from "../components/Friend";
 //redux
 import { useSelector } from "react-redux";
 import type { RootState } from "../reduxStore/store";
+import Loading from "../components/Loading";
 
 interface Friends {
   _id: string;
@@ -16,6 +17,23 @@ type Props = {};
 function Friends(props: Props) {
   const id = useSelector((state: RootState) => state.user.id);
   const [loaded, setLoaded] = useState(false);
+  const [friends, setFriends] = useState<Friends[]>([]);
+
+  async function fetchFriendRequests() {
+    const response = await fetch(`http://localhost:3001/api/users/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.token}`,
+      },
+    });
+
+    const friendRequestRes = await response.json();
+    //console.log(friendRequestRes);
+    setFriends(friendRequestRes.user.friends);
+    setLoaded(true);
+  }
 
   const friendList = [
     {
@@ -82,26 +100,30 @@ function Friends(props: Props) {
   return (
     <div>
       <Navbar />
-      <main className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 max-w-4xl">
-        <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
-          <h2 className="text-center font-semibold text-lg sm:text-2xl">
-            Friends <span className="">({friendList.length})</span>
-          </h2>
-          <section className="grid sm:grid-cols-2 gap-[10px]">
-            {friendList.map((friend, index) => {
-              return (
-                <div
-                  key={index}
-                  className=" rounded-md border border-grey-400 flex flex-row justify-between items-center p-1 "
-                >
-                  {/* encase img and a tag in same Link */}
-                  <Friend name={friend.name} imgSrc={friend.imgSrc} />
-                </div>
-              );
-            })}
-          </section>
-        </div>
-      </main>
+      {loaded ? (
+        <main className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 max-w-4xl">
+          <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
+            <h2 className="text-center font-semibold text-lg sm:text-2xl">
+              Friends <span className="">({friendList.length})</span>
+            </h2>
+            <section className="grid sm:grid-cols-2 gap-[10px]">
+              {friendList.map((friend, index) => {
+                return (
+                  <div
+                    key={index}
+                    className=" rounded-md border border-grey-400 flex flex-row justify-between items-center p-1 "
+                  >
+                    {/* encase img and a tag in same Link */}
+                    <Friend name={friend.name} imgSrc={friend.imgSrc} />
+                  </div>
+                );
+              })}
+            </section>
+          </div>
+        </main>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
