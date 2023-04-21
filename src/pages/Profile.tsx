@@ -9,13 +9,18 @@ import Loading from "../components/Loading";
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
 import SubmitButton from "../components/SubmitButton";
+import FriendListModal from "../components/FriendListModal";
 
 type Props = {
   //id: string;
 };
 
 interface UserState {
-  friends: string[];
+  friends: {
+    username: string;
+    _id: string;
+    profilePicUrl: string;
+  }[];
   friendRequests: {
     friends: string[];
     friendRequests: {};
@@ -45,19 +50,33 @@ const Profile = (props: Props) => {
   const [user, setUser] = useState<null | UserState>(null);
   const [userPosts, setUserPosts] = useState<null | PostState[]>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [currentlyFriendRequested, setCurrentlyFriendRequested] =
+    useState<boolean>(false);
   const [currentlyFriends, setCurrentlyFriends] = useState<boolean>(false);
 
+  const isFriends = () => {
+    if (!user) {
+      return;
+    }
+    for (let i = 0; i < user.friends.length; i++) {
+      if (user.friends[i]._id === loggedInId) {
+        setCurrentlyFriends(true);
+        return;
+      }
+    }
+    setCurrentlyFriends(false);
+  };
   const isFriendRequested = () => {
     if (!user) {
       return;
     }
     for (let i = 0; i < user.friendRequests.length; i++) {
       if (user.friendRequests[i]._id === loggedInId) {
-        setCurrentlyFriends(true);
+        setCurrentlyFriendRequested(true);
         return;
       }
     }
-    setCurrentlyFriends(false);
+    setCurrentlyFriendRequested(false);
   };
 
   /*
@@ -65,6 +84,7 @@ const Profile = (props: Props) => {
   
   */
   useEffect(() => {
+    isFriends();
     isFriendRequested();
   }, [user]);
 
@@ -104,6 +124,7 @@ const Profile = (props: Props) => {
       });
 
       const userRes = await response.json();
+      console.log(userRes);
       setUser(userRes.user);
     } catch (error) {
       console.error("Failed to fetch user: ", error);
@@ -164,13 +185,13 @@ const Profile = (props: Props) => {
               </h2>
               <div
                 aria-label={`${user?.username} has ${user?.friends} friends`}
-                className="text-gray-600/80"
+                className="text-gray-600/80 "
               >
-                {user && user.friends.length} Friends
+                <FriendListModal friends={user?.friends} />
               </div>
               {/* add friend button */}
-              {loggedInId !== id ? (
-                currentlyFriends ? (
+              {loggedInId !== id && currentlyFriends === false ? (
+                currentlyFriendRequested ? (
                   <form onSubmit={(e) => addFriend(e)}>
                     <SubmitButton
                       width="fit"

@@ -8,6 +8,7 @@ type Props = {
   profileId: string;
   username: string;
   profilePicUrl?: string;
+  visiting?: boolean;
 };
 
 const Friend = (props: Props) => {
@@ -46,26 +47,30 @@ const Friend = (props: Props) => {
         className={`mr-2 relative
           cursor-pointer`}
       >
-        <div
-          onClick={handleModal}
-          className="p-2 rounded-full  hover:bg-gray-200"
-        >
-          <HiDotsHorizontal />
-        </div>
-        <form
-          onSubmit={handleUnfriend}
-          className={`absolute rounded-lg ${
-            modalOpen ? "block bg-white" : "hidden"
-          } border p-2 right-7 top-[-5px] shadow-xl`}
-        >
-          <button
-            type="submit"
-            className="flex items-center justify-center space-x-3 hover:text-red-500"
-          >
-            <FiUserX className="scale-125" />{" "}
-            <span className="text-sm sm:text-base">unfriend</span>
-          </button>
-        </form>{" "}
+        {props.visiting !== true && (
+          <>
+            <div
+              onClick={handleModal}
+              className="p-2 rounded-full  hover:bg-gray-200"
+            >
+              <HiDotsHorizontal />
+            </div>
+            <form
+              onSubmit={handleUnfriend}
+              className={`absolute rounded-lg ${
+                modalOpen ? "block bg-white" : "hidden"
+              } border p-2 right-7 top-[-5px] shadow-xl`}
+            >
+              <button
+                type="submit"
+                className="flex items-center justify-center space-x-3 hover:text-red-500"
+              >
+                <FiUserX className="scale-125" />{" "}
+                <span className="text-sm sm:text-base">unfriend</span>
+              </button>
+            </form>{" "}
+          </>
+        )}
       </div>
     </>
   );
