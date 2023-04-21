@@ -169,6 +169,7 @@ const Profile = (props: Props) => {
             id="profilePhotoCol"
             className="flex flex-col items-center mx-auto mt-10 space-y-2"
           >
+            {/* profile photo */}
             <img
               className="rounded-full  w-auto max-h-[200px] border-white border-2"
               src={
@@ -183,15 +184,12 @@ const Profile = (props: Props) => {
               <h2 className="text-3xl font-semibold tracking-wide">
                 {user && user.username}
               </h2>
-              <div
-                aria-label={`${user?.username} has ${user?.friends} friends`}
-                className="text-gray-600/80 "
-              >
-                <FriendListModal
-                  friends={user?.friends}
-                  username={user?.username}
-                />
-              </div>
+
+              <FriendListModal
+                friends={user?.friends}
+                username={user?.username}
+              />
+
               {/* add friend button */}
               {loggedInId !== id && currentlyFriends === false ? (
                 currentlyFriendRequested ? (

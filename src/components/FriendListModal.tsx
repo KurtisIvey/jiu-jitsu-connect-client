@@ -37,12 +37,17 @@ const FriendListModal = (props: Props) => {
   return (
     <section className="relative  mt-1" ref={friendListRef}>
       <div className="flex items-center border">
+        header that also functions as way to open friendsList
         <h3
           className="text-lg  text-center text-blue-400 cursor-pointer mx-auto hover:scale-110 transition-all duration-100 ease-in-out"
           onClick={() => setOpen(!open)}
           aria-label="open create post"
         >
-          {props.friends?.length} Friends
+          <span
+            aria-label={`${props.username} has ${props.friends?.length} friends`}
+          >
+            {props.friends?.length} Friends
+          </span>
         </h3>
       </div>
       {/* modal section */}
