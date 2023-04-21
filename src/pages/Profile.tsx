@@ -187,7 +187,10 @@ const Profile = (props: Props) => {
                 aria-label={`${user?.username} has ${user?.friends} friends`}
                 className="text-gray-600/80 "
               >
-                <FriendListModal friends={user?.friends} />
+                <FriendListModal
+                  friends={user?.friends}
+                  username={user?.username}
+                />
               </div>
               {/* add friend button */}
               {loggedInId !== id && currentlyFriends === false ? (

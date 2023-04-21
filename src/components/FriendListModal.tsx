@@ -1,7 +1,9 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
 import Friend from "./Friend";
+import { FaRegWindowClose } from "react-icons/fa";
 
 type Props = {
+  username: string | undefined;
   friends?: {
     username: string;
     _id: string;
@@ -17,6 +19,21 @@ const FriendListModal = (props: Props) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        friendListRef.current &&
+        !friendListRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <section className="relative  mt-1" ref={friendListRef}>
       <div className="flex items-center border">
@@ -28,12 +45,23 @@ const FriendListModal = (props: Props) => {
           {props.friends?.length} Friends
         </h3>
       </div>
-
+      {/* modal section */}
       <div
-        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg p-4 shadow-md max-w-2xl absolute w-[350px] lg:w-[500px] -translate-x-1/2 left-1/2 top-[-120px] z-10 ${
+        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg p-4 shadow-md 
+        max-w-2xl absolute w-[250px]  -translate-x-1/2 left-1/2 top-[-50px] z-10 space-y-3 ${
           !open && "hidden"
         } `}
       >
+        {/* top row of modal with close button */}
+        <div className="flex justify-between items-center">
+          <div>{props.username}'s friends</div>
+          <FaRegWindowClose
+            onClick={handleClose}
+            size={25}
+            className="text-blue-500 hover:scale-110 cursor-pointer transition-all duration-150 ease-in-out"
+          />
+        </div>
+        {/* populated current friends */}
         {props.friends?.map((friend) => {
           return (
             <div
