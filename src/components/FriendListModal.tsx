@@ -1,23 +1,31 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 import Friend from "./Friend";
 import { FaRegWindowClose } from "react-icons/fa";
 
 type Props = {
-  username: string | undefined;
+  username?: string;
   friends?: {
     username: string;
     _id: string;
-    profilePicUrl: string | undefined;
+    profilePicUrl?: string;
   }[];
 };
 
-const FriendListModal = (props: Props) => {
+const FriendListModal = ({ username = "", friends = [] }: Props) => {
+  const location = useLocation();
+
   const [open, setOpen] = useState(false);
   const friendListRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    handleClose();
+  }, [location]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -43,23 +51,22 @@ const FriendListModal = (props: Props) => {
           onClick={() => setOpen(!open)}
           aria-label="open create post"
         >
-          <span
-            aria-label={`${props.username} has ${props.friends?.length} friends`}
-          >
-            {props.friends?.length} Friends
+          <span aria-label={`${username} has ${friends.length} friends`}>
+            {friends.length} Friends
           </span>
         </h3>
       </div>
       {/* modal section */}
       <div
-        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg p-4 shadow-md 
-        max-w-2xl absolute w-[250px]  -translate-x-1/2 left-1/2 top-[-50px] z-10 space-y-3 ${
-          !open && "hidden"
-        } `}
+        className={`flex flex-col text-gray-800 border bg-white border-gray-300 rounded-lg
+         p-4 shadow-md max-w-2xl absolute w-[250px]  -translate-x-1/2 
+         left-1/2 top-[-50px] z-10 space-y-3 ${
+           !open && "hidden"
+         } h-fit max-h-[400px] ${friends.length > 3 && "overflow-y-scroll"}`}
       >
         {/* top row of modal with close button */}
         <div className="flex justify-between items-center">
-          <div>{props.username}'s friends</div>
+          <div>{username}'s friends</div>
           <FaRegWindowClose
             onClick={handleClose}
             size={25}
@@ -67,7 +74,7 @@ const FriendListModal = (props: Props) => {
           />
         </div>
         {/* populated current friends */}
-        {props.friends?.map((friend) => {
+        {friends.map((friend) => {
           return (
             <div
               key={friend._id}
