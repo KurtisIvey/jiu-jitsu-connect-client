@@ -29,9 +29,9 @@ const Comment = (props: Props) => {
         <p className="w-full flex justify-between">
           <Link
             to={`/profile/${props.author._id}`}
-            className="hover:text-blue-600"
+            className=" font-semibold mr-2 hover:text-blue-600 hover:underline"
           >
-            <span className="font-semibold mr-2">{props.author.username}</span>
+            {props.author.username}
           </Link>
           <span className="mr-1 font-semibold text-[.7rem]">
             {convertDateTime(props.timestamp)}
