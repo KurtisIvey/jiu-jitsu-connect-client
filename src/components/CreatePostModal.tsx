@@ -1,4 +1,6 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 import { BsPlusCircle } from "react-icons/bs";
 
 type Props = {
@@ -18,6 +20,12 @@ const CreatePost = (props: Props) => {
     setOpen(false);
     setPostContent("");
   };
+
+  /* detects changing of profile and auto closes modal when navigating to dif profile */
+  const location = useLocation();
+  useEffect(() => {
+    handleClose();
+  }, [location]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

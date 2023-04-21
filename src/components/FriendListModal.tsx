@@ -14,8 +14,6 @@ type Props = {
 };
 
 const FriendListModal = ({ username = "", friends = [] }: Props) => {
-  const location = useLocation();
-
   const [open, setOpen] = useState(false);
   const friendListRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +21,8 @@ const FriendListModal = ({ username = "", friends = [] }: Props) => {
     setOpen(false);
   };
 
+  /* detects changing of profile and auto closes modal when navigating to dif profile */
+  const location = useLocation();
   useEffect(() => {
     handleClose();
   }, [location]);
