@@ -22,24 +22,30 @@ const CreatePostHome = (props: Props) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     //console.log(postContent);
+    try {
+      const response = await fetch(
+        `https://odinbook-backend.herokuapp.com/api/posts/`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.token}`,
+          },
 
-    const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.token}`,
-        },
-
-        body: JSON.stringify({
-          postContent,
-        }),
+          body: JSON.stringify({
+            postContent,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to create post");
       }
-    );
-    props.fetchPosts();
-    setPostContent("");
+      props.fetchPosts();
+      setPostContent("");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
