@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import CreatePost from "../components/CreatePost";
+import CreatePost from "../components/CreatePostModal";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import Loading from "../components/Loading";

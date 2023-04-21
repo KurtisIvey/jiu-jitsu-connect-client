@@ -93,14 +93,14 @@ const CreatePost = (props: Props) => {
          */}{" "}
         <div className="buttons flex">
           <div
-            className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
+            className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto hover:bg-gray-100/70"
             onClick={() => handleClose()}
           >
             Cancel
           </div>
           <button
             type="submit"
-            className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500"
+            className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-500/90"
             aria-label="create post"
           >
             Post
