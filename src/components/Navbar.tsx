@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
@@ -65,6 +65,7 @@ const Navbar = (props: Props) => {
               />
             </div>
             {/*<!-- Dropdown menu -->*/}
+
             <div
               className={`z-50 ${
                 !open && "hidden"
