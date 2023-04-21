@@ -100,7 +100,7 @@ const CreatePost = (props: Props) => {
           </div>
           <button
             type="submit"
-            className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-500/90"
+            className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-500/80"
             aria-label="create post"
           >
             Post
