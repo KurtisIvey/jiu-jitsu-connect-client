@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect, useRef } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 const CreatePost = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
+  const createPostRef = useRef<HTMLFormElement>(null);
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostContent(e.target.value);
@@ -17,6 +18,21 @@ const CreatePost = (props: Props) => {
     setOpen(false);
     setPostContent("");
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        createPostRef.current &&
+        !createPostRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const handleSubmitPost = async (e: FormEvent) => {
     e.preventDefault();
@@ -41,7 +57,7 @@ const CreatePost = (props: Props) => {
   };
 
   return (
-    <section className="relative mx-auto mt-1">
+    <section className="relative mx-auto mt-1" ref={createPostRef}>
       <div className="grid grid-cols-3 items-center">
         <h3 className="text-lg text-gray-600 ">Create</h3>
         <BsPlusCircle
