@@ -63,7 +63,7 @@ const FriendListModal = (props: Props) => {
           <FaRegWindowClose
             onClick={handleClose}
             size={25}
-            className="text-blue-500 hover:scale-110 cursor-pointer transition-all duration-150 ease-in-out"
+            className="text-blue-500 hover:text-blue-600/85 hover:scale-110 cursor-pointer transition-all duration-150 ease-in-out"
           />
         </div>
         {/* populated current friends */}
