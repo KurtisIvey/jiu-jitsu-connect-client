@@ -28,6 +28,7 @@ export const userSlice = createSlice({
       state.username = "";
       state.id = "";
       state.profilePicUrl = "";
+      state.authenticated = false;
     },
     setAuthenticated: (state, action) => {
       state.authenticated = action.payload;
