@@ -12,6 +12,10 @@ import { resetUser } from "../reduxStore/slices/userSlice";
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.user.authenticated
+  );
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const username = useSelector((state: RootState) => state.user.username);
@@ -20,7 +24,6 @@ const Navbar = (props: Props) => {
     (state: RootState) => state.user.profilePicUrl
   );
 
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const handleSignOut = () => {
@@ -30,6 +33,13 @@ const Navbar = (props: Props) => {
     alert("Sign out Successful");
     navigate("/");
   };
+
+  // protects route if user is not authenticated during log in
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
 
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 lg:px-[15vw] ">

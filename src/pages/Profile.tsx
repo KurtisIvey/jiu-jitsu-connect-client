@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import CreatePost from "../components/CreatePostModal";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
@@ -44,11 +44,6 @@ interface PostState {
 
 const Profile = (props: Props) => {
   const loggedInId = useSelector((state: RootState) => state.user.id);
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.user.authenticated
-  );
-  // allows navigate back to login when user not authenticated
-  const navigate = useNavigate();
   const location = useLocation();
 
   const { id } = useParams();
@@ -85,12 +80,6 @@ const Profile = (props: Props) => {
     setCurrentlyFriendRequested(false);
   };
 
-  // protects route if user is not authenticated during log in
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated]);
   /*
   only workable solution to getting isFriendRequest to call initially upon render
   

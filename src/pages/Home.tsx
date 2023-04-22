@@ -47,11 +47,11 @@ const Home = (props: Props) => {
     setLoaded(true);
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated]); */
 
   useEffect(() => {
     fetchPosts();
