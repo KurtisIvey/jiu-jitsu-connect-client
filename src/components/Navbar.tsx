@@ -22,19 +22,6 @@ const Navbar = (props: Props) => {
 
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   const handleSignOut = () => {
     // clears both jwt token and redux persist on logout
@@ -56,9 +43,9 @@ const Navbar = (props: Props) => {
           <div
             className="cursor-pointer flex relative mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
             id="user-menu-button"
-            onClick={() => setOpen(!open)}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
             aria-expanded={open ? "true" : "false"}
-            ref={menuRef}
           >
             <span className="sr-only">Open user menu</span>
             <img
