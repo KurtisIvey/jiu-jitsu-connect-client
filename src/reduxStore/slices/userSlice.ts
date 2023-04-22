@@ -5,12 +5,14 @@ export interface UserState {
   username: string;
   id: string;
   profilePicUrl: string;
+  authenticated: boolean;
 }
 
 const initialState: UserState = {
   username: "",
   id: "",
   profilePicUrl: "",
+  authenticated: false,
 };
 
 export const userSlice = createSlice({
@@ -27,10 +29,13 @@ export const userSlice = createSlice({
       state.id = "";
       state.profilePicUrl = "";
     },
+    setAuthenticated: (state, action) => {
+      state.authenticated = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser, setAuthenticated } = userSlice.actions;
 
 export default userSlice.reducer;
