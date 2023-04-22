@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
