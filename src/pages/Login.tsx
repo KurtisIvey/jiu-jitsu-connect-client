@@ -5,7 +5,7 @@ import SubmitButton from "../components/SubmitButton";
 
 //redux
 import { useDispatch } from "react-redux";
-import { setUser } from "../reduxStore/slices/userSlice";
+import { setAuthenticated, setUser } from "../reduxStore/slices/userSlice";
 
 type Props = {};
 
@@ -50,6 +50,8 @@ function Login({}: Props) {
         localStorage.setItem("token", data.token);
         alert("Login successful");
         dispatch(setUser(data.user));
+        // sets authenticated to true so rest of app can be accessed
+        dispatch(setAuthenticated(true));
         navigate("/home");
         //console.log(data);
       } else {
