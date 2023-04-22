@@ -46,15 +46,20 @@ const FriendListModal = ({ username = "", friends = [] }: Props) => {
     <section className="relative  mt-1" ref={friendListRef}>
       <div className="flex items-center">
         {/* header that also functions as way to open friendsList */}
-        <h3
-          className="text-lg underline text-center text-blue-500 cursor-pointer mx-auto hover:scale-[107%] transition-all duration-100 ease-in-out"
-          onClick={() => setOpen(!open)}
-          aria-label="open create post"
-        >
-          <span aria-label={`${username} has ${friends.length} friends`}>
-            {friends.length} Friends
-          </span>
-        </h3>
+        {friends.length === 0 ? (
+          <h3 className="text-lg text-center mx-auto"> 0 friends</h3>
+        ) : (
+          <h3
+            className="text-lg underline text-center text-blue-500 cursor-pointer 
+          mx-auto hover:scale-[107%] transition-all duration-100 ease-in-out"
+            onClick={() => setOpen(!open)}
+            aria-label="open create post"
+          >
+            <span aria-label={`${username} has ${friends.length} friends`}>
+              {friends.length} Friends
+            </span>
+          </h3>
+        )}
       </div>
       {/* modal section */}
       <div
@@ -67,6 +72,7 @@ const FriendListModal = ({ username = "", friends = [] }: Props) => {
         {/* top row of modal with close button */}
         <div className="flex justify-between items-center">
           <div>{username}'s friends</div>
+
           <FaRegWindowClose
             onClick={handleClose}
             size={25}
