@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import FriendRequests from "./pages/FriendRequests";
 import Friends from "./pages/Friends";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
   return (
@@ -15,11 +16,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/friend-requests" element={<FriendRequests />} />
-          <Route path="/friends" element={<Friends />} />
+          {/* protected routes that require login */}
+          <Route element={<PrivateRoutes />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/friend-requests" element={<FriendRequests />} />
+            <Route path="/friends" element={<Friends />} />
+            <Route path="/profile/:id" element={<Profile />} />
+          </Route>
         </Routes>
       </HashRouter>
     </div>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
@@ -35,11 +35,11 @@ const Navbar = (props: Props) => {
   };
 
   // protects route if user is not authenticated during log in
-  useEffect(() => {
+  /*   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated]); */
 
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 lg:px-[15vw] ">
@@ -50,6 +50,7 @@ const Navbar = (props: Props) => {
           </h1>
         </Link>
         <div className="flex items-center ">
+          {/* open close effect based on entering and exiting */}
           <div
             className="cursor-pointer flex relative mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 "
             id="user-menu-button"
