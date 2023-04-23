@@ -40,68 +40,6 @@ function Friends(props: Props) {
     fetchFriends();
   }, []);
 
-  const friendList = [
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-    {
-      name: "Kurtis Ivey",
-      imgSrc:
-        "https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg",
-    },
-  ];
   return (
     <div>
       <Navbar />

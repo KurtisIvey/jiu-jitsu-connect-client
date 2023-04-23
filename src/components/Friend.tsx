@@ -27,15 +27,14 @@ const Friend = (props: Props) => {
 
   return (
     <>
-      <div className="flex flex-row items-center ">
-        <a href="">
-          <ProfileImageLink
-            widthHeight="10"
-            profileId={props.profileId}
-            profileUsername={props.username}
-            profilePicUrl={props.profilePicUrl}
-          />{" "}
-        </a>
+      <div className="flex flex-row items-center  p-1">
+        <ProfileImageLink
+          widthHeight="10"
+          profileId={props.profileId}
+          profileUsername={props.username}
+          profilePicUrl={props.profilePicUrl}
+        />
+
         <Link
           to={`/profile/${props.profileId}`}
           className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500"

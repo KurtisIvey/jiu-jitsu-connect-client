@@ -125,7 +125,7 @@ const Profile = (props: Props) => {
       });
 
       const userRes = await response.json();
-      console.log(userRes);
+      //console.log(userRes);
       setUser(userRes.user);
     } catch (error) {
       console.error("Failed to fetch user: ", error);
