@@ -33,18 +33,15 @@ const Settings = (props: Props) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!image) {
-      setError("Please select an image");
-      return;
-    }
-
-    if (!validFileTypes.find((type) => type === image.type)) {
-      setError("File must be in JPG/PNG format");
-      return;
-    }
-
     const formData = new FormData();
-    formData.append("image", image);
+
+    if (image) {
+      if (!validFileTypes.find((type) => type === image.type)) {
+        setError("File must be in JPG/PNG format");
+        formData.append("image", image);
+        return;
+      }
+    }
 
     const username = usernameRef.current?.value;
     if (username) {
@@ -52,6 +49,7 @@ const Settings = (props: Props) => {
     }
 
     try {
+      console.log("hi");
       const response = await fetch(
         `http://localhost:3001/api/users/account-settings`,
         {
@@ -63,6 +61,9 @@ const Settings = (props: Props) => {
           body: formData,
         }
       );
+
+      const stuff = await response.json();
+      console.log(stuff);
       if (!response.ok) {
         throw new Error("Failed to update profile");
       }
@@ -89,10 +90,10 @@ const Settings = (props: Props) => {
               Profile Name:
             </label>
             <input
+              defaultValue={username}
               ref={usernameRef}
               id="username"
               name="username"
-              placeholder="Kurtis Ivey"
               className="w-[300px] text-gray-900 text-md rounded-lg focus:ring-primary-600 
               focus:border-primary-600 block outline-blue-400 p-2.5 border border-gray-300"
             />
