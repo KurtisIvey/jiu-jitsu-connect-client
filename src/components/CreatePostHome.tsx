@@ -50,9 +50,12 @@ const CreatePostHome = (props: Props) => {
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
-        <form className="flex space-x-2 " onSubmit={(e) => handleSubmit(e)}>
+        <form
+          className="flex space-x-4 justify-center "
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <img
-            className="rounded-full  h-8 w-8 border-white border-2"
+            className="rounded-full h-8 w-8 min-w-[32px] object-cover border-white border-2"
             src={
               profilePicUrl
                 ? profilePicUrl

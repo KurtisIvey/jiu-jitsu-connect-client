@@ -50,7 +50,7 @@ const Navbar = (props: Props) => {
           >
             <span className="sr-only">Open user menu</span>
             <img
-              className="w-9 h-9 rounded-full border border-grey-500 hover:scale-125 transition-all duration-100 ease-in-out"
+              className="w-9 h-9 rounded-full border border-grey-500 hover:scale-125 transition-all duration-100 ease-in-out object-cover"
               src={
                 profilePicUrl
                   ? profilePicUrl

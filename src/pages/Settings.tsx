@@ -8,10 +8,12 @@ const validFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 import type { RootState } from "../reduxStore/store";
 import { useSelector, useDispatch } from "react-redux";
 import ImageUpload from "../components/ImageUpload";
+import { setUser } from "../reduxStore/slices/userSlice";
 
 type Props = {};
 
 const Settings = (props: Props) => {
+  const dispatch = useDispatch();
   const [image, setImage] = useState<File | undefined>(undefined);
   const [error, setError] = useState("");
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -34,15 +36,13 @@ const Settings = (props: Props) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
-
     if (image) {
       if (!validFileTypes.find((type) => type === image.type)) {
         setError("File must be in JPG/PNG format");
-        formData.append("image", image);
         return;
       }
+      formData.append("image", image);
     }
-
     const username = usernameRef.current?.value;
     if (username) {
       formData.append("username", username);
@@ -62,8 +62,10 @@ const Settings = (props: Props) => {
         }
       );
 
-      const stuff = await response.json();
-      console.log(stuff);
+      const data = await response.json();
+      console.log(data.currentUser);
+      dispatch(setUser(data.currentUser));
+
       if (!response.ok) {
         throw new Error("Failed to update profile");
       }
@@ -71,9 +73,7 @@ const Settings = (props: Props) => {
       console.error(error);
     }
   };
-  /* const handleImageChange = (image: File) => {
-    console.log(image);
-  }; */
+
   return (
     <main>
       <Navbar />
@@ -83,8 +83,6 @@ const Settings = (props: Props) => {
           className="space-y-4 flex flex-col items-center"
         >
           <div className="mx-auto flex flex-col justify-center items-center space-y-4">
-            {/* <label>Profile Picture</label>
-            <input type="file" id="imageInput" onChange={handleUpload} />{" "} */}
             <ImageUpload onChange={handleUpload} />
             <label htmlFor="profileName" className="mr-1">
               Profile Name:
@@ -94,6 +92,7 @@ const Settings = (props: Props) => {
               ref={usernameRef}
               id="username"
               name="username"
+              placeholder="Kurtis Ivey"
               className="w-[300px] text-gray-900 text-md rounded-lg focus:ring-primary-600 
               focus:border-primary-600 block outline-blue-400 p-2.5 border border-gray-300"
             />

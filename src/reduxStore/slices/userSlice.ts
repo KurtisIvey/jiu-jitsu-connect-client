@@ -24,6 +24,12 @@ export const userSlice = createSlice({
       state.id = action.payload._id;
       state.profilePicUrl = action.payload.profilePicUrl;
     },
+    setUsername: (state, action) => {
+      state.username = action.payload.username;
+    },
+    setProfilePicUrl: (state, action) => {
+      state.profilePicUrl = action.payload.profilePicUrl;
+    },
     resetUser: (state) => {
       state.username = "";
       state.id = "";
