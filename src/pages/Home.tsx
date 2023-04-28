@@ -3,10 +3,6 @@ import CreatePostHome from "../components/CreatePostHome";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
-import { useNavigate } from "react-router-dom";
-//redux
-import type { RootState } from "../reduxStore/store";
-import { useSelector } from "react-redux";
 
 type Props = {};
 
@@ -22,11 +18,6 @@ interface PostsType {
 }
 
 const Home = (props: Props) => {
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.user.authenticated
-  );
-  const navigate = useNavigate();
-
   const [loaded, setLoaded] = useState<boolean>(false);
   const [posts, setPosts] = useState<null | PostsType>(null);
 
@@ -46,12 +37,6 @@ const Home = (props: Props) => {
     setPosts(postRes.posts);
     setLoaded(true);
   }
-
-  /* useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated]); */
 
   useEffect(() => {
     fetchPosts();

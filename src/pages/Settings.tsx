@@ -4,12 +4,21 @@ import SubmitButton from "../components/SubmitButton";
 
 const validFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector, useDispatch } from "react-redux";
+import ImageUpload from "../components/ImageUpload";
+
 type Props = {};
 
 const Settings = (props: Props) => {
   const [image, setImage] = useState<File | undefined>(undefined);
   const [error, setError] = useState("");
   const usernameRef = useRef<HTMLInputElement>(null);
+  const username = useSelector((state: RootState) => state.user.username);
+  const profilePicUrl = useSelector(
+    (state: RootState) => state.user.profilePicUrl
+  );
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -61,23 +70,21 @@ const Settings = (props: Props) => {
       console.error(error);
     }
   };
-
+  /* const handleImageChange = (image: File) => {
+    console.log(image);
+  }; */
   return (
     <main>
       <Navbar />
-      <section className="container flex flex-col space-y-10 mx-auto mt-[10%]">
-        <img
-          className="rounded-full  w-auto max-h-[200px] max-w-[200px] border-white border-2 mx-auto"
-          src="https://kitsunebackfire.github.io/portfolio/static/media/headshot.2c1b0e6f396d86cf1bcb.jpeg"
-          alt="user photo"
-        />
+      <section className="container flex flex-col space-y-10 mx-auto mt-[10%] justify-center items-center">
         <form
           onSubmit={(e) => handleSubmit(e)}
           className="space-y-4 flex flex-col items-center"
         >
-          <div className="mx-auto flex flex-col justify-center items-center space-y-2">
-            <label>Profile Picture</label>
-            <input type="file" id="imageInput" onChange={handleUpload} />{" "}
+          <div className="mx-auto flex flex-col justify-center items-center space-y-4">
+            {/* <label>Profile Picture</label>
+            <input type="file" id="imageInput" onChange={handleUpload} />{" "} */}
+            <ImageUpload onChange={handleUpload} />
             <label htmlFor="profileName" className="mr-1">
               Profile Name:
             </label>

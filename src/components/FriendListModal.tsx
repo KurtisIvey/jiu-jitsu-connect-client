@@ -67,7 +67,7 @@ const FriendListModal = ({ username = "", friends = [] }: Props) => {
          p-4 shadow-md max-w-2xl absolute w-[250px]  -translate-x-1/2 
          left-1/2 top-[-50px] z-10 space-y-3 ${
            !open && "hidden"
-         } h-fit max-h-[400px] ${friends.length > 3 && "overflow-y-scroll"}`}
+         } h-fit max-h-[300px] ${friends.length > 3 && "overflow-y-scroll"}`}
       >
         {/* top row of modal with close button */}
         <div className="flex justify-between items-center">

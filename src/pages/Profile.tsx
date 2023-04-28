@@ -172,7 +172,7 @@ const Profile = (props: Props) => {
           >
             {/* profile photo */}
             <img
-              className="rounded-full  w-auto max-h-[200px] border-white border-2"
+              className="rounded-full object-cover w-[220px] h-[220px] border-white border-2"
               src={
                 user?.profilePicUrl
                   ? user.profilePicUrl

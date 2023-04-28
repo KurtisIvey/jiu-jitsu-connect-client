@@ -21,7 +21,7 @@ const ProfileImageLink = (props: Props) => {
       to={`/profile/${props.profileId}`}
     >
       <img
-        className={`rounded-full h-${props.widthHeight} w-${props.widthHeight} border-white border-2 hover:scale-110 transition-all duration-100 ease-in-out`}
+        className={`rounded-full h-${props.widthHeight} max-h-[35px] max-w-auto w-${props.widthHeight} border-white border-2 hover:scale-110 transition-all duration-100 ease-in-out object-cover`}
         src={
           props.profilePicUrl
             ? props.profilePicUrl
