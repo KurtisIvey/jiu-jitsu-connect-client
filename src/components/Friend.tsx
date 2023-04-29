@@ -29,7 +29,6 @@ const Friend = (props: Props) => {
     <>
       <div className="flex flex-row items-center  p-1">
         <ProfileImageLink
-          widthHeight="10"
           profileId={props.profileId}
           profileUsername={props.username}
           profilePicUrl={props.profilePicUrl}

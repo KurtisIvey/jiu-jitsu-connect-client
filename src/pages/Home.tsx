@@ -4,22 +4,19 @@ import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
 
-type Props = {};
-
-interface PostsType {
-  map(arg0: (post: any) => JSX.Element): React.ReactNode;
-  posts: {
-    _id: string;
-    postContent: string;
-    timestamp: string;
-    author: string;
-    likes: string[];
-  }[];
+interface PostType {
+  _id: string;
+  postContent: string;
+  timestamp: string;
+  author: string;
+  likes: string[];
 }
 
-const Home = (props: Props) => {
+type Props = {};
+
+const Home: React.FC<Props> = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [posts, setPosts] = useState<null | PostsType>(null);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
   async function fetchPosts() {
     const response = await fetch(
@@ -42,27 +39,40 @@ const Home = (props: Props) => {
     fetchPosts();
   }, []);
 
+  const [visiblePosts, setVisiblePosts] = useState<number>(10);
+
+  const loadMorePosts = () => {
+    setVisiblePosts((prev) => prev + 10);
+  };
+
   return (
     <div>
       <Navbar />
-      <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto  mt-4 md:mt-10 lg:px-[5vw] pb-10">
+      <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 lg:px-[5vw] pb-10">
+        <CreatePostHome fetchPosts={fetchPosts} />
         {loaded ? (
           <>
-            <CreatePostHome fetchPosts={fetchPosts} />
-            {posts &&
-              posts.map((post) => {
-                return (
-                  <div key={post._id}>
-                    <Post
-                      id={post._id}
-                      postContent={post.postContent}
-                      timestamp={post.timestamp}
-                      likes={post.likes}
-                      author={post.author}
-                    />
-                  </div>
-                );
-              })}
+            {posts.slice(0, visiblePosts).map((post) => {
+              return (
+                <div key={post._id}>
+                  <Post
+                    id={post._id}
+                    postContent={post.postContent}
+                    timestamp={post.timestamp}
+                    likes={post.likes}
+                    author={post.author}
+                  />
+                </div>
+              );
+            })}
+            {visiblePosts < posts.length && (
+              <button
+                className="text-white font-medium bg-blue-600 py-2 mx-auto px-4 rounded-lg mt-4 w-[400px]"
+                onClick={loadMorePosts}
+              >
+                Load More
+              </button>
+            )}
           </>
         ) : (
           <Loading />
