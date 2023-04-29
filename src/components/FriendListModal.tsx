@@ -43,7 +43,7 @@ const FriendListModal = ({ username = "", friends = [] }: Props) => {
   }, []);
 
   return (
-    <section className="relative  mt-1" ref={friendListRef}>
+    <section className="relative  mt-1 " ref={friendListRef}>
       <div className="flex items-center">
         {/* header that also functions as way to open friendsList */}
         {friends.length === 0 ? (

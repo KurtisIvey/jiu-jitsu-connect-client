@@ -3,8 +3,11 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { FiUserX } from "react-icons/fi";
 import ProfileImageLink from "./ProfileImageLink";
 import { Link } from "react-router-dom";
-
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector } from "react-redux";
 type Props = {
+  fetchFriends: Function;
   profileId: string;
   username: string;
   profilePicUrl?: string;
@@ -12,17 +15,39 @@ type Props = {
 };
 
 const Friend = (props: Props) => {
+  const userId = useSelector((state: RootState) => state.user.id);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
 
-  const handleUnfriend = (e: FormEvent) => {
+  const handleUnfriend = async (e: FormEvent) => {
     e.preventDefault();
     console.log("delete friend");
-    /*     after submitting form to delete friend to backend, useNavigate to refresh friends page
-     */
+    try {
+      const response = await fetch(
+        `http://localhost:3001/api/users/${userId}/friends`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.token}`,
+          },
+          body: JSON.stringify({
+            unfriendId: props.profileId,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to create post");
+      }
+      setModalOpen(false);
+      props.fetchFriends();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
