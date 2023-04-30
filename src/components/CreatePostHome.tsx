@@ -14,6 +14,9 @@ const CreatePostHome = (props: Props) => {
   const profilePicUrl = useSelector(
     (state: RootState) => state.user.profilePicUrl
   );
+  const currentUsername = useSelector(
+    (state: RootState) => state.user.username
+  );
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostContent(e.target.value);
@@ -67,7 +70,7 @@ const CreatePostHome = (props: Props) => {
             onChange={(e) => handlePostContent(e)}
             value={postContent}
             className="description rounded-lg h-20 p-3 text-xs md:text-base bg-gray-100 w-full pl-3  outline-blue-200"
-            placeholder="Whats on your mind, Kurtis?"
+            placeholder={`Whats on your mind, ${currentUsername}?`}
             aria-label="write a post"
             maxLength={600}
             required

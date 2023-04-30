@@ -1,7 +1,9 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-
 import { BsPlusCircle } from "react-icons/bs";
+//redux
+import type { RootState } from "../reduxStore/store";
+import { useSelector } from "react-redux";
 
 type Props = {
   fetchPosts(): unknown;
@@ -11,6 +13,9 @@ const CreatePost = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [postContent, setPostContent] = useState("");
   const createPostRef = useRef<HTMLFormElement>(null);
+  const currentUsername = useSelector(
+    (state: RootState) => state.user.username
+  );
 
   const handlePostContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostContent(e.target.value);
@@ -90,7 +95,7 @@ const CreatePost = (props: Props) => {
         <textarea
           onChange={(e) => handlePostContent(e)}
           className="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none"
-          placeholder="Describe everything about this post here"
+          placeholder={`Whats on your mind, ${currentUsername}?`}
           maxLength={600}
           value={postContent}
           aria-label="write a post"
