@@ -47,6 +47,9 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
             aria-expanded={open ? "true" : "false"}
+            onClick={() => {
+              setOpen(!open);
+            }}
           >
             <span className="sr-only">Open user menu</span>
             <img
