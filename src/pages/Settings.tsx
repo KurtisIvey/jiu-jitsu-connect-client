@@ -52,7 +52,7 @@ const Settings = (props: Props) => {
     try {
       console.log("hi");
       const response = await fetch(
-        `http://localhost:3001/api/users/account-settings`,
+        `https://odinbook-backend.herokuapp.com/api/users/account-settings`,
         {
           method: "PUT",
           credentials: "include",
