@@ -27,13 +27,11 @@ function Like(props: Props) {
       }
     );
     const postRes = await response.json();
-    //console.log("liking stuff");
-    //console.log(postRes.post.likes);
+
     setPostLikes(postRes.post.likes);
   };
   useEffect(() => {
     getPostInfo();
-    //hasItBeenLiked();
   }, []);
   const handleLike = async (e: FormEvent) => {
     e.preventDefault();

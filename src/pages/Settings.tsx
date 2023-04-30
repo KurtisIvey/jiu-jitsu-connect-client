@@ -20,20 +20,15 @@ const Settings = (props: Props) => {
   const [error, setError] = useState("");
   const usernameRef = useRef<HTMLInputElement>(null);
   const username = useSelector((state: RootState) => state.user.username);
-  const profilePicUrl = useSelector(
-    (state: RootState) => state.user.profilePicUrl
-  );
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-
     if (!validFileTypes.find((type) => type === file?.type)) {
       setError(
         "File must be in JPG/PNG format or profile photo will not be updated"
       );
       return;
     }
-
     setImage(file);
   };
 

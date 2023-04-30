@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
 type Props = {
-  fetchFriends: Function;
+  fetchFriends?: Function;
   profileId: string;
   username: string;
   profilePicUrl?: string;
@@ -27,7 +27,7 @@ const Friend = (props: Props) => {
     console.log("delete friend");
     try {
       const response = await fetch(
-        `http://localhost:3001/api/users/${userId}/friends`,
+        `https://odinbook-backend.herokuapp.com/api/users/${userId}/friends`,
         {
           method: "PUT",
           credentials: "include",

@@ -18,24 +18,22 @@ const FriendRequests = () => {
   const [friendRequests, setFriendRequests] = useState<FriendRequest[]>([]);
 
   async function fetchFriendRequests() {
-    const response = await fetch(`http://localhost:3001/api/users/${id}`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.token}`,
-      },
-    });
+    const response = await fetch(
+      `https://odinbook-backend.herokuapp.com/api/users/${id}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.token}`,
+        },
+      }
+    );
 
     const friendRequestRes = await response.json();
-    //console.log(friendRequestRes);
     setFriendRequests(friendRequestRes.user.friendRequests);
     setLoaded(true);
   }
-
-  // create function to pass down as prop to each friend request
-  // that way it can run fetchFriendRequests and approving or denying friend request
-  // friend requester's ._id will be passed along in body of message
 
   useEffect(() => {
     fetchFriendRequests();

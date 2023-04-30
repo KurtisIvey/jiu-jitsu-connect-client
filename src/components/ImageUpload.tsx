@@ -53,4 +53,3 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange }) => {
 };
 
 export default ImageUpload;
-/* "bg-blue-500 hover:bg-blue-600/70 */

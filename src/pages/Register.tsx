@@ -21,7 +21,6 @@ function Register({}: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    //console.log(loginInfo);
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
@@ -31,7 +30,6 @@ function Register({}: Props) {
       loginInfo.password !== ""
     ) {
       e.preventDefault();
-      console.log(loginInfo);
 
       try {
         const username = loginInfo.username;
@@ -71,10 +69,6 @@ function Register({}: Props) {
         username: "",
       });
     }
-
-    // send post req to api
-    // if successful , useNav to go to login page
-    // else, display error
   }
 
   useEffect(() => {

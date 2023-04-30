@@ -18,7 +18,6 @@ const Comment = (props: Props) => {
   return (
     <section className="flex space-x-2 mx-4 items-center">
       <ProfileImageLink
-        widthHeight="6"
         profilePicUrl={props.author.profilePicUrl}
         profileId={props.author._id}
         profileUsername={props.author.username}

@@ -106,7 +106,7 @@ const Profile = (props: Props) => {
           },
         }
       );
-      // friendRes = await response.json();
+      // debugging use, friendRes = await response.json();
       fetchUser();
     } catch (error) {
       console.error("Failed to add friend: ", error);
@@ -125,7 +125,6 @@ const Profile = (props: Props) => {
       });
 
       const userRes = await response.json();
-      //console.log(userRes);
       setUser(userRes.user);
     } catch (error) {
       console.error("Failed to fetch user: ", error);

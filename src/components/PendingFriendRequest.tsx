@@ -24,7 +24,7 @@ const PendingFriendRequest = (props: Props) => {
 
     try {
       const apiResponse = await fetch(
-        `http://localhost:3001/api/users/${id}/friend-request-handler`,
+        `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request-handler`,
         {
           method: "PUT",
           credentials: "include",
@@ -58,7 +58,6 @@ const PendingFriendRequest = (props: Props) => {
       <div className="flex flex-row justify-between items-center  w-full">
         <div className="flex flex-row items-center">
           <ProfileImageLink
-            widthHeight="10"
             profileUsername={props.username}
             profileId={props.profileId}
             profilePicUrl={props.profilePicUrl}

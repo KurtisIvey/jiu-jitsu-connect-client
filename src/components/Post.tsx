@@ -20,7 +20,6 @@ function Post(props: Props) {
         {/*top row of post, image name, date*/}
         <div className="flex flex-row space-x-2">
           <ProfileImageLink
-            widthHeight="8"
             profilePicUrl={props.author.profilePicUrl}
             profileId={props.author._id}
             profileUsername={props.author.username}

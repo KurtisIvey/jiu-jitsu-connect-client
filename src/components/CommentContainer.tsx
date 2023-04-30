@@ -64,8 +64,7 @@ const CommentContainer = (props: Props) => {
       }
     );
 
-    const commentRes = await response.json();
-    //console.log(commentRes);
+    //const commentRes = await response.json();
     getComments();
     setCommentContent("");
   };
