@@ -36,7 +36,7 @@ function Register({}: Props) {
         const email = loginInfo.email;
         const password = loginInfo.password;
         const response = await fetch(
-          "http://localhost:3001/api/auth/register",
+          "https://odinbook-backend.herokuapp.com/api/auth/register",
           {
             method: "POST",
 
