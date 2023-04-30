@@ -96,7 +96,7 @@ const Profile = (props: Props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3001/api/users/${id}/friend-request`,
+        `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request`,
         {
           method: "PUT",
           credentials: "include",
@@ -115,14 +115,17 @@ const Profile = (props: Props) => {
 
   async function fetchUser() {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${id}`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.token}`,
-        },
-      });
+      const response = await fetch(
+        `https://odinbook-backend.herokuapp.com/api/users/${id}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.token}`,
+          },
+        }
+      );
 
       const userRes = await response.json();
       setUser(userRes.user);
@@ -134,7 +137,7 @@ const Profile = (props: Props) => {
   async function fetchPostsByUser() {
     try {
       const response = await fetch(
-        `http://localhost:3001/api/posts/byUserId/${id}`,
+        `https://odinbook-backend.herokuapp.com/api/posts/byUserId/${id}`,
         {
           method: "GET",
           credentials: "include",
@@ -151,7 +154,6 @@ const Profile = (props: Props) => {
     } catch (error) {
       console.error("Failed to fetch posts: ", error);
     }
-    //const response
   }
   useEffect(() => {
     fetchUser();
