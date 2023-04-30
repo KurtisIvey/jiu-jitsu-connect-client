@@ -44,7 +44,7 @@ const Friend = (props: Props) => {
         throw new Error("Failed to create post");
       }
       setModalOpen(false);
-      props.fetchFriends();
+      props.fetchFriends && props.fetchFriends();
     } catch (error) {
       console.error(error);
     }
