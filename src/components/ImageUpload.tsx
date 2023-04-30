@@ -30,7 +30,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange }) => {
         />
       )}
       <label
-        className="block mb-4 text-sm font-medium text-gray-900 dark:text-white"
+        className="block mb-4 text-sm font-medium text-black"
         htmlFor="file_input"
       >
         Change Profile photo?
