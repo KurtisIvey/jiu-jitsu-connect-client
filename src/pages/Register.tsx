@@ -57,6 +57,7 @@ function Register({}: Props) {
           console.log(data.errors);
           setCreationError(data.errors.email);
         } else {
+          alert("sign up successful");
           navigate("/");
         }
       } catch (err) {
