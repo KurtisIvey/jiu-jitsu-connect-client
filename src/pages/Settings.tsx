@@ -1,6 +1,7 @@
 import React, { useState, FormEvent, useRef } from "react";
 import Navbar from "../components/Navbar";
 import SubmitButton from "../components/SubmitButton";
+import { useNavigate } from "react-router-dom";
 
 const validFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -13,6 +14,7 @@ import { setUser } from "../reduxStore/slices/userSlice";
 type Props = {};
 
 const Settings = (props: Props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState<File | undefined>(undefined);
   const [error, setError] = useState("");
@@ -26,7 +28,9 @@ const Settings = (props: Props) => {
     const file = e.target.files?.[0];
 
     if (!validFileTypes.find((type) => type === file?.type)) {
-      setError("File must be in JPG/PNG format");
+      setError(
+        "File must be in JPG/PNG format or profile photo will not be updated"
+      );
       return;
     }
 
@@ -38,7 +42,9 @@ const Settings = (props: Props) => {
     const formData = new FormData();
     if (image) {
       if (!validFileTypes.find((type) => type === image.type)) {
-        setError("File must be in JPG/PNG format");
+        setError(
+          "File must be in JPG/PNG format or profile photo will not be updated"
+        );
         return;
       }
       formData.append("image", image);
@@ -63,8 +69,9 @@ const Settings = (props: Props) => {
       );
 
       const data = await response.json();
-      console.log(data.currentUser);
       dispatch(setUser(data.currentUser));
+      alert("Update Successful");
+      navigate(0);
 
       if (!response.ok) {
         throw new Error("Failed to update profile");
@@ -84,6 +91,7 @@ const Settings = (props: Props) => {
         >
           <div className="mx-auto flex flex-col justify-center items-center space-y-4">
             <ImageUpload onChange={handleUpload} />
+            <div className="text-xs text-red-500">{error}</div>
             <label htmlFor="profileName" className="mr-1">
               Profile Name:
             </label>

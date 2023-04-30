@@ -69,6 +69,47 @@ function Login({}: Props) {
     }
   };
 
+  const handleDemoAccess = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/login", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          email: "demo@gmail.com",
+          password: "password",
+        }),
+      });
+
+      const data = await response.json();
+      if (data.user) {
+        localStorage.setItem("token", data.token);
+        alert("Login successful");
+        dispatch(setUser(data.user));
+        // sets authenticated to true so rest of app can be accessed
+        dispatch(setAuthenticated(true));
+        navigate("/home");
+        //console.log(data);
+      } else {
+        setErrMessage(data.errors);
+        if (data.errors.password) {
+          setLoginInfo({ ...loginInfo, password: "" });
+          setPasswordErr(true);
+        } else if (data.errors.email) {
+          setLoginInfo({ email: "", password: "" });
+          setEmailErr(true);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <main className=" h-screen flex items-center lg:flex-none ">
       <div
@@ -122,6 +163,17 @@ function Login({}: Props) {
                   Sign up
                 </Link>
               </p>
+            </form>
+            <form className="flex flex-row text-sm" onSubmit={handleDemoAccess}>
+              <p className="font-light  text-gray-500">
+                Want to try out the app?
+              </p>
+              <button
+                className="font-medium text-blue-600 hover:underline 
+                      dark:text-primary-500 ml-1"
+              >
+                Demo Access
+              </button>
             </form>
           </div>
         </div>
