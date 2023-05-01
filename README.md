@@ -56,7 +56,7 @@
 
 Odin-book-backend is a REST API created to communicate with my Odin-book front end. Odin-book-backend was built using test driven development while constructing the various controllers that encompass it. In addition, mongodb-memory-server is used to mock the mongodb database for testing. This was a very challenging project that pushed my knowledge of backend development and understanding of MongoDB. Image uploading is handled via AWS S3 bucket and the corresponding url is then stored in the MongoDB database.
 
-Client Repo [Odin-book](https://github.com/KurtisIvey/odin-book)
+Backend Repo [Odin-book-backend](https://github.com/KurtisIvey/odin-book-backend)
 
 Fully Deployed Project [Odin-book-ki](https://odin-book-ki.herokuapp.com/)
 
@@ -135,7 +135,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Kurtis Ivey - [@IveyCodingBjj](https://twitter.com/IveyCodingBjj) - kurtiveycodes@gmail.com - [linkedin.com/in/kurtisivey/](https://www.linkedin.com/in/kurtisivey/)
 
-Project Link: [https://odinbook-backend.herokuapp.com/](https://odinbook-backend.herokuapp.com/)
+Project Link: [https://odin-book-ki.herokuapp.com/](https://odin-book-ki.herokuapp.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
