@@ -19,9 +19,9 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h3 align="center">Odin Book Backend</h3>
+  <h3 align="center">Odin Book</h3>
   <p align="center">
-    Odin book REST API 
+    Odin book Client
     <br />
   </p>
 </div>
@@ -85,22 +85,9 @@ give it about 15-30 seconds after pressing login initially as the backend may be
 
 This project is currently setup to only run in conjunction with the backend I created due to the various fetch calls located throughout the app. In order to use it, you would need to clone the repo from my backend, configure the proper env variables for it, and then replace the fetch urls with the url from the locally hosted backend.
 
-##### environment variables required
-
-- DB_URI
-- SECRET
-- PORT
-- BUCKET
-- AWS_SECRET_ACCESS_KEY
-- AWS_ACCESS_KEY_ID
-
-##### cors
-
-- cors settings should be configured to your preferences
-
 ## Usage
 
-This backend was primarily created to mimic many of the features present on Facebook such as registration, login, posting text, commenting text, updating usernames, updating profile photos, and adding/removing friends. If you need a reference for such code examples, you're free to use/borrow/reference any of the code present. Reach out to me if you have any questions.
+This front was primarily created to mimic many of the features present on Facebook such as registration, login, posting text, commenting text, updating usernames, updating profile photos, and adding/removing friends. It communicates with my Odin-book-backend. If you need a reference for such code examples, you're free to use/borrow/reference any of the code present. Reach out to me if you have any questions.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
