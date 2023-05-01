@@ -54,7 +54,7 @@
 
 ## About The Project
 
-**Odin Book** is a full stack project that leverages all the programming skills I have acquired so far to create a facebook clone. It features a React Frontend that is written in TypeScript using Vite. Redux is utilized to store session info on the client and persisted using redux-persist. Styling is done via the use of Tailwind CSS as the primary focus was functionality of the web app. Both the frontend and backend are hosted on heroku. AWS S3 bucket is utilized in the backend to handle image uploading from the frontend.
+**Odin Book** is a full stack project that leverages all the programming skills I have acquired so far to create a facebook clone. It features a React Frontend that is written in TypeScript using Vite. Redux is utilized to store session info on the client and persisted using redux-persist. Styling is done via the use of Tailwind CSS as the primary focus was functionality of the web app. The backend utilizes Javascript, AWS S3 bucket, MongoDB, Supertest, Node.js, and Express.js. Both the frontend and backend are hosted on heroku. AWS S3 bucket is utilized in the backend to handle image uploading from the frontend.
 
 **Odin-book client** is the frontend that communicates with my Odin-book-backend. It is a React frontend built using Vite due to Create-react-app no longer being supported. I wrote it in TypeScript to challenge and further develop my programming skills. Styling is done using Tailwind CSS as my primary focus was functionality of the web application. Redux is utilized to store session info as it is persisted using redux-persist. Demo access is available via the login page to tour the app.
 
