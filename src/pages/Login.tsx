@@ -122,9 +122,11 @@ function Login({}: Props) {
       px-6 py-8 mx-auto  lg:h-screen lg:py-0 gap-6 lg:gap-24"
       >
         <div className="flex flex-col max-w-md w-auto gap-3 p-6 ">
-          <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
+          <h1 className=" text-4xl md:text-5xl  font-semibold text-blue-500">
+            Jiu Jitsu Connect
+          </h1>
           <p className="text-md ">
-            Connect with friends and the world around you on Odin-book
+            Connect with Brazilian Jiu Jitsu practicioners around the world
           </p>
         </div>
         <div className="w-full bg-white rounded-lg shadow dark:border lg:mt-0 lg:w-[448px]  xl:p-0">
