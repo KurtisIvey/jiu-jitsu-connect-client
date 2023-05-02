@@ -124,7 +124,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Kurtis Ivey - [@IveyCodingBjj](https://twitter.com/IveyCodingBjj) - kurtiveycodes@gmail.com - [linkedin.com/in/kurtisivey/](https://www.linkedin.com/in/kurtisivey/)
 
-Project Link: [https://odin-book-ki.herokuapp.com/](https://odin-book-ki.herokuapp.com/)
+Project Link: [https://jiujitsu-connect.herokuapp.com/](https://jiujitsu-connect.herokuapp.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
