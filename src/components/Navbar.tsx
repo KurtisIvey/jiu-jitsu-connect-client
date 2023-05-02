@@ -36,7 +36,7 @@ const Navbar = (props: Props) => {
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link to="/home" className="flex items-center">
           <h1 className=" text-3xl lg:text-4xl font-semibold text-blue-500 tracking-wider">
-            Odin-book
+            Jiu Jitsu Connect
           </h1>
         </Link>
         <div className="flex items-center ">

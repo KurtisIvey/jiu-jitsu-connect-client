@@ -126,7 +126,7 @@ function Login({}: Props) {
             Jiu Jitsu Connect
           </h1>
           <p className="text-md ">
-            Connect with Brazilian Jiu Jitsu practicioners around the world
+            Connect with Brazilian Jiu Jitsu practitioners around the world
           </p>
         </div>
         <div className="w-full bg-white rounded-lg shadow dark:border lg:mt-0 lg:w-[448px]  xl:p-0">
