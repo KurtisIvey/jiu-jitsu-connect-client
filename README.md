@@ -19,9 +19,9 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h3 align="center">Odin Book</h3>
+  <h3 align="center">Jiu Jitsu Connect</h3>
   <p align="center">
-    Odin book Client
+    Jiu Jitsu Connect Client
     <br />
   </p>
 </div>
@@ -54,13 +54,13 @@
 
 ## About The Project
 
-**Odin Book** is a full stack project that leverages all the programming skills I have acquired so far to create a facebook clone. It features a React Frontend that is written in TypeScript using Vite. Redux is utilized to store session info on the client and persisted using redux-persist. Styling is done via the use of Tailwind CSS as the primary focus was functionality of the web app. The backend utilizes Javascript, AWS S3 bucket, MongoDB, Supertest, Node.js, and Express.js. Both the frontend and backend are hosted on heroku. AWS S3 bucket is utilized in the backend to handle image uploading from the frontend. Authentication is handled via the use of Json Web Tokens.
+**Jiu Jitsu Connect** is a full stack project that leverages all the programming skills I have acquired so far to create a facebook clone. It features a React Frontend that is written in TypeScript using Vite. Redux is utilized to store session info on the client and persisted using redux-persist. Styling is done via the use of Tailwind CSS as the primary focus was functionality of the web app. The backend utilizes Javascript, AWS S3 bucket, MongoDB, Supertest, Node.js, and Express.js. Both the frontend and backend are hosted on heroku. AWS S3 bucket is utilized in the backend to handle image uploading from the frontend. Authentication is handled via the use of Json Web Tokens.
 
-**Odin-book client** is the frontend that communicates with my Odin-book-backend. It is a React frontend built using Vite due to Create-react-app no longer being supported. I wrote it in TypeScript to challenge and further develop my programming skills. Styling is done using Tailwind CSS as my primary focus was functionality of the web application. Redux is utilized to store session info as it is persisted using redux-persist. Demo access is available via the login page to tour the app.
+**Jiu Jitsu Connect client** is the frontend that communicates with my Odin-book-backend. It is a React frontend built using Vite due to Create-react-app no longer being supported. I wrote it in TypeScript to challenge and further develop my programming skills. Styling is done using Tailwind CSS as my primary focus was functionality of the web application. Redux is utilized to store session info as it is persisted using redux-persist. Demo access is available via the login page to tour the app.
 
 Backend Repo [Odin-book-backend](https://github.com/KurtisIvey/odin-book-backend)
 
-Fully Deployed Project [Odin-book-ki](https://odin-book-ki.herokuapp.com/)
+Fully Deployed Project [Jiu Jitsu Connect](https://jiujitsu-connect.herokuapp.com/)
 
 give it about 15-30 seconds after pressing login initially as the backend may be asleep 😴
 
