@@ -8,17 +8,18 @@ import FriendRequests from "./pages/FriendRequests";
 import Friends from "./pages/Friends";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import LoggedInRedirect from "./utils/LoggedInRedirect";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
     <div className="bg-[#f5f3f3] font-roboto min-h-screen ">
       <HashRouter>
         <Routes>
+          {/* Only accessible w/o auth */}
           <Route element={<LoggedInRedirect />}>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
-
           {/* protected routes that require login */}
           <Route element={<PrivateRoutes />}>
             <Route path="/home" element={<Home />} />
@@ -27,6 +28,7 @@ function App() {
             <Route path="/friends" element={<Friends />} />
             <Route path="/profile/:id" element={<Profile />} />
           </Route>
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </HashRouter>
     </div>
