@@ -37,11 +37,12 @@ const Mailer = (props: Props) => {
       );
   }
   return (
-    <div className="py-20  px-4 mx-auto max-w-screen-md mt-[30%] sm:mt-[25%] md:mt-[20%] lg:mt-[15%] xl:mt-[10%]">
+    <div className=" max-w-screen-md ">
       <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 text-sm sm:text-xl xl:text-2xl">
-        Got a technical issue you need solved? Looking for a new employee to add
-        to the team? Or if you just want to say hello. Feel free to reach out
-        and I'll try my best to get back to you as soon as possible.
+        Noticed an issue with the Jiu-Jitsu Connect? Got a technical issue you
+        need solved? Looking for a new employee to add to the team? Or if you
+        just want to say hello. Feel free to reach out and I'll try my best to
+        get back to you as soon as possible.
       </p>
       <form action="#" className="space-y-8" onSubmit={(e) => sendEmail(e)}>
         <div>
@@ -100,7 +101,7 @@ const Mailer = (props: Props) => {
         </div>
         <button
           type="submit"
-          className="py-1.5 sm:py-3 px-3.5 sm:px-5 text-base xl:text-xl font-medium text-center bg-[#F04E35]/90 hover:bg-[#F04E35]/60 text-white 
+          className="py-1.5 sm:py-3 px-3.5 sm:px-5 text-base xl:text-xl font-medium text-center bg-blue-500 hover:bg-blue-500/80 text-white 
           rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 
           focus:outline-none focus:ring-primary-300 "
         >
