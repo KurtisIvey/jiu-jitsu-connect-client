@@ -3,6 +3,7 @@ import CreatePostHome from "../components/CreatePostHome";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
+import Footer from "../components/Footer";
 
 interface PostType {
   _id: string;
@@ -66,18 +67,21 @@ const Home: React.FC<Props> = () => {
               );
             })}
             {visiblePosts < posts.length && (
-              <button
-                className="text-white font-medium bg-blue-600 py-2 mx-auto px-4 rounded-lg mt-4 w-[400px]"
-                onClick={loadMorePosts}
-              >
-                Load More
-              </button>
+              <div className="px-4 lg:p-0">
+                <button
+                  className="text-white font-medium bg-blue-600 py-2 w-full mx-auto lg:mx-0 max-w-screen-2xl px-4 rounded-lg mt-4 "
+                  onClick={loadMorePosts}
+                >
+                  Load More
+                </button>
+              </div>
             )}
           </>
         ) : (
           <Loading />
         )}
       </section>
+      <Footer />
     </div>
   );
 };
