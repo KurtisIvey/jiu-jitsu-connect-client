@@ -1,10 +1,12 @@
 import React, { FormEvent, useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
-const Mailer = () => {
-  const toName = "Kurtis";
+type Props = {};
+
+const Mailer = (props: Props) => {
+  const to_name = "Kurtis";
   const [params, setParams] = useState({
-    to_name: toName,
+    to_name: to_name,
     user_email: "",
     user_name: "",
     message: "",
@@ -14,25 +16,26 @@ const Mailer = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setParams((prevParams) => ({ ...prevParams, [name]: value }));
+    setParams((prevParams) => ({
+      ...prevParams,
+      [name]: value,
+    }));
   };
 
-  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
+  function sendEmail(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    try {
-      const response = await emailjs.send(
-        "service_dh4g8gf",
-        "template_loa37xn",
-        params,
-        "user_IZvdiiarOHlVtgcBd"
+    emailjs
+      .send("service_dh4g8gf", "template_loa37xn", params, "IZvdiiarOHlVtgcBd")
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
       );
-      console.log("SUCCESS!", response.status, response.text);
-    } catch (error) {
-      console.log("FAILED...", error);
-    }
-  };
-
+  }
   return (
     <div className="py-20  px-4 mx-auto max-w-screen-md mt-[30%] sm:mt-[25%] md:mt-[20%] lg:mt-[15%] xl:mt-[10%]">
       <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 text-sm sm:text-xl xl:text-2xl">
