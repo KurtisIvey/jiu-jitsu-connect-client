@@ -38,7 +38,7 @@ function Post(props: Props) {
           </div>
         </div>
         {/* post content */}
-        <p className="text-sm">{props.postContent}</p>
+        <p className="text-sm break-words">{props.postContent}</p>
 
         {/* like button number of likes */}
         <Like id={props.id} likes={props.likes} />
