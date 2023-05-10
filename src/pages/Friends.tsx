@@ -34,7 +34,6 @@ function Friends(props: Props) {
 
     const friendsRes = await response.json();
     setFriends(friendsRes.user.friends);
-    console.log(friendsRes.user.friends);
     setLoaded(true);
   }
 
