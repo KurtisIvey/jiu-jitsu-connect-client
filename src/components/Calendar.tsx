@@ -10,6 +10,13 @@ const Calendar = (props: Props) => {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         weekends={false}
+        events={[
+          { title: "bjj 6:00am-7:00am", date: "2023-05-15" },
+          { title: "bjj 6:00am-7:00am", date: "2023-05-16" },
+          { title: "bjj 6:00am-7:00am", date: "2023-05-17" },
+          { title: "bjj 6:00am-7:00am", date: "2023-05-18" },
+          { title: "bjj 6:00am-7:00am", date: "2023-05-19" },
+        ]}
       />
     </div>
   );
