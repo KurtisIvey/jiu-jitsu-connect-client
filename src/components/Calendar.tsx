@@ -5,8 +5,12 @@ type Props = {};
 
 const Calendar = (props: Props) => {
   return (
-    <div className="bg-white p-5 rounded-lg shadow-lg">
-      <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
+    <div className="bg-white p-5 rounded-lg shadow-lg h-full">
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        weekends={false}
+      />
     </div>
   );
 };
