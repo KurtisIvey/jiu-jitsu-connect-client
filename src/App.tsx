@@ -9,6 +9,7 @@ import Friends from "./pages/Friends";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import LoggedInRedirect from "./utils/LoggedInRedirect";
 import Contact from "./pages/Contact";
+import CalendarPage from "./pages/CalendarPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/friend-requests" element={<FriendRequests />} />
             <Route path="/friends" element={<Friends />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/calendar" element={<CalendarPage />} />
           </Route>
           <Route path="contact" element={<Contact />} />
         </Routes>
