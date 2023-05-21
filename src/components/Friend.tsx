@@ -27,7 +27,7 @@ const Friend = (props: Props) => {
     console.log("delete friend");
     try {
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/users/${userId}/friends`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/${userId}/friends`,
         {
           method: "PUT",
           credentials: "include",

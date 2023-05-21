@@ -24,7 +24,7 @@ const PendingFriendRequest = (props: Props) => {
 
     try {
       const apiResponse = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request-handler`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/${id}/friend-request-handler`,
         {
           method: "PUT",
           credentials: "include",

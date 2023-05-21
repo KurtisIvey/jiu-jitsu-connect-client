@@ -21,7 +21,7 @@ const Home: React.FC<Props> = () => {
 
   async function fetchPosts() {
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts`,
       {
         method: "GET",
         credentials: "include",

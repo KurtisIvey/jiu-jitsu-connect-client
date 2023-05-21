@@ -16,7 +16,7 @@ function Like(props: Props) {
 
   const getPostInfo = async () => {
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/${props.id}`,
       {
         method: "GET",
         credentials: "include",
@@ -36,7 +36,7 @@ function Like(props: Props) {
   const handleLike = async (e: FormEvent) => {
     e.preventDefault();
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}/like`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/${props.id}/like`,
       {
         method: "PUT",
         credentials: "include",

@@ -96,7 +96,7 @@ const Profile = (props: Props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/users/${id}/friend-request`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/${id}/friend-request`,
         {
           method: "PUT",
           credentials: "include",
@@ -116,7 +116,7 @@ const Profile = (props: Props) => {
   async function fetchUser() {
     try {
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/users/${id}`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/${id}`,
         {
           method: "GET",
           credentials: "include",
@@ -137,7 +137,7 @@ const Profile = (props: Props) => {
   async function fetchPostsByUser() {
     try {
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/posts/byUserId/${id}`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/byUserId/${id}`,
         {
           method: "GET",
           credentials: "include",

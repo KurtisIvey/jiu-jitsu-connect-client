@@ -21,7 +21,7 @@ function Friends(props: Props) {
 
   async function fetchFriends() {
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/users/${id}`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/${id}`,
       {
         method: "GET",
         credentials: "include",

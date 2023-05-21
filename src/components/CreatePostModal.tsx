@@ -51,7 +51,7 @@ const CreatePost = (props: Props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/posts/`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/`,
         {
           method: "POST",
           credentials: "include",

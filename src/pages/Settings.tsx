@@ -52,7 +52,7 @@ const Settings = (props: Props) => {
     try {
       console.log("hi");
       const response = await fetch(
-        `https://odinbook-backend.herokuapp.com/api/users/account-settings`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/users/account-settings`,
         {
           method: "PUT",
           credentials: "include",

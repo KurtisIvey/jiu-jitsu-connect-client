@@ -32,7 +32,7 @@ const CommentContainer = (props: Props) => {
 
   const getComments = async () => {
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/${props.id}`,
       {
         method: "GET",
         credentials: "include",
@@ -49,7 +49,7 @@ const CommentContainer = (props: Props) => {
   const handleSubmitComment = async (e: FormEvent) => {
     e.preventDefault();
     const response = await fetch(
-      `https://odinbook-backend.herokuapp.com/api/posts/${props.id}/comment`,
+      `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/${props.id}/comment`,
       {
         method: "PUT",
         credentials: "include",
