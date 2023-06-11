@@ -77,7 +77,7 @@ function Login({}: Props) {
 
     try {
       const response = await fetch(
-        "https://odinbook-backend.herokuapp.com/api/auth/login",
+        "https://jiu-jitsu-connect-backend.herokuapp.com/api/auth/login",
         {
           method: "POST",
           credentials: "include",
