@@ -181,6 +181,9 @@ function Login({}: Props) {
                   Demo Access
                 </button>
               </form>
+              <p className="font-light text-blue-500 text-xs text-center">
+                Back end may be sleeping, give it about 15-30 seconds to wake up
+              </p>
             </div>
           </div>
         </div>
