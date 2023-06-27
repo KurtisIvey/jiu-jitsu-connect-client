@@ -24,7 +24,7 @@ function Post(props: Props) {
   const handleDeletePost = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/posts/${props.id}`,
+        `https://jiu-jitsu-connect-backend.herokuapp.com/api/posts/${props.id}`,
         {
           withCredentials: true,
           headers: {
