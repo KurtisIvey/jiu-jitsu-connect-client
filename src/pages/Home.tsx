@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
 import Footer from "../components/Footer";
+import BackToTopButton from "../components/BackToTopButton";
 
 interface PostType {
   _id: string;
@@ -81,6 +82,7 @@ const Home: React.FC<Props> = () => {
           <Loading />
         )}
       </section>
+      <BackToTopButton />
       <Footer />
     </div>
   );

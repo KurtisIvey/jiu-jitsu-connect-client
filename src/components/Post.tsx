@@ -55,7 +55,7 @@ function Post(props: Props) {
           {loggedInUserId === props.author._id && (
             <button
               onClick={handleDeletePost}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-600 hover:text-red-700"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-600/60 hover:text-red-600 hover:scale-110 transition-all duration-150 ease-in-out"
               aria-label="delete post"
             >
               <FaRegTrashAlt />
