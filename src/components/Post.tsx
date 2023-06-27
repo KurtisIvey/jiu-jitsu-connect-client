@@ -18,6 +18,7 @@ type Props = {
 };
 
 function Post(props: Props) {
+  const [deleted, setDeleted] = useState<boolean>(false);
   const loggedInUserId = useSelector((state: RootState) => state.user.id);
 
   const handleDeletePost = async () => {
@@ -32,7 +33,7 @@ function Post(props: Props) {
           },
         }
       );
-
+      setDeleted(true);
       if (response.status === 204) {
         console.log("Post deleted successfully");
       }
@@ -42,10 +43,14 @@ function Post(props: Props) {
   };
 
   return (
-    <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col ">
+    <section
+      className={`container  p-3 lg:p-0 lg:mx-0 flex flex-col ${
+        deleted ? "hidden" : ""
+      }`}
+    >
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
         {/*top row of post, image name, date*/}
-        <div className="flex flex-row  relative ">
+        <div className="flex flex-row relative ">
           {/* delete btn */}
           {loggedInUserId === props.author._id && (
             <button
