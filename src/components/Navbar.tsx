@@ -35,7 +35,7 @@ const Navbar = (props: Props) => {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 lg:px-[15vw] shadow-md ">
       <div className="container grid grid-cols-2 sm:grid-cols-3 items-center  mx-auto">
         <Link to="/home" className="flex items-center">
-          <h1 className=" text-xl sm:text-2xl lg:text-4xl font-semibold text-blue-500 tracking-wider justify-self-start">
+          <h1 className=" text-xl sm:text-2xl md:text-[1.7rem] 2xl:text-4xl  font-semibold text-blue-500 tracking-wider justify-self-start ">
             Jiu Jitsu Connect
           </h1>
         </Link>
