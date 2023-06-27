@@ -10,6 +10,8 @@ import type { RootState } from "../reduxStore/store";
 import { useSelector } from "react-redux";
 import SubmitButton from "../components/SubmitButton";
 import FriendListModal from "../components/FriendListModal";
+import Footer from "../components/Footer";
+import BackToTopButton from "../components/BackToTopButton";
 
 type Props = {
   //id: string;
@@ -163,81 +165,85 @@ const Profile = (props: Props) => {
   }, [location]);
 
   return (
-    <main className="pb-10 ">
+    <main className=" ">
       <Navbar />
-      {loaded ? (
-        <div className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">
-          <div
-            id="profilePhotoCol"
-            className="flex flex-col items-center mx-auto mt-10 space-y-2"
-          >
-            {/* profile photo */}
-            <img
-              className="rounded-full object-cover w-[220px] h-[220px] border-white border-2"
-              src={
-                user?.profilePicUrl
-                  ? user.profilePicUrl
-                  : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
-              }
-              alt="user photo"
-            />
-            <div className="flex flex-col items-center space-y-2">
-              {/* username of profile */}
-              <h2 className="text-3xl font-semibold tracking-wide">
-                {user && user.username}
-              </h2>
-
-              <FriendListModal
-                friends={user?.friends}
-                username={user?.username}
+      <section className="mb-10">
+        {loaded ? (
+          <div className="container flex flex-col space-y-4 lg:space-y-10 mx-auto">
+            <div
+              id="profilePhotoCol"
+              className="flex flex-col items-center mx-auto mt-10 space-y-2"
+            >
+              {/* profile photo */}
+              <img
+                className="rounded-full object-cover w-[220px] h-[220px] border-white border-2"
+                src={
+                  user?.profilePicUrl
+                    ? user.profilePicUrl
+                    : "https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2019/10/blank-person-icon-9.jpg"
+                }
+                alt="user photo"
               />
+              <div className="flex flex-col items-center space-y-2">
+                {/* username of profile */}
+                <h2 className="text-3xl font-semibold tracking-wide">
+                  {user && user.username}
+                </h2>
 
-              {/* add friend button */}
-              {loggedInId !== id && currentlyFriends === false ? (
-                currentlyFriendRequested ? (
-                  <form onSubmit={(e) => addFriend(e)}>
-                    <SubmitButton
-                      width="fit"
-                      text="Retract Friend Request"
-                      retract={true}
-                    />
-                  </form>
+                <FriendListModal
+                  friends={user?.friends}
+                  username={user?.username}
+                />
+
+                {/* add friend button */}
+                {loggedInId !== id && currentlyFriends === false ? (
+                  currentlyFriendRequested ? (
+                    <form onSubmit={(e) => addFriend(e)}>
+                      <SubmitButton
+                        width="fit"
+                        text="Retract Friend Request"
+                        retract={true}
+                      />
+                    </form>
+                  ) : (
+                    <form onSubmit={(e) => addFriend(e)}>
+                      <SubmitButton width="fit" text="Add Friend" />
+                    </form>
+                  )
                 ) : (
-                  <form onSubmit={(e) => addFriend(e)}>
-                    <SubmitButton width="fit" text="Add Friend" />
-                  </form>
-                )
+                  ""
+                )}
+              </div>
+            </div>
+            <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
+            <div className="flex flex-col">
+              {loggedInId === id ? (
+                <CreatePost fetchPosts={fetchPostsByUser} />
               ) : (
                 ""
               )}
             </div>
+            {userPosts &&
+              userPosts.map((post) => {
+                return (
+                  <div key={post._id}>
+                    <Post
+                      id={post._id}
+                      postContent={post.postContent}
+                      timestamp={post.timestamp}
+                      likes={post.likes}
+                      author={post.author}
+                    />
+                  </div>
+                );
+              })}
           </div>
-          <div className="mt-4 border-b-2 border-gray-300 mx-5 lg:mx-0" />
-          <div className="flex flex-col">
-            {loggedInId === id ? (
-              <CreatePost fetchPosts={fetchPostsByUser} />
-            ) : (
-              ""
-            )}
-          </div>
-          {userPosts &&
-            userPosts.map((post) => {
-              return (
-                <div key={post._id}>
-                  <Post
-                    id={post._id}
-                    postContent={post.postContent}
-                    timestamp={post.timestamp}
-                    likes={post.likes}
-                    author={post.author}
-                  />
-                </div>
-              );
-            })}
-        </div>
-      ) : (
-        <Loading />
-      )}
+        ) : (
+          <Loading />
+        )}
+      </section>
+      <BackToTopButton />
+      <Footer />
     </main>
   );
 };

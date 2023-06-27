@@ -48,7 +48,7 @@ const Home: React.FC<Props> = () => {
   };
 
   return (
-    <div>
+    <main>
       <Navbar />
       <section className="container flex flex-col space-y-4 md:space-y-10 mx-auto mt-4 md:mt-10 lg:px-[5vw] pb-10">
         <CreatePostHome fetchPosts={fetchPosts} />
@@ -84,7 +84,7 @@ const Home: React.FC<Props> = () => {
       </section>
       <BackToTopButton />
       <Footer />
-    </div>
+    </main>
   );
 };
 
