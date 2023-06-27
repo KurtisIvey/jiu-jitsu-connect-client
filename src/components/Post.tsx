@@ -7,6 +7,7 @@ import ProfileImageLink from "./ProfileImageLink";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { RootState } from "../reduxStore/store";
+import axios from "axios";
 
 type Props = {
   id: string;
@@ -19,6 +20,27 @@ type Props = {
 function Post(props: Props) {
   const loggedInUserId = useSelector((state: RootState) => state.user.id);
 
+  const handleDeletePost = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/posts/${props.id}`,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.token}`,
+          },
+        }
+      );
+
+      if (response.status === 204) {
+        console.log("Post deleted successfully");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section className="container  p-3 lg:p-0 lg:mx-0 flex flex-col ">
       <div className="mx-2 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2">
@@ -27,6 +49,7 @@ function Post(props: Props) {
           {/* delete btn */}
           {loggedInUserId === props.author._id && (
             <button
+              onClick={handleDeletePost}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-600 hover:text-red-700"
               aria-label="delete post"
             >
