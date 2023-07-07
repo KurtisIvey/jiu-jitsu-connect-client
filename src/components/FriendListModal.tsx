@@ -13,7 +13,10 @@ type Props = {
   }[];
 };
 
-const FriendListModal: React.FC = ({ username = "", friends = [] }: Props) => {
+const FriendListModal: React.FC<Props> = ({
+  username = "",
+  friends = [],
+}: Props) => {
   const [open, setOpen] = useState(false);
   const friendListRef = useRef<HTMLDivElement>(null);
 
