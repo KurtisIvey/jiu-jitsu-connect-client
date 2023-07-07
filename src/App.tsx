@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -14,7 +14,7 @@ import CalendarPage from "./pages/CalendarPage";
 function App() {
   return (
     <div className="bg-[#f5f3f3] font-roboto min-h-screen ">
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           {/* Only accessible w/o auth */}
           <Route element={<LoggedInRedirect />}>
@@ -32,7 +32,7 @@ function App() {
           </Route>
           <Route path="contact" element={<Contact />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
