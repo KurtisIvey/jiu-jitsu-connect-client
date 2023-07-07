@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import axios from "axios";
-type Props = {};
 
 interface CalendarItem {
   id: number;
@@ -14,9 +13,24 @@ interface CalendarData {
   items: CalendarItem[];
 }
 
-const Calendar = (props: Props) => {
+const Calendar: React.FC = () => {
+  // fetched via useEffect axios call
   const [calendarData, setCalendarData] = useState<CalendarData>({ items: [] });
+  // have to convert data into useable format in FullCalendar Package
+  const convertedData = calendarData.items.map((item) => {
+    const dateTime = new Date(item.date_column);
+    const time = dateTime.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
+    return {
+      title: `${item.description} ${time}`,
+      date: dateTime.toISOString().split("T")[0],
+    };
+  });
+
+  // fetches calendar data from postgres neon.tech db
   useEffect(() => {
     const fetchCalendarData = async () => {
       try {
@@ -24,6 +38,7 @@ const Calendar = (props: Props) => {
           "http://localhost:3001/api/calendar"
         );
         setCalendarData(response.data);
+        console.log(response.data.items);
       } catch (err) {
         console.error(err);
       }
@@ -36,13 +51,7 @@ const Calendar = (props: Props) => {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         weekends={false}
-        events={[
-          { title: "bjj 6:00am-7:00am", date: "2023-05-15" },
-          { title: "bjj 6:00am-7:00am", date: "2023-05-16" },
-          { title: "bjj 6:00am-7:00am", date: "2023-05-17" },
-          { title: "bjj 6:00am-7:00am", date: "2023-05-18" },
-          { title: "bjj 6:00am-7:00am", date: "2023-05-19" },
-        ]}
+        events={calendarData && convertedData}
       />
     </div>
   );
