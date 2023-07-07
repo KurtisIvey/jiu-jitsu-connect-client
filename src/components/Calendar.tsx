@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import axios from "axios";
 type Props = {};
 
+interface CalendarItem {
+  id: number;
+  date_column: string;
+  description: string;
+}
+
+interface CalendarData {
+  items: CalendarItem[];
+}
+
 const Calendar = (props: Props) => {
+  const [calendarData, setCalendarData] = useState<CalendarData>({ items: [] });
+
+  useEffect(() => {
+    const fetchCalendarData = async () => {
+      try {
+        const response = await axios.get<CalendarData>(
+          "http://localhost:3001/api/calendar"
+        );
+        setCalendarData(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchCalendarData();
+  }, []);
   return (
     <div className="bg-white p-5 rounded-lg shadow-lg h-full">
       <FullCalendar

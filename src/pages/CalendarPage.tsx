@@ -2,9 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Calendar from "../components/Calendar";
 import Footer from "../components/Footer";
-type Props = {};
 
-const CalendarPage = (props: Props) => {
+const CalendarPage: React.FC = () => {
   return (
     <main className="flex flex-col min-h-screen justify-center">
       <Navbar />
