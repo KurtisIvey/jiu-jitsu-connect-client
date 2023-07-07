@@ -9,7 +9,11 @@ function Footer({}: Props) {
       <div className="w-[70%] lg:w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2023{" "}
-          <a href="https://github.com/KurtisIvey" className="hover:underline">
+          <a
+            href="https://github.com/KurtisIvey"
+            className="hover:underline"
+            target="_blank"
+          >
             Kurtis Ivey Coding
           </a>
           . All Rights Reserved.
@@ -19,6 +23,7 @@ function Footer({}: Props) {
             <a
               href="https://github.com/KurtisIvey/jiu-jitsu-connect-client"
               className="mr-4 hover:underline md:mr-6 "
+              target="_blank"
             >
               Github Repo
             </a>
@@ -27,6 +32,7 @@ function Footer({}: Props) {
             <a
               href="https://www.linkedin.com/in/kurtisivey/"
               className="mr-4 hover:underline md:mr-6"
+              target="_blank"
             >
               Linkedin
             </a>

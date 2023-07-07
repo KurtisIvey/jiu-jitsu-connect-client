@@ -22,7 +22,7 @@ const BackToTopButton: React.FC = () => {
 
   return (
     <button
-      className={`fixed bottom-4 right-4 z-10 p-2.5 text-sm rounded-full bg-slate-500 text-white flex hover:scale-105 transition-all duration-150 ease-in-out ${
+      className={`fixed bottom-[3.75rem] right-4 z-10 p-2.5 text-sm rounded-full bg-slate-500 text-white flex hover:scale-105 transition-all duration-150 ease-in-out ${
         isVisible ? "block" : "hidden"
       }`}
       onClick={scrollToTop}

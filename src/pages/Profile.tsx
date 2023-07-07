@@ -165,7 +165,7 @@ const Profile = (props: Props) => {
   }, [location]);
 
   return (
-    <main className=" ">
+    <main className="flex flex-col min-h-screen ">
       <Navbar />
       <section className="mb-10">
         {loaded ? (

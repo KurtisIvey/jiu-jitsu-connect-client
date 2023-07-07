@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 import Friend from "./Friend";
@@ -13,7 +13,7 @@ type Props = {
   }[];
 };
 
-const FriendListModal = ({ username = "", friends = [] }: Props) => {
+const FriendListModal: React.FC = ({ username = "", friends = [] }: Props) => {
   const [open, setOpen] = useState(false);
   const friendListRef = useRef<HTMLDivElement>(null);
 
