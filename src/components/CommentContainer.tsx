@@ -90,7 +90,7 @@ const CommentContainer = (props: Props) => {
         />
         <input
           onChange={(e) => handleCommentContent(e)}
-          className="rounded-full bg-gray-100 w-full pl-3 text-xs outline-blue-200"
+          className="rounded-full bg-gray-100 w-full pl-3 text-xs outline-green-200"
           placeholder="Write a comment..."
           type="text"
           aria-label="write a comment"
@@ -98,7 +98,7 @@ const CommentContainer = (props: Props) => {
           name="commentContent"
         />
         <button type="submit">
-          <BiCommentAdd className="h-5 w-5 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
+          <BiCommentAdd className="h-5 w-5 hover:text-green-500 hover:scale-110 transition-all duration-150 ease-in-out" />
         </button>
       </form>
       {comments &&

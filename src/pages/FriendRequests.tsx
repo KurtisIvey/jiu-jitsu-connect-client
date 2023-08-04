@@ -47,7 +47,7 @@ const FriendRequests = () => {
           <div className="mx-4 lg:mx-0 shadow-lg p-2 rounded-lg bg-white space-y-2 ">
             <h2 className="text-center font-semibold text-lg sm:text-2xl ">
               Friend Requests{" "}
-              <span className="text-blue-500">{friendRequests.length}</span>
+              <span className="text-green-500">{friendRequests.length}</span>
             </h2>
             <section className="grid grid-cols-1 gap-[10px]">
               {friendRequests.map((friendRequest) => {

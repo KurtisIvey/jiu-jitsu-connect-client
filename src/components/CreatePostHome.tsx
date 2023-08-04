@@ -69,7 +69,7 @@ const CreatePostHome = (props: Props) => {
           <textarea
             onChange={(e) => handlePostContent(e)}
             value={postContent}
-            className="description rounded-lg h-20 p-3 text-xs md:text-base bg-gray-100 w-full pl-3  outline-blue-200"
+            className="description rounded-lg h-20 p-3 text-xs md:text-base bg-gray-100 w-full pl-3  outline-green-200"
             placeholder={`Whats on your mind, ${currentUsername}?`}
             aria-label="write a post"
             maxLength={600}
@@ -77,7 +77,7 @@ const CreatePostHome = (props: Props) => {
           ></textarea>
           <div className="flex flex-col items-center justify-between">
             <button type="submit">
-              <TbPencilPlus className="h-6 w-6 hover:text-blue-500 hover:scale-110 transition-all duration-150 ease-in-out" />
+              <TbPencilPlus className="h-6 w-6 hover:text-green-500 hover:scale-110 transition-all duration-150 ease-in-out" />
             </button>
             <div className="count ml-auto text-gray-400 text-xs font-semibold">
               {postContent.length}/600

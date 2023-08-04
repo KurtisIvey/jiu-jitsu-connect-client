@@ -79,7 +79,7 @@ const CreatePost = (props: Props) => {
       <div className="grid grid-cols-3 items-center">
         <h3 className="text-lg text-gray-600 ">Create</h3>
         <BsPlusCircle
-          className="h-8 w-8 text-blue-400 cursor-pointer mx-auto hover:scale-110 transition-all duration-100 ease-in-out"
+          className="h-8 w-8 text-green-400 cursor-pointer mx-auto hover:scale-110 transition-all duration-100 ease-in-out"
           onClick={() => setOpen(!open)}
           aria-label="open create post"
         />
@@ -118,7 +118,7 @@ const CreatePost = (props: Props) => {
           </div>
           <button
             type="submit"
-            className="btn border border-blue-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-500 hover:bg-blue-500/80"
+            className="btn border border-green-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-500/80"
             aria-label="create post"
           >
             Post

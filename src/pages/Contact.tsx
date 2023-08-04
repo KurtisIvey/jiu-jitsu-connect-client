@@ -8,7 +8,7 @@ const Contact = (props: Props) => {
   return (
     <div className="h-screen flex flex-col justify-center items-center relative">
       <Link
-        className="absolute top-1 text-blue-500 hover:underline text-lg"
+        className="absolute top-1 text-green-500 hover:underline text-lg"
         to="/"
       >
         Return to Main Website

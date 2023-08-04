@@ -42,9 +42,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange }) => {
         className="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-grey-300 
         bg-clip-padding px-3 py-[0.32rem] font-normal bg-white  text-neutral-700 transition duration-200  text-md
          ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 
-         file:border-solid file:border-inherit file:bg-blue-500 file:px-3 file:py-[0.32rem] file:text-white
+         file:border-solid file:border-inherit file:bg-green-500 file:px-3 file:py-[0.32rem] file:text-white
           file:transition file:duration-200 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]
-           hover:file:bg-blue-600/70 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none"
+           hover:file:bg-green-600/70 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none"
         id="file_input"
       ></input>
     </div>

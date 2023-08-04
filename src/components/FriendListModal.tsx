@@ -53,7 +53,7 @@ const FriendListModal: React.FC<Props> = ({
           <h3 className="text-lg text-center mx-auto"> 0 friends</h3>
         ) : (
           <h3
-            className="text-lg underline text-center text-blue-500 cursor-pointer 
+            className="text-lg underline text-center text-green-500 cursor-pointer 
           mx-auto hover:scale-[107%] transition-all duration-100 ease-in-out"
             onClick={() => setOpen(!open)}
             aria-label="open create post"
@@ -79,7 +79,7 @@ const FriendListModal: React.FC<Props> = ({
           <FaRegWindowClose
             onClick={handleClose}
             size={25}
-            className="text-blue-500 hover:text-blue-600/85 hover:scale-110 cursor-pointer transition-all duration-150 ease-in-out"
+            className="text-green-500 hover:text-green-600/85 hover:scale-110 cursor-pointer transition-all duration-150 ease-in-out"
           />
         </div>
         {/* populated current friends */}

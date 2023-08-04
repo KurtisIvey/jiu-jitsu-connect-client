@@ -7,7 +7,7 @@ const Loading = (props: Props) => {
     <div role="status" className="flex justify-center  h-screen items-center">
       <svg
         aria-hidden="true"
-        className="w-[80px] h-[80px] mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 "
+        className="w-[80px] h-[80px] mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-green-600 "
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

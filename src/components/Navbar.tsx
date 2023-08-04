@@ -35,7 +35,7 @@ const Navbar = (props: Props) => {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 lg:px-[15vw] shadow-md ">
       <div className="container grid grid-cols-2 sm:grid-cols-3 items-center  mx-auto">
         <Link to="/home" className="flex items-center">
-          <h1 className=" text-xl sm:text-2xl md:text-[1.7rem] 2xl:text-4xl  font-semibold text-blue-500 tracking-wider justify-self-start ">
+          <h1 className=" text-xl sm:text-2xl md:text-[1.7rem] 2xl:text-4xl  font-semibold text-green-500 tracking-wider justify-self-start ">
             Jiu Jitsu Connect
           </h1>
         </Link>
@@ -44,14 +44,14 @@ const Navbar = (props: Props) => {
             to={"/home"}
             className=" flex flex-col items-center justify-center hover:scale-110 transition-all duration-150 ease-in-out "
           >
-            <FaHome size={25} className="text-blue-500 mb-[.5px]" />
+            <FaHome size={25} className="text-green-500 mb-[.5px]" />
             <p className="text-gray-700/80">Home</p>
           </Link>
           <Link
             to={"/calendar"}
             className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-150 ease-in-out"
           >
-            <BsCalendar3 size={24} className="text-blue-500 mb-[.5px]" />
+            <BsCalendar3 size={24} className="text-green-500 mb-[.5px]" />
             <p className="text-gray-700/80">Calendar</p>
           </Link>
           <Link
@@ -59,7 +59,7 @@ const Navbar = (props: Props) => {
             onClick={() => alert("video page coming soon")}
             className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-150 ease-in-out"
           >
-            <FaVideo size={25} className="text-blue-500 mb-[.5px]" />
+            <FaVideo size={25} className="text-green-500 mb-[.5px]" />
             <p className="text-gray-700/80">videos</p>
           </Link>
         </div>

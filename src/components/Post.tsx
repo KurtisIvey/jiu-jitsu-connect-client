@@ -71,7 +71,7 @@ function Post(props: Props) {
           <div className="text-xs tracking-wider font-semibold">
             <Link
               to={`/profile/${props.author._id}`}
-              className="hover:text-blue-600 ml-[.3px] hover:underline"
+              className="hover:text-green-600 ml-[.3px] hover:underline"
               aria-label={`link to user ${props.author.username} profile`}
             >
               {props.author.username}

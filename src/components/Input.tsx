@@ -24,7 +24,7 @@ const Input = (props: Props) => {
             ? "outline-red-400"
             : props.errorMessage
             ? "outline-green-500"
-            : "outline-blue-400"
+            : "outline-green-400"
         }
       ${
         props.error

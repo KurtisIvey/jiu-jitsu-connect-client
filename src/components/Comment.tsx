@@ -28,7 +28,7 @@ const Comment = (props: Props) => {
         <p className="w-full flex justify-between">
           <Link
             to={`/profile/${props.author._id}`}
-            className=" font-semibold mr-2 hover:text-blue-600 hover:underline"
+            className=" font-semibold mr-2 hover:text-green-600 hover:underline"
           >
             {props.author.username}
           </Link>

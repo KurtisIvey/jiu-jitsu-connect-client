@@ -97,7 +97,7 @@ const Settings = (props: Props) => {
               name="username"
               placeholder="Kurtis Ivey"
               className="w-[300px] text-gray-900 text-md rounded-lg focus:ring-primary-600 
-              focus:border-primary-600 block outline-blue-400 p-2.5 border border-gray-300"
+              focus:border-primary-600 block outline-green-400 p-2.5 border border-gray-300"
             />
           </div>
           <SubmitButton text="Update Profile" width="fit" />

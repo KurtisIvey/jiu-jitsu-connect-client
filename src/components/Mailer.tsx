@@ -101,7 +101,7 @@ const Mailer = (props: Props) => {
         </div>
         <button
           type="submit"
-          className="py-1.5 sm:py-3 px-3.5 sm:px-5 text-base xl:text-xl font-medium text-center bg-blue-500 hover:bg-blue-500/80 text-white 
+          className="py-1.5 sm:py-3 px-3.5 sm:px-5 text-base xl:text-xl font-medium text-center bg-green-500 hover:bg-green-500/80 text-white 
           rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 
           focus:outline-none focus:ring-primary-300 "
         >

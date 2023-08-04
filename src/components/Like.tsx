@@ -52,7 +52,7 @@ function Like(props: Props) {
     <form onSubmit={(e) => handleLike(e)} className="">
       <div className="border-b mb-2 pb-1">
         {postLikes.length > 0 && (
-          <div className="flex gap-2 text-blue-500 ">
+          <div className="flex gap-2 text-green-500 ">
             <AiOutlineLike className="h-5 w-5" />
             {postLikes.length}
           </div>
@@ -60,7 +60,7 @@ function Like(props: Props) {
       </div>
       <button
         className={`flex items-center justify-start ${
-          postLikes.includes(loggedInId) ? "text-blue-500 " : ""
+          postLikes.includes(loggedInId) ? "text-green-500 " : ""
         } hover:scale-110 w-fit transition-all duration-150 ease-in-out`}
       >
         <AiOutlineLike className="h-5 w-5" />

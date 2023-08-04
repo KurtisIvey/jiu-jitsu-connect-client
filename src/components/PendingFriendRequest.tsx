@@ -64,7 +64,7 @@ const PendingFriendRequest = (props: Props) => {
           />
           <Link
             to={`/profile/${props.profileId}`}
-            className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-blue-500 "
+            className="ml-2 text-sm sm:text-base hover:underline cursor-pointer text-green-500 "
           >
             {props.username}
           </Link>

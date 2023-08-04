@@ -91,7 +91,7 @@ function Register({}: Props) {
     <main className="  flex items-center lg:flex-none ">
       <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 mx-auto  lg:h-screen lg:py-0 gap-6 lg:gap-24">
         <div className="flex flex-col max-w-md w-full gap-3 p-6">
-          <h1 className=" text-5xl  font-semibold text-blue-500">Odin-book</h1>
+          <h1 className=" text-5xl  font-semibold text-green-500">Odin-book</h1>
           <p className="text-md ">
             Connect with friends and the world around you on Odin-book
           </p>
@@ -168,7 +168,7 @@ function Register({}: Props) {
                 Already have an account?{" "}
                 <Link
                   to="/"
-                  className="font-medium text-blue-600 hover:underline "
+                  className="font-medium text-green-600 hover:underline "
                 >
                   Login here
                 </Link>
