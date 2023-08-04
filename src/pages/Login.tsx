@@ -121,7 +121,7 @@ function Login({}: Props) {
       <section className="flex flex-grow">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 mx-auto  lg:py-0 gap-6 lg:gap-24">
           <div className="flex flex-col max-w-md w-auto gap-3 p-6">
-            <h1 className="text-4xl md:text-5xl font-semibold text-blue-500">
+            <h1 className="text-4xl md:text-5xl font-semibold text-green-500">
               Jiu Jitsu Connect
             </h1>
             <p className="text-xs">-Porrada!</p>
@@ -131,7 +131,7 @@ function Login({}: Props) {
           </div>
           <div className="w-full bg-white rounded-lg shadow dark:border lg:mt-0 lg:w-[448px] xl:p-0">
             <div className="p-8 space-y-4 lg:space-y-6">
-              <h2 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 lg:text-2xl dark:text-white ml-2">
+              <h2 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 lg:text-2xl  ml-2">
                 Sign in to your account
               </h2>
 
@@ -164,7 +164,7 @@ function Login({}: Props) {
                   Don’t have an account yet?{" "}
                   <Link
                     to="/register"
-                    className="font-medium text-blue-600 hover:underline dark:text-primary-500"
+                    className="font-medium text-green-600 hover:underline dark:text-primary-500"
                   >
                     Sign up
                   </Link>
@@ -177,11 +177,11 @@ function Login({}: Props) {
                 <p className="font-light text-gray-500">
                   Want to try out the app?
                 </p>
-                <button className="font-medium text-blue-600 hover:underline dark:text-primary-500 ml-1">
+                <button className="font-medium text-green-600 hover:underline dark:text-primary-500 ml-1">
                   Demo Access
                 </button>
               </form>
-              <p className="font-light text-blue-500 text-xs text-center">
+              <p className="font-light text-green-500 text-xs text-center">
                 Back end may be sleeping, give it about 15-30 seconds to wake up
               </p>
             </div>
